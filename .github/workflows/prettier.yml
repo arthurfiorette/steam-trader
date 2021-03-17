@@ -1,0 +1,25 @@
+name: Prettify Code
+
+on:
+  push:
+  
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    name: Prettify code
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - name: Prettify code
+        # https://github.com/creyD/prettier_action/
+        uses: creyD/prettier_action@v3.3
+        with:
+          prettier_options: --write ./**/*.{js,jsx,ts,tsx,md,json,html,css,scss,java,yml}
+          same_commit: false
+          only_changed: true
+          commit_message: Prettified code
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
