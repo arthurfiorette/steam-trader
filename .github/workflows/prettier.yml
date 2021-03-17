@@ -2,6 +2,7 @@ name: Prettify Code
 
 on:
   push:
+  workflow_dispatch:
   
 jobs:
   prettier:
@@ -19,7 +20,7 @@ jobs:
         with:
           prettier_options: --write ./**/*.{js,jsx,ts,tsx,md,json,html,css,scss,java,yml}
           same_commit: false
-          only_changed: true
+          only_changed: ${{ github.event.name == 'push' }}
           commit_message: Prettified code
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
