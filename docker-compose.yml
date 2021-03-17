@@ -1,0 +1,7 @@
+version: '3'
+services:
+  app:
+    build: src/
+    ports: '1227:1227'
+    env_file:
+      - '.env'

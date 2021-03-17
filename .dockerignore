@@ -1,0 +1,11 @@
+# We use a white-list approach here, so ignore everything and then make exceptions.
+*
+
+!src/*
+!public/*
+!server/*
+
+!package*.json
+!tsconfig.json
+
+!Dockerfile
