@@ -4,6 +4,8 @@ import SteamCommunity from 'steamcommunity';
 import SteamTotp from 'steam-totp';
 import TradeOfferManager from 'steam-tradeoffer-manager';
 import { info, Ad } from './logger';
+import { Offer } from './trade/types';
+import { process } from './trade/processor';
 
 Ad.startup();
 
@@ -18,8 +20,8 @@ const manager = new TradeOfferManager({
 
 info('TradeOfferManager is ready');
 
-const { username, sharedSecret, password } = config.steam;
-const { gameId } = config.info;
+const { username, sharedSecret, password, identitySecret } = config.steam;
+const { gameId: statusGameId } = config.status;
 
 client.logOn({
   accountName: username,
@@ -28,9 +30,17 @@ client.logOn({
 });
 
 client.on('loggedOn', () => {
-  info(`Logged into steam with username ${username}`);
   client.setPersona(1);
-  client.gamesPlayed(gameId);
+  client.gamesPlayed(statusGameId);
+  info(`Logged into steam with username: '${username}'. Playing game id: '${statusGameId}'`);
 });
+
+client.on('webSession', (sessionId: number, cookies: string[]) => {
+  manager.setCookies(cookies);
+  community.setCookies(cookies);
+  community.startConfirmationChecker(2000, identitySecret);
+});
+
+manager.on('newOffer', (offer: Offer) => process(offer, community).then(() => info('Offer processed.')));
 
 info('App initialized');

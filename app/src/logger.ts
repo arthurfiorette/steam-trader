@@ -2,10 +2,6 @@ import { enable } from 'colors';
 
 enable();
 
-function printAll(prefix: string, color: string | undefined, ...message: string[]) {
-  message.forEach((msg) => console.log(`[${prefix}]`.blue, color ? msg[color] : msg));
-}
-
 export function info(...message: string[]) {
   printAll('INFO', 'green', ...message);
 }
@@ -20,6 +16,15 @@ export function error(...message: string[]) {
 
 export function log(...message: string[]) {
   printAll('#', undefined, ...message);
+}
+
+function printAll(prefix: string, color: string | undefined, ...message: string[]) {
+  write(...message);
+  message.forEach((msg) => console.log(`[${prefix}]`.blue, color ? msg[color] : msg));
+}
+
+export function write(...message: string[]) {
+  //TODO: write in the logs only
 }
 
 export namespace Ad {
