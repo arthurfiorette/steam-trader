@@ -6,11 +6,12 @@
     "sharedSecret": "shared secret",
     "identitySecret": "identity secret"
   },
-  "info": {
+  "status": {
     "gameId": 730
   },
   "trading": {
     "trashValue": 0.04,
-    "ownerId": 76561198850668121
+    "ownerIds": ["steam id 64", "other steam id 64"],
+    "tradeWith0Profit": true
   }
 }
