@@ -19,8 +19,8 @@ export async function getItemPrice({ appid, market_hash_name }: Item): Promise<I
 
 export async function getAllItemsPrice(items: Item[]) {
   const prices: ItemPrice[] = [];
-  for(let item of items) {
-    prices.push(await getItemPrice(item))
+  for (let item of items) {
+    prices.push(await getItemPrice(item));
   }
   return prices;
 }
