@@ -29,5 +29,5 @@ export function calculatePrice({ median_price, lowest_price }: ItemPrice): numbe
 }
 
 function reducePrices(items: ItemPrice[]): number {
-  return items.map(calculatePrice).reduce((a, b) => a + b);
+  return items.map(calculatePrice).reduce((a, b) => a + b, 0);
 }
