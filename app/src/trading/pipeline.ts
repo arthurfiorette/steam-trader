@@ -5,10 +5,10 @@ import Processor from './processor';
 export type OfferContext = {
   processor: Processor;
   offer: Offer;
-  receiveItemsPrices?: ItemPrice[],
-  receivePrice?: number,
-  giveItemsPrices?: ItemPrice[],
-  givePrice?: number,
+  receiveItemsPrices?: ItemPrice[];
+  receivePrice?: number;
+  giveItemsPrices?: ItemPrice[];
+  givePrice?: number;
 };
 
 export type Next = () => Promise<void> | void;

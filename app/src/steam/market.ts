@@ -2,7 +2,7 @@ import axios from 'axios';
 import { ItemPrice, Item } from '../trading/types';
 import Currency from './currency';
 
-const { parse:cleanPrice } = Currency.DEFAULT;
+const { parse: cleanPrice } = Currency.DEFAULT;
 
 const priceOverview = 'http://steamcommunity.com/market/priceoverview';
 
