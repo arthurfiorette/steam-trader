@@ -1,13 +1,12 @@
 import axios from 'axios';
 import { error, info } from '../logger';
 import { ItemPrice, Item } from './types';
-import { calculatePrice, isTrash } from './analyzer';
 
 export async function getItemPrice({ appid, market_hash_name }: Item): Promise<ItemPrice> {
   return new Promise<ItemPrice>(async (resolve, reject) => {
     const params = { appid, currency: 1, market_hash_name };
     try {
-      const data = await axios.get('http://steamcommunity.com/market/priceoverview', { params });
+      const { data } = await axios.get('http://steamcommunity.com/market/priceoverview', { params });
       info('Received a response for the request on steamcommunity');
       return resolve(parseData(data));
     } catch (err) {
@@ -25,15 +24,19 @@ export async function getAllItemsPrice(items: Item[]) {
   return prices;
 }
 
-function parseData({ success, lowest_price, volume, median_price }: any): ItemPrice {
+function parseData({ success, lowest_price, median_price }: any): ItemPrice {
   return {
     success,
-    volume: Number(volume),
     lowest_price: cleanPrice(lowest_price),
-    median_price: cleanPrice(median_price)
+    median_price: median_price ? cleanPrice(median_price) : undefined
   };
 }
 
 function cleanPrice(price: string): number {
-  return Number(price.substring(1));
+  try {
+    return Number(price.substring(1));
+  } catch (err) {
+    console.log('erro', price);
+    return 0;
+  }
 }
