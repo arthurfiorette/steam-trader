@@ -17,14 +17,59 @@
   <strong>Steam Trader 📈</strong>
 </h1>
 <p align="center">
-  <i>An automated steam trade client!</i>
+  <i>An deployment ready and automated steam trade client!</i>
 </p>
 
-> <pre align="center">This project is under development and isn't yet ready to be launched!</pre>
+> <pre align="center">The first release was launched! Download it <a href=https://github.com/ArthurFiorette/steam-trader/releases>here</a>!</pre>
 
 ## About
 
 This project aims to give an amazing trade client to you host it and auto trade steam items.
+
+## Downloading
+
+Open this repository [releases](https://github.com/ArthurFiorette/steam-trader/releases) tab and download the latest file.
+
+## Configuration
+
+At this moment, to run properly this app, you will need to configure the **config.json** file **BEFORE** executing it. This file is in the **app** folder
+
+**Asked questions:**
+  - How do i fing my shared secret and identity secret?
+    - You need to use [SDA](https://github.com/Jessecar96/SteamDesktopAuthenticator) and after that, you will find it [here](https://www.youtube.com/watch?v=JjdOJVSZ9Mo).
+
+```js
+{
+  help: 'Need help? https://github.com/ArthurFiorette/steam-trader#configuration',
+  debug: false /* Leave it false unless you are a developer and want to modify this project */,
+  steam: {
+    username: 'username' /* The account username */,
+    password: 'password' /* The account password */,
+    sharedSecret: 'shared secret' /* The account shared secret */,
+    identitySecret: 'identity secret' /* The account identity secret */
+  },
+  status: {
+    gameId: 730 /* The game id that the bot will play when online */
+  },
+  trading: {
+    trashValue: 0.04 /* The minimum item price to be exchanged (you will not want 10000 
+                        $0.01 cases for your knife) */,
+    ownerIds: ['steam id 64', 'other steam id 64'] /* The bot will ALWAYS accept trades from this 
+                                                      steam ids */,
+    tradeWith0Profit: true /* If you want to accept a trade with the same price in both sides */
+  }
+}
+```
+
+## Executing
+
+This application can be run in different ways.
+
+- If you have docker installed on your machine, you can simply type `docker-compose up` after editing the **config.yml** and you are ready to go.
+
+- If you are thinking of hosting it on any hosting platform, use the docker implementation to your advantage and host it easily.
+
+- Or, in the most complicated way, you must have **Node.JS** installed on your pc. Open the app folder with `cd app`, install and compile by running `npm install` and after `npm run build`. Start by running `npm start`.
 
 ## License
 
