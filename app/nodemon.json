@@ -1,6 +1,6 @@
 {
   "ignore": ["node_modules"],
   "watch": ["."],
-  "exec": "npm start",
+  "exec": "npm start:dev",
   "ext": "ts"
 }
