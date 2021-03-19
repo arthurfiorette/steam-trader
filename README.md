@@ -32,7 +32,11 @@ Open this repository [releases](https://github.com/ArthurFiorette/steam-trader/r
 
 ## Configuration
 
-At this moment, to run properly this app, you will need to configure the **config.json** file **BEFORE** executing it. This file is in the **app** folder
+At this moment, to run properly this app, you will need to configure the **config.json** file **BEFORE** executing it. This file is in the **app** folder.
+
+### Attention!
+
+The **config.json** file is renamed to **_config.json**, so you must rename and edit it before starting it.
 
 **Asked questions:**
 
@@ -42,20 +46,20 @@ At this moment, to run properly this app, you will need to configure the **confi
 ```js
 {
   help: 'Need help? https://github.com/ArthurFiorette/steam-trader#configuration',
-  debug: false /* Leave it false unless you are a developer and want to modify this project */,
-  steam: {
+  debug: false /* Add complete debug messages to the logs*/,
+  login: {
     username: 'username' /* The account username */,
     password: 'password' /* The account password */,
     sharedSecret: 'shared secret' /* The account shared secret */,
-    identitySecret: 'identity secret' /* The account identity secret */
+    identity: 'identity' /* The account identity secret */
   },
   status: {
     gameId: 730 /* The game id that the bot will play when online */
   },
   trading: {
-    trashValue: 0.04 /* The minimum item price to be exchanged (you will not want 10000
+    trashLimit: 0.04 /* The minimum item price to be exchanged (you will not want 10000
                         $0.01 cases for your knife) */,
-    ownerIds: ['steam id 64', 'other steam id 64'] /* The bot will ALWAYS accept trades from this
+    owners: ['steam id 64', 'other steam id 64'] /* The bot will ALWAYS accept trades from this
                                                       steam ids */,
     tradeWith0Profit: true /* If you want to accept a trade with the same price in both sides */
   }
