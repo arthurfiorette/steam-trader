@@ -12,7 +12,7 @@
   },
   "trading": {
     "trashLimit": 0.01,
-    "owners": ["ownerid","ownerid"],
+    "owners": ["ownerid", "ownerid"],
     "tradeWith0Profit": false
   }
 }

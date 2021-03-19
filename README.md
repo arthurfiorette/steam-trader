@@ -36,7 +36,7 @@ At this moment, to run properly this app, you will need to configure the **confi
 
 ### Attention!
 
-The **config.json** file is renamed to **_config.json**, so you must rename and edit it before starting it.
+The **config.json** file is renamed to **\_config.json**, so you must rename and edit it before starting it.
 
 **Asked questions:**
 
