@@ -25,4 +25,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: echo ${{ github.event.name == 'push' }}
+      - run: echo ${{ github.event.name }}
