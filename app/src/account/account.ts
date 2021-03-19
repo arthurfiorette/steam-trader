@@ -76,7 +76,7 @@ export default class Account {
     client.on('wallet', (_hasWallet: boolean, currency: number) => {
       this.options.status.currency = getCurrency(currency);
     });
-    manager.on('newOffer', () => {});
+    manager.on('newOffer', this.trader.begin);
   }
 
   private getAuthCode(): string {

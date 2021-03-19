@@ -11,7 +11,7 @@ export default class TradeProcessor {
   constructor(readonly account: Account) {}
 
   async begin(offer: Offer) {
-    this.pipeline.execute({ offer, processor: this });
+    await this.pipeline.execute({ offer, processor: this });
   }
 
   async decline(offer: Offer) {
