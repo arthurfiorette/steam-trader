@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "build": "babel src -d build --copy-files --extensions .ts",
-    "qrun": "npm run build && node build"
+    "dev": "nodemon",
+    "start": "ts-node src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -19,21 +20,25 @@
   },
   "homepage": "https://github.com/ArthurFiorette/steam-trader#readme",
   "dependencies": {
+    "@babel/runtime": "^7.13.10",
     "axios": "^0.21.1",
     "colors": "^1.4.0",
     "steam-totp": "^2.1.1",
-    "steam-tradeoffer-manager": "^2.10.2",
-    "steam-user": "^4.19.3",
-    "steamcommunity": "^3.42.0"
+    "steam-tradeoffer-manager": "2.10.2", 
+    "steam-user": "4.19.3",
+    "steamcommunity": "3.42.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.10",
+    "@babel/plugin-transform-runtime": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
     "@babel/preset-typescript": "^7.13.0",
     "@types/axios": "^0.14.0",
     "@types/node": "^14.14.35",
     "@types/steam-totp": "^2.1.0",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1",
     "typescript": "^4.2.3"
   }
 }
