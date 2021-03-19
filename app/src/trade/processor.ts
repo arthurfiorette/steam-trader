@@ -60,7 +60,7 @@ export async function process(offer: Offer, community: Community): Promise<void>
 
     if (isGift) {
       info('Accepting gift');
-      return acceptOffer(community,offer, receivePrice);
+      return acceptOffer(community, offer, receivePrice);
     } else {
       if (givePrice > receivePrice) {
         info('We are overpaying. Declining offer...');
