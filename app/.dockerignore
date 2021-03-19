@@ -1,11 +1,15 @@
 # We use a white-list approach here, so ignore everything and then make exceptions.
+
 *
 
 !src/*
-!public/*
-!server/*
 
+!nodemon.json
 !package*.json
 !tsconfig.json
+!config.json
+
+!.babelrc
+!.env
 
 !Dockerfile
