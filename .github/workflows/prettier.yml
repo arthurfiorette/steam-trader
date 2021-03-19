@@ -18,9 +18,11 @@ jobs:
         # https://github.com/creyD/prettier_action/
         uses: creyD/prettier_action@v3.3
         with:
-          prettier_options: --write **/* --ignore-unknown
+          prettier_options: --write ./**/*.{js,jsx,ts,tsx,md,json,html,css,yml}
           same_commit: false
           only_changed: ${{ github.event.name == 'push' }}
           commit_message: Prettified code
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: echo ${{ github.event.name == 'push' }}
