@@ -3,6 +3,7 @@ import SteamTotp from 'steam-totp';
 import Logger from './logger';
 import TradeProcessor from '../trading/processor';
 import { ICurrency, getCurrency } from '../steam/currency';
+import {Offer} from '../trading/types'
 
 export interface AccountOptions {
   readonly login: {
@@ -76,7 +77,7 @@ export default class Account {
     client.on('wallet', (_hasWallet: boolean, currency: number) => {
       this.options.status.currency = getCurrency(currency);
     });
-    manager.on('newOffer', this.trader.begin);
+    manager.on('newOffer', (offer: Offer) => this.trader.begin(offer));
   }
 
   private getAuthCode(): string {
