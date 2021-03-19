@@ -1,6 +1,6 @@
 {
-  "help": "Need help? https://github.com/ArthurFiorette/steam-trader",
-  "debug": true,
+  "help": "Need help? https://github.com/ArthurFiorette/steam-trader#configuration",
+  "debug": false,
   "steam": {
     "username": "username",
     "password": "password",
