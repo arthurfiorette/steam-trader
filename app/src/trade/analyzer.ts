@@ -1,4 +1,4 @@
-import { trading } from '../../../config.json';
+import { trading } from '../../config.json';
 import { Item, ItemPrice } from './types';
 
 export function isTrash(item: ItemPrice): boolean {
@@ -13,6 +13,6 @@ export function containsUnmarketable(items: Item[], callback: (items: Item[]) =>
   } else return false;
 }
 
-export function calculatePrice({ median_price, lowest_price }: ItemPrice): number {
-  return lowest_price > median_price ? lowest_price : median_price + lowest_price / 2;
+export function calculatePrice({ median_price, lowest_price }: ItemPrice): number { 
+  return !median_price || lowest_price > median_price ? lowest_price : median_price + lowest_price / 2;
 }

@@ -1,0 +1,18 @@
+{
+  "help": "Need help? https://github.com/ArthurFiorette/steam-trader",
+  "debug": true,
+  "steam": {
+    "username": "username",
+    "password": "password",
+    "sharedSecret": "shared secret",
+    "identitySecret": "identity secret"
+  },
+  "status": {
+    "gameId": 730
+  },
+  "trading": {
+    "trashValue": 0.04,
+    "ownerIds": ["steam id 64", "other steam id 64"],
+    "tradeWith0Profit": true
+  }
+}

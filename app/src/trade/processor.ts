@@ -1,5 +1,5 @@
 import { info, warn } from '../logger';
-import config from '../../../config.json';
+import config from '../../config.json';
 import { getAllItemsPrice } from './market';
 import { Offer, Community } from './types';
 import { containsUnmarketable, isTrash, calculatePrice } from './analyzer';
@@ -21,9 +21,10 @@ export async function process(offer: Offer, community: Community): Promise<void>
     return declineOffer(offer, Reason.GLITCHED);
   }
 
-  if (ownerIds.includes(partner.getSteamID64())) {
+  // I transform partner.getSteamID64() to string because it was reading wrong. IDK why.
+  if (ownerIds.includes(`${partner.getSteamID64()}`)) {
     info('Trade partner is owner');
-    return acceptOffer(offer);
+    return acceptOffer(community, offer);
   }
 
   info(`All our items are: ${itemsToGive.map((item) => item.name)}`);
@@ -53,15 +54,15 @@ export async function process(offer: Offer, community: Community): Promise<void>
 
     const receivePrice = receiveItemsPrices.map(calculatePrice).reduce((a, b) => a + b);
 
-    const givePrice = (await getAllItemsPrice(itemsToGive)).map(calculatePrice).reduce((a, b) => a + b);
+    const givePrice = (await getAllItemsPrice(itemsToGive)).map(calculatePrice).reduce((a, b) => a + b, 0);
 
     info(`Our price are: '$${givePrice}' and their price are: '$${receivePrice}'`);
 
     if (isGift) {
       info('Accepting gift');
-      return acceptOffer(offer, receivePrice);
+      return acceptOffer(community,offer, receivePrice);
     } else {
-      if (givePrice >= receivePrice) {
+      if (givePrice > receivePrice) {
         info('We are overpaying. Declining offer...');
         return declineOffer(offer, Reason.NEGATIVE_PROFIT);
       } else {
@@ -78,7 +79,7 @@ export async function process(offer: Offer, community: Community): Promise<void>
         const profit = receivePrice - givePrice;
 
         info(`Our profit is ${profit}. Accepting offer...`);
-        return acceptOffer(offer, profit);
+        return acceptOffer(community, offer, profit);
       }
     }
   }

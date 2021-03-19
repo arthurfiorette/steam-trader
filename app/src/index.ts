@@ -1,7 +1,10 @@
-import config from '../../config.json';
-import SteamUser from 'steam-user';
-import SteamCommunity from 'steamcommunity';
+import config from '../config.json';
 import SteamTotp from 'steam-totp';
+// @ts-ignore https://github.com/TypeStrong/ts-node#help-my-types-are-missing
+import SteamCommunity from 'steamcommunity';
+// @ts-ignore https://github.com/TypeStrong/ts-node#help-my-types-are-missing
+import SteamUser from 'steam-user';
+// @ts-ignore https://github.com/TypeStrong/ts-node#help-my-types-are-missing
 import TradeOfferManager from 'steam-tradeoffer-manager';
 import { info, Ad } from './logger';
 import { Offer } from './trade/types';
@@ -35,7 +38,7 @@ client.on('loggedOn', () => {
   info(`Logged into steam with username: '${username}'. Playing game id: '${statusGameId}'`);
 });
 
-client.on('webSession', (sessionId: number, cookies: string[]) => {
+client.on('webSession', (_sessionId: number, cookies: string[]) => {
   manager.setCookies(cookies);
   community.setCookies(cookies);
   community.startConfirmationChecker(2000, identitySecret);

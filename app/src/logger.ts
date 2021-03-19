@@ -2,28 +2,28 @@ import { enable } from 'colors';
 
 enable();
 
-export function info(...message: string[]) {
+export function info(...message: any[]) {
   printAll('INFO', 'green', ...message);
 }
 
-export function warn(...message: string[]) {
+export function warn(...message: any[]) {
   printAll('WARN', 'yellow', ...message);
 }
 
-export function error(...message: string[]) {
+export function error(...message: any[]) {
   printAll('ERROR', 'red', ...message);
 }
 
-export function log(...message: string[]) {
+export function log(...message: any[]) {
   printAll('#', undefined, ...message);
 }
 
-function printAll(prefix: string, color: string | undefined, ...message: string[]) {
+function printAll(prefix: string, color: string | undefined, ...message: any[]) {
   write(...message);
   message.forEach((msg) => console.log(`[${prefix}]`.blue, color ? msg[color] : msg));
 }
 
-export function write(...message: string[]) {
+export function write(...message: any[]) {
   //TODO: write in the logs only
 }
 

@@ -15,14 +15,13 @@ export interface Item {
 export interface ItemPrice {
   success: boolean;
   lowest_price: number;
-  volume: number;
-  median_price: number;
+  median_price?: number;
 }
 
 export interface Offer {
   isGlitched: () => boolean;
-  accept: (err: (err: any) => void) => void;
-  decline: (err: (err: any) => void) => void;
+  accept: (err?: (err: null | Error) => void) => void;
+  decline: (err?: (err: null | Error) => void) => void;
   partner: Partner;
   itemsToGive: Item[];
   itemsToReceive: Item[];
@@ -30,4 +29,6 @@ export interface Offer {
   isOurOffer: boolean;
 }
 
-export interface Community {}
+export interface Community {
+  checkConfirmations: (callback?: (err: null | Error) => void) => void;
+}
