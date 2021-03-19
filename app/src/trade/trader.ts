@@ -1,6 +1,6 @@
 import { Offer, Community } from './types';
 import { info, warn, error } from '../logger';
-import {debug} from '../../config.json'
+import { debug } from '../../config.json';
 
 export enum Reason {
   TRASH_LIMIT = 'Exists one or more itens with an value lower than the trash limit',
@@ -11,12 +11,13 @@ export enum Reason {
 }
 
 export async function declineOffer(offer: Offer, reason: Reason) {
-  if(debug) {
+  if (debug) {
     info('Trade declined');
     return;
   }
   await offer.decline((err) => {
-    if (err) {      error('Was thrown an error while declining this offer.', err);
+    if (err) {
+      error('Was thrown an error while declining this offer.', err);
       return;
     }
     warn(`Declined the offer. Reason: '${reason}'`);
@@ -24,7 +25,7 @@ export async function declineOffer(offer: Offer, reason: Reason) {
 }
 
 export async function acceptOffer(community: Community, offer: Offer, profit?: number) {
-  if(debug) {
+  if (debug) {
     info('Trade accepted');
     return;
   }

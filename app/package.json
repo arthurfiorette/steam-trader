@@ -24,7 +24,7 @@
     "axios": "^0.21.1",
     "colors": "^1.4.0",
     "steam-totp": "^2.1.1",
-    "steam-tradeoffer-manager": "2.10.2", 
+    "steam-tradeoffer-manager": "2.10.2",
     "steam-user": "4.19.3",
     "steamcommunity": "3.42.0"
   },
