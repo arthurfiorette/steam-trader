@@ -6,4 +6,4 @@ Ad.startup();
 
 const account = new Account(config);
 
-account.login().then(() => console.log('logged in'));
+account.login();
