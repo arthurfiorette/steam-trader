@@ -35,8 +35,9 @@ Open this repository [releases](https://github.com/ArthurFiorette/steam-trader/r
 At this moment, to run properly this app, you will need to configure the **config.json** file **BEFORE** executing it. This file is in the **app** folder
 
 **Asked questions:**
-  - How do i fing my shared secret and identity secret?
-    - You need to use [SDA](https://github.com/Jessecar96/SteamDesktopAuthenticator) and after that, you will find it [here](https://www.youtube.com/watch?v=JjdOJVSZ9Mo).
+
+- How do i find my shared secret and identity secret?
+  - You need to use [SDA](https://github.com/Jessecar96/SteamDesktopAuthenticator) and after that, you will find it [here](https://www.youtube.com/watch?v=JjdOJVSZ9Mo).
 
 ```js
 {
@@ -52,9 +53,9 @@ At this moment, to run properly this app, you will need to configure the **confi
     gameId: 730 /* The game id that the bot will play when online */
   },
   trading: {
-    trashValue: 0.04 /* The minimum item price to be exchanged (you will not want 10000 
+    trashValue: 0.04 /* The minimum item price to be exchanged (you will not want 10000
                         $0.01 cases for your knife) */,
-    ownerIds: ['steam id 64', 'other steam id 64'] /* The bot will ALWAYS accept trades from this 
+    ownerIds: ['steam id 64', 'other steam id 64'] /* The bot will ALWAYS accept trades from this
                                                       steam ids */,
     tradeWith0Profit: true /* If you want to accept a trade with the same price in both sides */
   }
