@@ -3,7 +3,7 @@ import SteamTotp from 'steam-totp';
 import Logger from './logger';
 import TradeProcessor from '../trading/processor';
 import { ICurrency, getCurrency } from '../steam/currency';
-import {Offer} from '../trading/types'
+import { Offer } from '../trading/types';
 
 export interface AccountOptions {
   readonly login: {
