@@ -1,7 +1,7 @@
 import { NextFunction } from '../../util/middleware';
 import { getAllItemsPrice } from '../../steam/market';
 import { AccountOptions } from '../../account/account';
-import { ItemPrice,OfferContext } from '../types';
+import { ItemPrice, OfferContext } from '../types';
 
 export default async function middleware(context: OfferContext, next: NextFunction) {
   const { processor, offer } = context;
