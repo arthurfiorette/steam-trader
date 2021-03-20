@@ -1,7 +1,16 @@
+import winston, { format, transports } from 'winston';
 import Account from './account';
 
-export default class Logger {
-  constructor(private account: Account) {}
+const { combine, json, timestamp, colorize, cli } = format;
 
-  log(message: any[]) {}
+export default function Logger({options}: Account) {
+  return winston.createLogger({
+    level: 'debug',
+    format: combine(timestamp(), json()),
+    defaultMeta: { username: options.login.username },
+    transports: [
+      new transports.File({ filename: 'logs/accounts.log' }),
+      new transports.Console({ format: combine(colorize(), cli()) })
+    ]
+  });
 }

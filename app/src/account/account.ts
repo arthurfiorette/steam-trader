@@ -1,9 +1,12 @@
 import { SteamCommunity, TradeOfferManager, SteamUser } from '../untyped';
 import SteamTotp from 'steam-totp';
-import Logger from './logger';
 import TradeProcessor from '../trading/processor';
 import { ICurrency, getCurrency } from '../steam/currency';
 import { Offer } from '../trading/types';
+import Storage from './storage';
+import Logger from './logger';
+
+const language = 'en';
 
 export interface AccountOptions {
   readonly login: {
@@ -23,24 +26,15 @@ export interface AccountOptions {
   };
 }
 
-const language = 'en';
-
 export default class Account {
   readonly client = new SteamUser();
   readonly community = new SteamCommunity();
-  readonly manager: TradeOfferManager;
-  readonly logger = new Logger(this);
+  readonly manager = new TradeOfferManager({ steam: this.client, community: this.community, language });
+  readonly logger = Logger(this);
   readonly trader = new TradeProcessor(this);
+  readonly storage = new Storage(this);
 
-  constructor(readonly options: AccountOptions) {
-    const { client, community } = this;
-
-    this.manager = new TradeOfferManager({
-      steam: client,
-      community,
-      language
-    });
-  }
+  constructor(readonly options: AccountOptions) {}
 
   async login() {
     const { username, password } = this.options.login;

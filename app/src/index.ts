@@ -1,8 +1,8 @@
 import config from '../config.json';
-import { info, Ad } from './logger';
+import * as Ads from './ads';
 import Account from './account/account';
 
-Ad.startup();
+Ads.startup();
 
 const account = new Account(config);
 

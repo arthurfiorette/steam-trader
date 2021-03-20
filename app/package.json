@@ -26,7 +26,8 @@
     "steam-totp": "^2.1.1",
     "steam-tradeoffer-manager": "2.10.2",
     "steam-user": "4.19.3",
-    "steamcommunity": "3.42.0"
+    "steamcommunity": "3.42.0",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
@@ -38,6 +39,7 @@
     "@babel/preset-typescript": "^7.13.0",
     "@types/axios": "^0.14.0",
     "@types/node": "^14.14.35",
+    "@types/winston": "^2.4.4",
     "@types/steam-totp": "^2.1.0",
     "nodemon": "^2.0.7",
     "ts-node": "^9.1.1",
