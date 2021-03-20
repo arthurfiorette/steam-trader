@@ -29,7 +29,7 @@ export class Pipeline {
   private async run(context: OfferContext) {
     if (this.middlewares.length !== 0) {
       const next = this.middlewares.shift();
-      next && await next(context, () => this.run(context));
+      next && (await next(context, () => this.run(context)));
     }
   }
 }
