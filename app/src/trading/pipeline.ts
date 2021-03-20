@@ -3,12 +3,12 @@ import { Offer, ItemPrice } from './types';
 import Processor from './processor';
 
 export type OfferContext = {
-  processor: Processor;
-  offer: Offer;
-  receiveItemsPrices?: ItemPrice[];
-  receivePrice?: number;
-  giveItemsPrices?: ItemPrice[];
-  givePrice?: number;
+  readonly processor: Processor;
+  readonly offer: Offer;
+  receiveItemsPrices: ItemPrice[];
+  receivePrice: number;
+  giveItemsPrices: ItemPrice[];
+  givePrice: number;
 };
 
 export type Next = () => Promise<void> | void;

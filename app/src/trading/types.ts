@@ -1,5 +1,5 @@
 export interface Partner {
-  getSteamID64(): number;
+  getSteamID64(): string;
 }
 
 export interface Item {

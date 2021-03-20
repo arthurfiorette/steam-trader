@@ -1,9 +1,13 @@
 import Account from '../account/account';
 import { Offer } from './types';
-import { Pipeline } from './pipeline';
+import { OfferContext, Pipeline } from './pipeline';
 import logic from './logic';
 
 export type Processor = (offer: Offer) => Promise<Offer>;
+
+function createContext(offer: Offer, processor: TradeProcessor): OfferContext {
+  return { offer, processor, giveItemsPrices: [], givePrice: 0, receiveItemsPrices: [], receivePrice: 0 };
+}
 
 export default class TradeProcessor {
   private readonly pipeline = new Pipeline(logic);
@@ -11,7 +15,7 @@ export default class TradeProcessor {
   constructor(readonly account: Account) {}
 
   async begin(offer: Offer) {
-    await this.pipeline.execute({ offer, processor: this });
+    await this.pipeline.execute(createContext(offer, this));
   }
 
   async decline(offer: Offer) {
