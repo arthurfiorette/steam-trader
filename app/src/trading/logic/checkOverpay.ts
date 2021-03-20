@@ -1,6 +1,7 @@
-import { OfferContext, Next } from '../pipeline';
+import { NextFunction } from '../../util/middleware';
+import { OfferContext } from '../types';
 
-export default function middleware(context: OfferContext, next: Next) {
+export default function middleware(context: OfferContext, next: NextFunction) {
   context.profit = context.receivePrice - context.givePrice;
 
   const { processor, offer, profit } = context;

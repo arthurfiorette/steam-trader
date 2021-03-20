@@ -1,3 +1,5 @@
+import Processor from './processor';
+
 export interface Partner {
   getSteamID64(): string;
 }
@@ -32,3 +34,13 @@ export interface Offer {
 export interface Community {
   checkConfirmations: (callback?: (err: null | Error) => void) => void;
 }
+
+export type OfferContext = {
+  readonly processor: Processor;
+  readonly offer: Offer;
+  receiveItemsPrices: ItemPrice[];
+  receivePrice: number;
+  giveItemsPrices: ItemPrice[];
+  givePrice: number;
+  profit: number,
+};

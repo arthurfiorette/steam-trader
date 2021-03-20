@@ -1,9 +1,10 @@
-import { OfferContext, Next } from '../pipeline';
+import { NextFunction } from '../../util/middleware';
+import { OfferContext } from '../types'
 import { getAllItemsPrice } from '../../steam/market';
 import { ItemPrice } from '../types';
 import { AccountOptions } from '../../account/account';
 
-export default async function middleware(context: OfferContext, next: Next) {
+export default async function middleware(context: OfferContext, next: NextFunction) {
   const { processor, offer } = context;
 
   context.receiveItemsPrices = await getAllItemsPrice(offer.itemsToReceive);
