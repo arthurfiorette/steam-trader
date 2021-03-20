@@ -5,7 +5,7 @@ export default function middleware(context: OfferContext, next: NextFunction) {
   const { processor, offer } = context;
 
   if (offer.isGlitched()) {
-    processor.decline(offer);
+    processor.decline(context);
     return;
   }
 

@@ -9,7 +9,7 @@ export default async function middleware(context: OfferContext, next: NextFuncti
   context.receiveItemsPrices = await getAllItemsPrice(offer.itemsToReceive);
 
   if (context.receiveItemsPrices.some((item) => isTrash(item, processor.account.options))) {
-    processor.decline(offer);
+    processor.decline(context);
   }
 
   context.receivePrice = reducePrices(context.receiveItemsPrices);

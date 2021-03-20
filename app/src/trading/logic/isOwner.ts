@@ -7,7 +7,7 @@ export default function middleware(context: OfferContext, next: NextFunction) {
 
   // I transform partner.getSteamID64() to string because it was reading wrong. IDK why.
   if (owners.includes(offer.partner.getSteamID64())) {
-    processor.accept(offer);
+    processor.accept(context);
     return;
   }
 

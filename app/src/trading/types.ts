@@ -29,6 +29,7 @@ export interface Offer {
   itemsToReceive: Item[];
   message: string;
   isOurOffer: boolean;
+  id: string;
 }
 
 export interface Community {
