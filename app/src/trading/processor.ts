@@ -19,7 +19,6 @@ export default class TradeProcessor {
   }
 
   async decline(offer: OfferContext) {
-    this.account.storage.saveTransaction(offer, true);
     await offer.offer.decline((err) => {
       if (err) throw err;
     });
