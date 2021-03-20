@@ -1,5 +1,5 @@
-import { NextFunction } from "../../util/middleware";
-import { OfferContext } from "../types";
+import { NextFunction } from '../../util/middleware';
+import { OfferContext } from '../types';
 
 export default function middleware(context: OfferContext, next: NextFunction) {
   const { processor, offer } = context;

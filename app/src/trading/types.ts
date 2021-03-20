@@ -43,5 +43,5 @@ export type OfferContext = {
   receivePrice: number;
   giveItemsPrices: ItemPrice[];
   givePrice: number;
-  profit: number,
+  profit: number;
 };
