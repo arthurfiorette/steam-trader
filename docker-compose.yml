@@ -6,3 +6,5 @@ services:
       - 1227
     env_file:
       - ./app/.env
+    volumes:
+      - './app/output/:/usr/app/output/'

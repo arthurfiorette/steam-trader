@@ -71,7 +71,7 @@ This application can be run in different ways.
 
 - If you have docker installed on your machine, you can simply type `docker-compose up` after editing the **config.yml** and you are ready to go.
 
-- If you are thinking of hosting it on any hosting platform, use the docker implementation to your advantage and host it easily.
+- If you are thinking of hosting it on any hosting platform, use the docker implementation to your advantage and host it easily. Maybe you will need to change the volumes at the **docker-compose** file.
 
 - Or, in the most complicated way, you must have **Node.JS** installed on your pc. Open the app folder with `cd app`, install and compile by running `npm install` and after `npm run build`. Start by running `npm start`.
 
