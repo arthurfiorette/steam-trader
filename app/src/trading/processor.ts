@@ -19,16 +19,16 @@ export default class TradeProcessor {
   }
 
   async decline(offer: OfferContext) {
-    this.account.storage.saveTransaction(offer, true)
+    this.account.storage.saveTransaction(offer, true);
     await offer.offer.decline((err) => {
       if (err) throw err;
     });
   }
 
   async accept(offer: OfferContext) {
-    const {community, storage} = this.account;
+    const { community, storage } = this.account;
     community.checkConfirmations();
-    storage.saveTransaction(offer, true)
+    storage.saveTransaction(offer, true);
     await offer.offer.accept((err) => {
       if (err) throw err;
     });
