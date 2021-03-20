@@ -36,45 +36,46 @@ export default class Account {
 
   constructor(readonly options: AccountOptions) {}
 
-  async login() {
-    const { username, password } = this.options.login;
-    await this.client.logOn({
+  login() {
+    const { client, options } = this;
+    const { username, password } = options.login;
+    client.logOn({
       accountName: username,
-      password: password,
+      password,
       twoFactorCode: this.getAuthCode(),
       rememberPassword: true,
       machineName: 'steam-trader'
     });
-    await this.setupListeners();
+    client.on('loggedOn', () => this.onLogin());
   }
 
-  async logoff() {
+  logoff() {
     this.client.logOff();
   }
 
-  private setupListeners() {
-    const { manager, client } = this;
-    client.on('loggedOn', () => {
-      const { options } = this;
-      client.setPersona(1);
-      client.gamesPlayed(options.status.gameId);
-    });
-    client.on('steamGuard', (_domain: any, callback: (code: string) => void) => {
-      callback(this.getAuthCode());
-    });
-    client.on('webSession', (_sessionId: number, cookies: string[]) => {
-      const { community, options } = this;
-      manager.setCookies(cookies);
-      community.setCookies(cookies);
-      community.startConfirmationChecker(2000, options.login.identity);
-    });
-    client.on('wallet', (_hasWallet: boolean, currency: number) => {
-      this.options.status.currency = getCurrency(currency);
-    });
-    manager.on('newOffer', (offer: Offer) => this.trader.begin(offer));
+  private onLogin() {
+    const { options, client, manager, getAuthCode, onWebSession, trader, setCurrency } = this;
+    client.setPersona(1);
+    client.gamesPlayed(options.status.gameId);
+
+    client.on('steamGuard', (_domain: any, callback: (code: string) => void) => callback(getAuthCode()));
+    client.on('webSession', (_sessionId: number, cookies: string[]) => onWebSession(cookies));
+    client.on('wallet', (_hasWallet: boolean, currency: number) => setCurrency(currency));
+    manager.on('newOffer', (offer: Offer) => trader.begin(offer));
   }
 
-  private getAuthCode(): string {
+  private onWebSession(cookies: string[]) {
+    const { community, options, manager } = this;
+    manager.setCookies(cookies);
+    community.setCookies(cookies);
+    community.startConfirmationChecker(2000, options.login.identity);
+  }
+
+  private setCurrency(currency: number) {
+    this.options.status.currency = getCurrency(currency);
+  }
+
+  private getAuthCode() {
     const { sharedSecret } = this.options.login;
     return SteamTotp.generateAuthCode(sharedSecret);
   }
