@@ -1,5 +1,5 @@
 function log(...msg: string[]) {
-  msg.forEach(console.log);
+  msg.forEach(msg => console.log(msg));
 }
 
 export function startup() {
