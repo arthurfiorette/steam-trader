@@ -1,7 +1,7 @@
 import Account from '../account/account';
-import { Offer } from './types';
-import { OfferContext, Pipeline } from './pipeline';
+import { Offer, OfferContext } from './types';
 import logic from './logic';
+import Pipeline from '../util/middleware';
 
 export type Processor = (offer: Offer) => Promise<Offer>;
 
@@ -10,7 +10,7 @@ function createContext(offer: Offer, processor: TradeProcessor): OfferContext {
 }
 
 export default class TradeProcessor {
-  private readonly pipeline = new Pipeline(logic);
+  private readonly pipeline = new Pipeline<OfferContext>(logic);
 
   constructor(readonly account: Account) {}
 

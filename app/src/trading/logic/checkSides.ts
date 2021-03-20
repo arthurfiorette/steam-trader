@@ -1,6 +1,7 @@
-import { OfferContext, Next } from '../pipeline';
+import { NextFunction } from '../../util/middleware';
+import { OfferContext } from '../types';
 
-export default function middleware(context: OfferContext, next: Next) {
+export default function middleware(context: OfferContext, next: NextFunction) {
   const { processor, offer } = context;
 
   if (offer.itemsToReceive.length < 1) {
