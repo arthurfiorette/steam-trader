@@ -9,6 +9,7 @@ export type OfferContext = {
   receivePrice: number;
   giveItemsPrices: ItemPrice[];
   givePrice: number;
+  profit: number,
 };
 
 export type Next = () => Promise<void> | void;
