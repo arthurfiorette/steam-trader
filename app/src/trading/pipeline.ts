@@ -1,4 +1,3 @@
-import Account from '../account/account';
 import { Offer, ItemPrice } from './types';
 import Processor from './processor';
 
