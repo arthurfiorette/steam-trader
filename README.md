@@ -46,7 +46,6 @@ The **config.json** file is renamed to **\_config.json**, so you must rename and
 ```js
 {
   help: 'Need help? https://github.com/ArthurFiorette/steam-trader#configuration',
-  debug: false /* Add complete debug messages to the logs*/,
   login: {
     username: 'username' /* The account username */,
     password: 'password' /* The account password */,
