@@ -79,7 +79,7 @@ export default class Account {
   }
 
   private setCurrency(c: number) {
-    const currency = getCurrency(c)
+    const currency = getCurrency(c);
     this.logger.debug(`The currency used is '${currency.name}'`);
     this.options.status.currency = getCurrency(c);
   }
