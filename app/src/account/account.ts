@@ -40,7 +40,7 @@ export default class Account {
 
   login() {
     this.logger.info('logging In');
-    const { client, options } = this;
+    const { client, options, manager , trader} = this;
     const { username, password } = options.login;
     client.logOn({
       accountName: username,
@@ -49,8 +49,12 @@ export default class Account {
       rememberPassword: true,
       machineName: 'steam-trader'
     });
+    this.logger.debug('Starting to listen!');
+    client.on('webSession', (_sessionId: number, cookies: string[]) => this.onWebSession(cookies));
+    client.on('wallet', (_hasWallet: boolean, currency: number) => this.setCurrency(currency));
     client.on('loggedOn', () => this.onLogin());
     client.on('steamGuard', (_domain: any, callback: (code: string) => void) => callback(this.getAuthCode()));
+    manager.on('newOffer', (offer: Offer) => trader.begin(offer));
   }
 
   logoff() {
@@ -60,18 +64,13 @@ export default class Account {
 
   private onLogin() {
     this.logger.info('We logged in');
-    const { options, client, manager, onWebSession, trader } = this;
+    const { options, client,  } = this;
     client.setPersona(1);
     client.gamesPlayed(options.status.gameId);
-
-    this.logger.debug('Started to listen!');
-    client.on('webSession', (_sessionId: number, cookies: string[]) => onWebSession(cookies));
-    client.on('wallet', (_hasWallet: boolean, currency: number) => this.setCurrency(currency));
-    manager.on('newOffer', (offer: Offer) => trader.begin(offer));
   }
 
   private onWebSession(cookies: string[]) {
-    this.logger.debug('Started web session, delivering the cookies.');
+    this.logger.debug('Started web session, delivering the cookies');
     const { community, options, manager } = this;
     manager.setCookies(cookies);
     community.setCookies(cookies);
