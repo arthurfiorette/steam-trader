@@ -26,8 +26,8 @@ function currency(name: string, currencyId: number, /* [index at pos 0, index at
 
 export function getCurrency(id: number): ICurrency {
   for (let obj of Object.keys(CURRENCIES)) {
-    const currency = CURRENCIES[obj];
-    if (currency.id === id) {
+    const currency: ICurrency = CURRENCIES[obj];
+    if (currency.currencyId === id) {
       return currency;
     }
   }
