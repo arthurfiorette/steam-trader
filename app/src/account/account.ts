@@ -40,7 +40,7 @@ export default class Account {
 
   login() {
     this.logger.info('logging In');
-    const { client, options, manager , trader} = this;
+    const { client, options, manager, trader } = this;
     const { username, password } = options.login;
     client.logOn({
       accountName: username,
@@ -64,7 +64,7 @@ export default class Account {
 
   private onLogin() {
     this.logger.info('We logged in');
-    const { options, client,  } = this;
+    const { options, client } = this;
     client.setPersona(1);
     client.gamesPlayed(options.status.gameId);
   }
