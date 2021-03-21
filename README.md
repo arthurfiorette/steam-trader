@@ -69,11 +69,13 @@ The **config.json** file is renamed to **\_config.json**, so you must rename and
 
 This application can be run in different ways.
 
-- If you have docker installed on your machine, you can simply type `docker-compose up` after editing the **config.yml** and you are ready to go.
+1. If you have docker installed on your machine, you can simply type `docker-compose up` after editing the **config.yml** and you are ready to go.
 
-- If you are thinking of hosting it on any hosting platform, use the docker implementation to your advantage and host it easily. Maybe you will need to change the volumes at the **docker-compose** file.
+2. If you are thinking of hosting it on any hosting platform, use the docker implementation to your advantage and host it easily. Maybe you will need to change the volumes at the **docker-compose** file.
 
-- Or, in the most complicated way, you must have **Node.JS** installed on your pc. Open the app folder with `cd app`, install and compile by running `npm install` and after `npm run build`. Start by running `npm start`.
+3. Or, in the most complicated way, you must have **Node.JS** installed on your pc. 
+  - To start the server, open the app folder, install and compile by running `npm install` and after `npm run build`. Start by running `npm start`.
+  - To start the web page, open the web folder, install with `npm install` and build running `npm run build` and `npm run build:server`. Start by running `npm start`.
 
 ## License
 
