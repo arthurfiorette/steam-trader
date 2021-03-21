@@ -2,6 +2,8 @@ name: Prettify Code
 
 on:
   push:
+    branches:
+     - '*'         
   workflow_dispatch:
   
 jobs:
@@ -14,7 +16,7 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
-      - name: Prettify code
+      - name: Prettify code                                                                                                     
         # https://github.com/creyD/prettier_action/
         uses: creyD/prettier_action@v3.3
         with:
