@@ -70,7 +70,7 @@ export default class Account {
   }
 
   private onWebSession(cookies: string[]) {
-    this.logger.debug('Started web session, delivering the cookies');
+    this.logger.debug('Started web session, delivering cookies');
     const { community, options, manager } = this;
     manager.setCookies(cookies);
     community.setCookies(cookies);

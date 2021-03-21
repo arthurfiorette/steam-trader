@@ -5,7 +5,7 @@ import fs from 'fs';
 
 const { combine, json, timestamp, colorize, cli } = format;
 
-const PATH = path.resolve('../../output/logs/accounts.log');
+const PATH = path.resolve(__dirname, '../../output/logs/');
 
 fs.mkdir(PATH, (err) => {} /* Folder already exists */);
 
