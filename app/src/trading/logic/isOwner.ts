@@ -1,4 +1,5 @@
 import { NextFunction } from '../../util/middleware';
+import { Reason } from '../processor';
 import { OfferContext } from '../types';
 
 export default function middleware(context: OfferContext, next: NextFunction) {
@@ -7,7 +8,7 @@ export default function middleware(context: OfferContext, next: NextFunction) {
 
   // I transform partner.getSteamID64() to string because it was reading wrong. IDK why.
   if (owners.includes(offer.partner.getSteamID64())) {
-    processor.accept(context);
+    processor.accept(context, Reason.OWNER);
     return;
   }
 

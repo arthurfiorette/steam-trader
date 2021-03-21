@@ -10,23 +10,26 @@ export default class Storage {
     fs.mkdir(PATH, (err) => {} /* Folder already exists */);
   }
 
-  async saveTransaction(context: OfferContext, accepted: boolean) {
-    fs.writeFileSync(this.getPath(context.offer.id), this.stringifyTransaction(context, accepted));
+  async saveTransaction(context: OfferContext, reason: string) {
+    const { id } = context.offer;
+    this.account.logger.debug(`Saving transaction '${id}'`);
+    fs.writeFileSync(this.getPath(id), this.stringifyTransaction(context, reason));
+    this.account.logger.debug(`Transaction '${id}' saved.`);
   }
 
   private getPath(id: string) {
     return path.resolve(PATH, `${id}.json`);
   }
 
-  private stringifyTransaction({ offer, profit }: OfferContext, accepted: boolean) {
+  private stringifyTransaction({ offer, profit }: OfferContext, reason: string) {
     return JSON.stringify({
-      accepted,
       account: this.account.options.login.username,
       partner: offer.partner.getSteamID64(),
       offerId: offer.id,
       profit,
       ourItems: mapItems(offer.itemsToGive),
-      theirItems: mapItems(offer.itemsToReceive)
+      theirItems: mapItems(offer.itemsToReceive),
+      reason
     });
   }
 }

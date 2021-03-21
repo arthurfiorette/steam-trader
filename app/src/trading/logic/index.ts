@@ -6,6 +6,7 @@ import calculatePrices from './calculatePrices';
 import checkOverpay from './checkOverpay';
 import { Middleware } from '../../util/middleware';
 import { OfferContext } from '../types';
+import { Reason } from '../processor';
 
 const logic: Middleware<OfferContext>[] = [
   glitched,
@@ -15,7 +16,7 @@ const logic: Middleware<OfferContext>[] = [
   calculatePrices,
   checkOverpay,
   // If not rejected, accept at the end.
-  (context: OfferContext) => context.processor.accept(context)
+  (context: OfferContext) => context.processor.accept(context, Reason.PROFIT)
 ];
 
 export default logic;

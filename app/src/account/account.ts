@@ -34,9 +34,12 @@ export default class Account {
   readonly trader = new TradeProcessor(this);
   readonly storage = new Storage(this);
 
-  constructor(readonly options: AccountOptions) {}
+  constructor(readonly options: AccountOptions) {
+    this.logger.info(`The account was created, waiting for login...`);
+  }
 
   login() {
+    this.logger.info('logging In');
     const { client, options } = this;
     const { username, password } = options.login;
     client.logOn({
@@ -47,36 +50,44 @@ export default class Account {
       machineName: 'steam-trader'
     });
     client.on('loggedOn', () => this.onLogin());
+    client.on('steamGuard', (_domain: any, callback: (code: string) => void) => callback(this.getAuthCode()));
   }
 
   logoff() {
+    this.logger.info(`Logging Off`);
     this.client.logOff();
   }
 
   private onLogin() {
-    const { options, client, manager, getAuthCode, onWebSession, trader, setCurrency } = this;
+    this.logger.info('We logged in');
+    const { options, client, manager, onWebSession, trader } = this;
     client.setPersona(1);
     client.gamesPlayed(options.status.gameId);
 
-    client.on('steamGuard', (_domain: any, callback: (code: string) => void) => callback(getAuthCode()));
+    this.logger.debug('Started to listen!');
     client.on('webSession', (_sessionId: number, cookies: string[]) => onWebSession(cookies));
-    client.on('wallet', (_hasWallet: boolean, currency: number) => setCurrency(currency));
+    client.on('wallet', (_hasWallet: boolean, currency: number) => this.setCurrency(currency));
     manager.on('newOffer', (offer: Offer) => trader.begin(offer));
   }
 
   private onWebSession(cookies: string[]) {
+    this.logger.debug('Started web session, delivering the cookies.');
     const { community, options, manager } = this;
     manager.setCookies(cookies);
     community.setCookies(cookies);
     community.startConfirmationChecker(2000, options.login.identity);
   }
 
-  private setCurrency(currency: number) {
-    this.options.status.currency = getCurrency(currency);
+  private setCurrency(c: number) {
+    const currency = getCurrency(c)
+    this.logger.debug(`The currency used is '${currency.name}'`);
+    this.options.status.currency = getCurrency(c);
   }
 
   private getAuthCode() {
     const { sharedSecret } = this.options.login;
-    return SteamTotp.generateAuthCode(sharedSecret);
+    const auth = SteamTotp.generateAuthCode(sharedSecret);
+    this.logger.debug(`Requested steam guard auth code '${auth}'`);
+    return auth;
   }
 }

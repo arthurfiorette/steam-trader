@@ -15,21 +15,44 @@ export default class TradeProcessor {
   constructor(readonly account: Account) {}
 
   async begin(offer: Offer) {
+    this.account.logger.info(`Received an new trade. The id is '${offer.id}'`);
     await this.pipeline.execute(createContext(offer, this));
   }
 
-  async decline(offer: OfferContext) {
+  async decline(offer: OfferContext, reason: Reason) {
+    const { logger } = this.account;
+    logger.info(`Declining trade '${offer.offer.id}'`, { reason });
     await offer.offer.decline((err) => {
-      if (err) throw err;
+      if (err) {
+        logger.error(`Catch an error while trying to decline the trade '${offer.offer.id}'`, err);
+        return;
+      }
+      logger.info(`Declined trade '${offer.offer.id}'`);
     });
   }
 
-  async accept(offer: OfferContext) {
-    const { community, storage } = this.account;
-    community.checkConfirmations();
-    storage.saveTransaction(offer, true);
+  async accept(offer: OfferContext, reason: Reason) {
+    const { storage, logger } = this.account;
+    logger.info(`Accepting trade '${offer.offer.id}'`, { reason });
     await offer.offer.accept((err) => {
-      if (err) throw err;
+      if (err) {
+        logger.error(`Catch an error while trying to accept the trade '${offer.offer.id}'`, err);
+        return;
+      }
+      logger.info(`Accepted trade '${offer.offer.id}'`);
+      storage.saveTransaction(offer, reason);
     });
   }
+}
+
+export enum Reason {
+  GLITCHED = 'The trade was glitched',
+  UNMARKETABLE = 'The trade contains unmarketable items',
+  OWNER = 'The trade partner is listed as an owner of this bot',
+  GIFT = 'The trade is a gift for us',
+  OVERPAY = 'We will lose money accepting this trade',
+  PROFIT = 'The trade is profitable',
+  SAME_SIDES = `This trade have both sides at the same price and the flag 'tradeWith0Profit' is false`,
+  TRASH = 'This trade has itens with an value lower than the trash limit',
+  SAME_SIDES_TRUE = "This trade have both sides at the same price but the flag 'tradeWith0Profit' is true"
 }

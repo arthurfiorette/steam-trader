@@ -2,6 +2,7 @@ import { NextFunction } from '../../util/middleware';
 import { getAllItemsPrice } from '../../steam/market';
 import { AccountOptions } from '../../account/account';
 import { ItemPrice, OfferContext } from '../types';
+import { Reason } from '../processor';
 
 export default async function middleware(context: OfferContext, next: NextFunction) {
   const { processor, offer } = context;
@@ -9,7 +10,7 @@ export default async function middleware(context: OfferContext, next: NextFuncti
   context.receiveItemsPrices = await getAllItemsPrice(offer.itemsToReceive);
 
   if (context.receiveItemsPrices.some((item) => isTrash(item, processor.account.options))) {
-    processor.decline(context);
+    processor.decline(context, Reason.TRASH);
   }
 
   context.receivePrice = reducePrices(context.receiveItemsPrices);
