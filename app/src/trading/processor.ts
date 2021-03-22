@@ -15,7 +15,7 @@ export default class TradeProcessor {
   constructor(readonly account: Account) {}
 
   async begin(offer: Offer) {
-    this.account.logger.info(`Received an new trade. The id is '${offer.id}'`);
+    this.account.logger.info(`Received an new trade. The id is ${offer.id}`);
     await this.pipeline.execute(createContext(offer, this));
   }
 
@@ -24,7 +24,7 @@ export default class TradeProcessor {
     logger.info(`${reason}. Declining trade ${offer.offer.id}...`);
     await offer.offer.decline((err) => {
       if (err) {
-        logger.error(`Catch an error while trying to decline the trade '${offer.offer.id}'`, err);
+        logger.error(`Catch an error while trying to decline the trade ${offer.offer.id}`, err);
         return;
       }
       logger.info(`Declined trade ${offer.offer.id}`);
@@ -36,7 +36,7 @@ export default class TradeProcessor {
     logger.info(`${reason}. Accepting trade ${offer.offer.id}...`);
     await offer.offer.accept((err) => {
       if (err) {
-        logger.error(`Catch an error while trying to accept the trade '${offer.offer.id}'`, err);
+        logger.error(`Catch an error while trying to accept the trade ${offer.offer.id}`, err);
         return;
       }
       logger.info(`Accepted trade ${offer.offer.id}`);
