@@ -1,1 +1,1 @@
-export * as accounts from './accounts'
+export * as accounts from './accounts';
