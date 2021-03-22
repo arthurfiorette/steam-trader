@@ -3,12 +3,14 @@
 *
 
 !src/*
+!public/*
+!server/*
 
-!nodemon.json
 !package*.json
 !tsconfig.json
-!config.json
 
+!webpack.config.ts
 !.babelrc
+!.env
 
 !Dockerfile
