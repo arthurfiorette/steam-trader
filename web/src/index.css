@@ -1,16 +1,6 @@
 * {
   margin: 0;
   font-family: sans-serif;
-  color:azure;
   box-sizing: border-box;
 }
 
-html {
-  border: 3px solid #c7d5e0;
-  height: calc(100% - 6px);
-}
-
-body,
-div#app {
-  height: 100%;
-}
