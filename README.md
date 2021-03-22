@@ -20,7 +20,7 @@
   <i>An deployment ready and automated steam trade client!</i>
 </p>
 
-> <pre align="center">The first patch release was launched! Download it <a href=https://github.com/ArthurFiorette/steam-trader/releases>here</a>!</pre>
+> <pre align="center">We are building the web panel for this app. Probably launched at 1.3.0. Wait for it <a href=https://github.com/ArthurFiorette/steam-trader/releases>here</a>!</pre>
 
 ## About
 
