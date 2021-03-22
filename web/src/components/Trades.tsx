@@ -1,9 +1,5 @@
 import React from 'react';
 
 export default function () {
-  return (
-    <div>
-      Trades
-    </div>
-  );
+  return <div>Trades</div>;
 }

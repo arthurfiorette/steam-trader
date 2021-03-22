@@ -13,5 +13,3 @@ export default function InfoBox({ title, children }: any) {
     </Fragment>
   );
 }
-
-

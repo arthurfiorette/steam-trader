@@ -1,3 +1,4 @@
-#main, div.container {
+#main,
+div.container {
   height: calc(100% - 58px);
 }
