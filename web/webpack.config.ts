@@ -50,8 +50,8 @@ const config: Configuration = {
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({ filename: 'styles.[contenthash].css' }),
     new HtmlWebpackPlugin({
-      template: resolve('public', 'index.html')
-      // favicon: resolve('public/favicon.ico')
+      template: resolve('public', 'index.html'),
+      favicon: resolve('public/favicon.ico')
     })
   ],
   devServer: {
