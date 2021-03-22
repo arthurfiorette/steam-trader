@@ -59,8 +59,7 @@ const config: Configuration = {
     contentBase: resolve(__dirname, 'dist'),
     compress: true,
     hot: true,
-    port: 1227,
-    watchOptions: { aggregateTimeout: 1500 }
+    port: 1227
   }
 };
 
