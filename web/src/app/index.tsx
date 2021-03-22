@@ -7,7 +7,7 @@ import Trades from '../components/Logs'
 
 import {Container} from 'react-bootstrap';
 
-export default function() {
+export default function () {
   return (
     <Fragment>
       <Header />
