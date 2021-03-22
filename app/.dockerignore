@@ -8,6 +8,7 @@
 !package*.json
 !tsconfig.json
 !config.json
+!.env
 
 !.babelrc
 

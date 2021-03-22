@@ -1,12 +1,16 @@
 version: '3'
 services:
   app:
-    build: ./app/
-    volumes:
-      - './app/output/:/usr/app/output/'
-  web:
-    build: ./web/
+    build: ./app
     env_file:
-      - ./web/.env/
+      - ./app/.env
+    volumes:
+      - ./app/output:/usr/app/output
     ports:
-      - '1227:1227'
+      - 1228:1228
+  web:
+    build: ./web
+    env_file:
+      - ./web/.env
+    ports:
+      - 1227:1227
