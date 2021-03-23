@@ -1,21 +1,8 @@
-import config from '../config.json';
 import * as Ads from './ads';
-import Account from './account/account';
+import app from './server';
 
-import express from 'express';
-import cors from 'cors';
-
-import { Accounts } from './routes';
+const PORT = process.env.PORT || 1228;
 
 Ads.startup();
 
-// const account = new Account(config);
-
-// account.login();
-
-const app = express();
-
-app.use(cors());
-app.use('/users', Accounts());
-
-app.listen(process.env.PORT);
+app.listen(PORT, () => Ads.listening(PORT));

@@ -1,9 +1,8 @@
 import { SteamCommunity, TradeOfferManager, SteamUser } from '../untyped';
 import SteamTotp from 'steam-totp';
-import TradeProcessor from '../trading/processor';
+import TradeProcessor from '../transactions/processor';
 import { ICurrency, getCurrency } from '../steam/currency';
-import { Offer } from '../trading/types';
-import Storage from './storage';
+import { Offer } from '../transactions/types';
 import Logger from './logger';
 
 const language = 'en';
@@ -32,10 +31,9 @@ export default class Account {
   readonly manager = new TradeOfferManager({ steam: this.client, community: this.community, language });
   readonly logger = Logger(this);
   readonly trader = new TradeProcessor(this);
-  readonly storage = new Storage(this);
 
   constructor(readonly options: AccountOptions) {
-    this.logger.info(`The account was created, waiting for login...`);
+    this.logger.info(`'${options.login.username}' was created, waiting for login...`);
   }
 
   login() {

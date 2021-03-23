@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ItemPrice, Item } from '../trading/types';
+import { ItemPrice, Item } from '../transactions/types';
 import Currency from './currency';
 
 const { parse: cleanPrice } = Currency.DEFAULT;

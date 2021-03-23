@@ -1,5 +1,6 @@
-function log(...msg: string[]) {
-  msg.forEach(msg => console.log(msg));
+async function log(...msg: string[]) {
+  msg.forEach((msg) => console.log(msg));
+  console.log();
 }
 
 export function startup() {
@@ -7,7 +8,14 @@ export function startup() {
     'This app was developed by Arthur Fiorette',
     'Visit us on GitHub!',
     'https://github.com/ArthurFiorette/steam-trader',
-    '',
-    'Loading...'
+  );
+}
+
+export function listening(port: any) {
+  log(
+    `We started at port '${port}'`,
+    'If you are using docker-compose you only need',
+    'to wait the web service starts itself.',
+    'If not, you are able to start it now.'
   );
 }

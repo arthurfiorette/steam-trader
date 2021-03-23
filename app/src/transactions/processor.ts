@@ -1,7 +1,8 @@
-import Account from '../account/account';
+import Account from '../accounts/account';
 import { Offer, OfferContext } from './types';
 import logic from './logic';
 import Pipeline from '../util/middleware';
+import serialize from './serializer'
 
 export type Processor = (offer: Offer) => Promise<Offer>;
 
@@ -32,7 +33,7 @@ export default class TradeProcessor {
   }
 
   async accept(offer: OfferContext, reason: Reason) {
-    const { storage, logger } = this.account;
+    const { logger } = this.account;
     logger.info(`${reason}. Accepting trade ${offer.offer.id}...`);
     await offer.offer.accept((err) => {
       if (err) {
@@ -40,7 +41,7 @@ export default class TradeProcessor {
         return;
       }
       logger.info(`Accepted trade ${offer.offer.id}`);
-      storage.saveTransaction(offer, reason);
+      serialize(offer, reason);
     });
   }
 }

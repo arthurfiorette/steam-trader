@@ -1,6 +1,6 @@
 import { NextFunction } from '../../util/middleware';
 import { getAllItemsPrice } from '../../steam/market';
-import { AccountOptions } from '../../account/account';
+import { AccountOptions } from '../../accounts/account';
 import { ItemPrice, OfferContext } from '../types';
 import { Reason } from '../processor';
 
