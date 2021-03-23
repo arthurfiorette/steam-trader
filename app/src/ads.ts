@@ -1,6 +1,15 @@
-async function log(...msg: string[]) {
-  msg.forEach((msg) => console.log(msg));
-  console.log();
+import winston, { format, transports } from 'winston';
+
+const { info } = winston.createLogger({
+  format: format.combine(format.colorize(), format.cli()),
+  transports: [new transports.Console()]
+});
+
+const empty = () => info('');
+
+function log(...msg: string[]) {
+  msg.forEach(info);
+  info('');
 }
 
 export function startup() {
