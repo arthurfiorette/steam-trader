@@ -4,11 +4,7 @@ async function log(...msg: string[]) {
 }
 
 export function startup() {
-  log(
-    'This app was developed by Arthur Fiorette',
-    'Visit us on GitHub!',
-    'https://github.com/ArthurFiorette/steam-trader',
-  );
+  log('This app was developed by Arthur Fiorette', 'Visit us on GitHub!', 'https://github.com/ArthurFiorette/steam-trader');
 }
 
 export function listening(port: any) {

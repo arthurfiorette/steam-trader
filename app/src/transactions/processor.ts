@@ -2,7 +2,7 @@ import Account from '../accounts/account';
 import { Offer, OfferContext } from './types';
 import logic from './logic';
 import Pipeline from '../util/middleware';
-import serialize from './serializer'
+import serialize from './serializer';
 
 export type Processor = (offer: Offer) => Promise<Offer>;
 
