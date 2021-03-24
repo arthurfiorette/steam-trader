@@ -12,11 +12,11 @@ export function getByName(name: string) {
 
 export function login(name: string) {
   const account = accounts.get(name);
-  if(!account) {
-    return [false, `Account doesn't exist`]
+  if (!account) {
+    return [false, `Account doesn't exist`];
   } else {
     account.login();
-    return [true, 'logged in']
+    return [true, 'logged in'];
   }
 }
 

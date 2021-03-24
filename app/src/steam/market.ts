@@ -9,15 +9,15 @@ const priceOverview = 'http://steamcommunity.com/market/priceoverview';
 export async function getItemPrice(item: Item): Promise<ItemPrice> {
   const { appid } = item;
   const params = { appid, currency: Currency.DEFAULT.currencyId, market_hash_name: getItemName(item) };
-  console.log(item, priceOverview, { params })
+  console.log(item, priceOverview, { params });
   const { data } = await axios.get(priceOverview, { params });
   return parseData(data);
 }
 
-function getItemName({market_name, market_hash_name, name}: Item) {
+function getItemName({ market_name, market_hash_name, name }: Item) {
   const isEmpty = (n: string) => n && n.length !== 0;
-  if(isEmpty(market_hash_name)) return market_hash_name;
-  if(isEmpty(market_name)) return market_name;
+  if (isEmpty(market_hash_name)) return market_hash_name;
+  if (isEmpty(market_name)) return market_name;
   return name;
 }
 
@@ -30,5 +30,5 @@ function parseData({ success, lowest_price, median_price }: any): ItemPrice {
 }
 
 export async function getAllItemsPrice(items: Item[]): Promise<ItemPrice[]> {
-  return Promise.all(items.map(item => getItemPrice(item)));
+  return Promise.all(items.map((item) => getItemPrice(item)));
 }

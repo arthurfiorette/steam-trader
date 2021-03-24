@@ -47,6 +47,6 @@ function serializeTransaction(account: string, { offer, profit }: OfferContext, 
     ourItems: mapItems(offer.itemsToGive),
     theirItems: mapItems(offer.itemsToReceive),
     reason,
-    accepted,
+    accepted
   };
 }
