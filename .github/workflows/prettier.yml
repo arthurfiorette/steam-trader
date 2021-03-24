@@ -16,7 +16,6 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
-      - run: echo ${{ github.event_name }} ${{ github.event_name == 'push' }}
       - name: Prettify code                                                                                                     
         # https://github.com/creyD/prettier_action/
         uses: creyD/prettier_action@v3.3
