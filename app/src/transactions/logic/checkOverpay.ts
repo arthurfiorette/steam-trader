@@ -12,7 +12,7 @@ export default function middleware(context: OfferContext, next: NextFunction) {
     processor.decline(context, Reason.OVERPAY);
     return;
   } else if (profit == 0) {
-    if (trading.tradeWith0Profit) {
+    if (!!trading.tradeWith0Profit) {
       processor.accept(context, Reason.SAME_SIDES_TRUE);
     } else {
       processor.decline(context, Reason.SAME_SIDES);

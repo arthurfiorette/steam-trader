@@ -3,35 +3,41 @@ import path from 'path';
 import { Server } from 'socket.io';
 import { Item, OfferContext } from '../transactions/types';
 
-const PATH = path.resolve(__dirname, '../../output/trades/');
-
 let server: Server;
 
 export function setServer(_server: Server) {
   server = _server;
 }
 
-export default function save(context: OfferContext, reason: string) {
-  saveToDisk(context, reason);
-  emitToSocket(context, reason);
+export default function save(context: OfferContext, reason: string, accepted: boolean) {
+  saveToDisk(context, reason, accepted);
+  emitToSocket(context, reason, accepted);
 }
 
-function saveToDisk(context: OfferContext, reason: string) {
+async function saveToDisk(context: OfferContext, reason: string, accepted: boolean) {
   const name = context.processor.account.options.login.username;
   const { id } = context.offer;
-  const filePath = path.resolve(PATH, `${name}/${id}`);
   context.processor.account.logger.debug(`Saving transaction ${id}`);
-  fs.writeFileSync(filePath, JSON.stringify(serializeTransaction(name, context, reason)));
+  writeFile(id, JSON.stringify(serializeTransaction(name, context, reason, accepted)));
 }
 
-function emitToSocket(offer: OfferContext, reason: string) {
+async function emitToSocket(offer: OfferContext, reason: string, accepted: boolean) {
   const name = offer.processor.account.options.login.username;
   if (server) {
-    server.emit('trade', serializeTransaction(name, offer, reason));
+    server.emit('trade', serializeTransaction(name, offer, reason, accepted));
   }
 }
 
-function serializeTransaction(account: string, { offer, profit }: OfferContext, reason: string) {
+writeFile('123', 3);
+
+function writeFile(id: string, content: any) {
+  const filePath = path.resolve(__dirname, `../../output/trades/`);
+  fs.promises.mkdir(filePath, { recursive: true }).then(() => {
+    fs.promises.writeFile(`${filePath}/${id}.json`, JSON.stringify(content));
+  });
+}
+
+function serializeTransaction(account: string, { offer, profit }: OfferContext, reason: string, accepted: boolean) {
   const mapItems = (items: Item[]) => items.map((item) => item.market_hash_name);
   return {
     account,
@@ -40,6 +46,7 @@ function serializeTransaction(account: string, { offer, profit }: OfferContext, 
     profit,
     ourItems: mapItems(offer.itemsToGive),
     theirItems: mapItems(offer.itemsToReceive),
-    reason
+    reason,
+    accepted,
   };
 }

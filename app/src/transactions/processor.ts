@@ -23,26 +23,27 @@ export default class TradeProcessor {
   async decline(offer: OfferContext, reason: Reason) {
     const { logger } = this.account;
     logger.info(`${reason}. Declining trade ${offer.offer.id}...`);
-    await offer.offer.decline((err) => {
-      if (err) {
-        logger.error(`Catch an error while trying to decline the trade ${offer.offer.id}`, err);
-        return;
-      }
-      logger.info(`Declined trade ${offer.offer.id}`);
-    });
+    serialize(offer, reason, false);
+    // await offer.offer.decline((err) => {
+    //   if (err) {
+    //     logger.error(`Catch an error while trying to decline the trade ${offer.offer.id}`, err);
+    //     return;
+    //   }
+    //   logger.info(`Declined trade ${offer.offer.id}`);
+    // });
   }
 
   async accept(offer: OfferContext, reason: Reason) {
     const { logger } = this.account;
     logger.info(`${reason}. Accepting trade ${offer.offer.id}...`);
-    await offer.offer.accept((err) => {
-      if (err) {
-        logger.error(`Catch an error while trying to accept the trade ${offer.offer.id}`, err);
-        return;
-      }
-      logger.info(`Accepted trade ${offer.offer.id}`);
-      serialize(offer, reason);
-    });
+    serialize(offer, reason, true);
+    // await offer.offer.accept((err) => {
+    //   if (err) {
+    //     logger.error(`Catch an error while trying to accept the trade ${offer.offer.id}`, err);
+    //     return;
+    //   }
+    //   logger.info(`Accepted trade ${offer.offer.id}`);
+    // });
   }
 }
 

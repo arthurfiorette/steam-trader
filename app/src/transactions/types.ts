@@ -7,6 +7,7 @@ export interface Partner {
 export interface Item {
   market_hash_name: string;
   name: string;
+  market_name: string;
   appid: number;
   amount: number;
   marketable: boolean;

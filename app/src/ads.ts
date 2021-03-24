@@ -1,4 +1,4 @@
-import { logger } from './logger';
+import { cleanLogger as logger } from './logger';
 
 function log(...msg: string[]) {
   msg.forEach((msg) => logger.info(msg));

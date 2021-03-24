@@ -1,5 +1,5 @@
 import { Router, json } from 'express';
-import { getAll, getByName, create, edit, remove } from '../../accounts/controller';
+import { getAll, getByName, create, edit, remove, login } from '../../accounts/controller';
 
 const router = Router();
 
@@ -10,6 +10,8 @@ router.get('/', (_req, res) => res.send(getAll()));
 router.post('/', (req, res) => res.send(create(req.body)));
 
 router.get('/:name', (req, res) => res.send(getByName(req.params.name)));
+
+router.post('/:name/login', (req, res) => res.send(login(req.params.name)));
 
 router.put('/:name', (req, res) => res.send(edit(req.params.name, req.body)));
 

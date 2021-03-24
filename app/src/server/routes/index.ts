@@ -3,9 +3,9 @@ import users from './users';
 import ping from './ping';
 
 export default function apply(app: Express) {
+  app.use(responsePattern());
   app.use('/users', users);
   app.use('/ping', ping);
-  app.use(responsePattern());
 }
 
 function responsePattern() {
@@ -15,7 +15,7 @@ function responsePattern() {
       res.send = oldSend;
       return res.send({
         status: status ? 'Success' : 'Failure',
-        timestamp: new Date().toLocaleString(),
+        timestamp: new Date().toISOString(),
         response
       });
     };

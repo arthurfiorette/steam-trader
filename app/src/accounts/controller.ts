@@ -10,6 +10,16 @@ export function getByName(name: string) {
   return [true, accounts.get(name)];
 }
 
+export function login(name: string) {
+  const account = accounts.get(name);
+  if(!account) {
+    return [false, `Account doesn't exist`]
+  } else {
+    account.login();
+    return [true, 'logged in']
+  }
+}
+
 export function create(options: AccountOptions) {
   const { username } = options.login;
   if (accounts.has(username)) {
