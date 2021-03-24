@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 export function Container({ children }: any) {
   return <div className="container">{children}</div>;

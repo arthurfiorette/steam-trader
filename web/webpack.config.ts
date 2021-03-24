@@ -59,7 +59,12 @@ const config: Configuration = {
     contentBase: resolve(__dirname, 'dist'),
     compress: true,
     hot: true,
-    port: 1227
+    port: 1227,
+  },
+  externals: {
+    bootstrap: 'bootstrap',
+    react: 'React',
+    'react-dom': 'ReactDOM',
   }
 };
 
