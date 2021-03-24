@@ -1,23 +1,27 @@
 import express from 'express';
 import cors from 'cors';
 import setRoutes from './routes';
+import { Server } from 'socket.io';
+import { createServer } from 'http';
+import { logger, socketTransport } from '../logger';
+import {setServer} from '../transactions/serializer'
+
+const origin = `http://localhost:${process.env.PORT || 1227}`;
 
 const app = express();
+const http = createServer(app);
+const io = new Server(http, { cors: { origin } });
 
+socketTransport.server = io;
+setServer(io)
 app.use(cors());
-app.use((req, res, next) => {
-  const oldSend = res.send;
-  res.send = function ([status, response]: [boolean, any]) {
-    res.send = oldSend;
-    return res.send({
-      status: status ? 'Success' : 'Failure',
-      timestamp: new Date().toLocaleString(),
-      response
-    });
-  };
-  next();
-});
 
 setRoutes(app);
 
-export default app;
+io.on('connection', (socket) => {
+  logger.info(`Socket ${socket.id} connected`);
+  
+  socket.on('disconnect', () => logger.info(`Socket ${socket.id} connected`));
+});
+
+export default http;

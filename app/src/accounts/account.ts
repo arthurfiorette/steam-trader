@@ -3,7 +3,7 @@ import SteamTotp from 'steam-totp';
 import TradeProcessor from '../transactions/processor';
 import { ICurrency, getCurrency } from '../steam/currency';
 import { Offer } from '../transactions/types';
-import Logger from './logger';
+import createLogger from '../logger';
 
 const language = 'en';
 
@@ -29,10 +29,11 @@ export default class Account {
   readonly client = new SteamUser();
   readonly community = new SteamCommunity();
   readonly manager = new TradeOfferManager({ steam: this.client, community: this.community, language });
-  readonly logger = Logger(this);
+  readonly logger;
   readonly trader = new TradeProcessor(this);
 
   constructor(readonly options: AccountOptions) {
+    this.logger = createLogger(options.login.username);
     this.logger.info(`'${options.login.username}' was created, waiting for login...`);
   }
 

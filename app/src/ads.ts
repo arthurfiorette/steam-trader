@@ -1,15 +1,8 @@
-import winston, { format, transports } from 'winston';
-
-const { info } = winston.createLogger({
-  format: format.combine(format.colorize(), format.cli()),
-  transports: [new transports.Console()]
-});
-
-const empty = () => info('');
+import { logger } from './logger';
 
 function log(...msg: string[]) {
-  msg.forEach(info);
-  info('');
+  msg.forEach((msg) => logger.info(msg));
+  logger.info('');
 }
 
 export function startup() {
