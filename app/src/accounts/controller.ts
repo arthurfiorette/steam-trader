@@ -7,7 +7,8 @@ export function getAll() {
 }
 
 export function getByName(name: string) {
-  return [true, accounts.get(name)];
+  const account = accounts.get(name);
+  return [!!account, account?.options];
 }
 
 export function login(name: string) {
@@ -27,7 +28,7 @@ export function create(options: AccountOptions) {
   } else {
     const account = new Account(options);
     accounts.set(username, account);
-    return [true, 'Created.'];
+    return [true, `Created user ${username}`];
   }
 }
 

@@ -20,9 +20,9 @@ app.use(cors());
 setRoutes(app);
 
 io.on('connection', (socket) => {
-  logger.info(`Socket ${socket.id} connected`);
+  logger.debug(`Socket '${socket.id}' connected`);
 
-  socket.on('disconnect', () => logger.info(`Socket ${socket.id} disconnected`));
+  socket.on('disconnect', () => logger.debug(`Socket '${socket.id}' disconnected`));
 });
 
 export default http;
