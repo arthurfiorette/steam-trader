@@ -36,15 +36,17 @@ export default class Logs extends Component<any, LogsState> {
   }
 }
 
-function createLog({message, level, timestamp}: any) {
-  return <div className={`log ${getColor(level)} border-bottom border-2`}>
-    <span className="timestamp">{new Date(timestamp).toLocaleTimeString()}</span>
-    {message}
-    </div>;
+function createLog({ message, level, timestamp }: any) {
+  return (
+    <div className={`log ${getColor(level)} border-bottom border-2`}>
+      <span className="timestamp">{new Date(timestamp).toLocaleTimeString()}</span>
+      {message}
+    </div>
+  );
 }
 
 function getColor(level: string) {
-  switch(level) {
+  switch (level) {
     case 'warn':
       return 'border-warning';
     case 'info':
@@ -52,6 +54,6 @@ function getColor(level: string) {
     case 'debug':
       return 'border-secondary';
     default:
-      return ''
+      return '';
   }
 }
