@@ -1,11 +1,11 @@
 import React from 'react';
 
 export function Container({ children }: any) {
-  return <div className="container">{children}</div>;
+  return <div className="container-fluid h-100">{children}</div>;
 }
 
 export function Row({ children }: any) {
-  return <div className="row my-4">{children}</div>;
+  return <div className="row mb-4">{children}</div>;
 }
 
 export function Nav({ children }: any) {

@@ -1,0 +1,15 @@
+div.logger {
+  max-height: 50vh;
+  overflow-y: scroll;
+  overflow-wrap: break-word;
+}
+
+div.log {
+  line-height: 25px;
+  min-height: 25px;
+}
+
+div.log .timestamp {
+  color: #666;
+  padding-right: 20px;
+}
