@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { PencilFill, Plus, Power } from 'react-bootstrap-icons';
 import { AccountOptions } from '../services/accounts';
 import RegisterAccount from './registerAccount';
-import RegiterAccount from './registerAccount'
 
 interface AccountState {
   accounts: AccountOptions[];
@@ -56,11 +55,11 @@ export default class Account extends Component<any, AccountState> {
             className="m-1 p-2 me-2 btn btn-success"
             type="button"
             data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasWithBackdrop"
-            aria-controls="offcanvasWithBackdrop">
+            data-bs-target="#registerAccount"
+            aria-controls="registerAccount">
             Add new account
           </button>
-          <RegisterAccount />
+          <RegisterAccount id="registerAccount"/>
         </div>
       </div>
     );

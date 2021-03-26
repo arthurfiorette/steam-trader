@@ -25,11 +25,6 @@ export default class Logs extends Component<any, LogsState> {
     });
   }
 
-  // componentDidUpdate() {
-  //   const logger = this.logger.current;
-  //   logger && (logger.scrollTop = logger.scrollHeight);
-  // }
-
   render() {
     return (
       <div ref={this.logger} className="logger overflow-y-scroll">

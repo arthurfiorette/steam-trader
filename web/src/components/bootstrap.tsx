@@ -1,7 +1,7 @@
 import React from 'react';
 
 export function Container({ children }: any) {
-  return <div className="container-fluid h-100">{children}</div>;
+  return <div className="container-fluid h-100 mt-3">{children}</div>;
 }
 
 export function Row({ children }: any) {
