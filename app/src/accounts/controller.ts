@@ -21,6 +21,16 @@ export function login(name: string) {
   }
 }
 
+export function logout(name: string) {
+  const account = accounts.get(name);
+  if (!account) {
+    return [false, `Account doesn't exist`];
+  } else {
+    account.logoff();
+    return [true, 'logged out'];
+  }
+}
+
 export function create(options: AccountOptions) {
   const { username } = options.login;
   if (accounts.has(username)) {
@@ -28,7 +38,7 @@ export function create(options: AccountOptions) {
   } else {
     const account = new Account(options);
     accounts.set(username, account);
-    return [true, `Created user ${username}`];
+    return [true, `Created user ${username}`, 201];
   }
 }
 

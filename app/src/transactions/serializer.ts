@@ -18,7 +18,7 @@ async function saveToDisk(context: OfferContext, reason: string, accepted: boole
   const name = context.processor.account.options.login.username;
   const { id } = context.offer;
   context.processor.account.logger.debug(`Saving transaction ${id}`);
-  writeFile(id, JSON.stringify(serializeTransaction(name, context, reason, accepted)));
+  writeFile(id, serializeTransaction(name, context, reason, accepted));
 }
 
 async function emitToSocket(offer: OfferContext, reason: string, accepted: boolean) {
@@ -27,8 +27,6 @@ async function emitToSocket(offer: OfferContext, reason: string, accepted: boole
     server.emit('trade', serializeTransaction(name, offer, reason, accepted));
   }
 }
-
-writeFile('123', 3);
 
 function writeFile(id: string, content: any) {
   const filePath = path.resolve(__dirname, `../../output/trades/`);
