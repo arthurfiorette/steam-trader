@@ -7,7 +7,7 @@ export default function apply(app: Express) {
   app.use(responsePattern());
   app.use('/users', users);
   app.use('/ping', ping);
-  app.use(_404)
+  app.use(_404);
 }
 
 function responsePattern() {
@@ -15,11 +15,13 @@ function responsePattern() {
     const oldSend = res.send;
     res.send = function ([status, response, code = 200]: [boolean, any, number]) {
       res.send = oldSend;
-      return res.send({
-        status: status ? 'Success' : 'Failure',
-        timestamp: new Date().toISOString(),
-        response
-      }).status(code);
+      return res
+        .send({
+          status: status ? 'Success' : 'Failure',
+          timestamp: new Date().toISOString(),
+          response
+        })
+        .status(code);
     };
     next();
   };
