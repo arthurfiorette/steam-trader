@@ -15,13 +15,11 @@ function responsePattern() {
     const oldSend = res.send;
     res.send = function ([status, response, code = 200]: [boolean, any, number]) {
       res.send = oldSend;
-      return res
-      .status(code)
-        .send({
-          status: status ? 'Success' : 'Failure',
-          timestamp: new Date().toISOString(),
-          response
-        })
+      return res.status(code).send({
+        status: status ? 'Success' : 'Failure',
+        timestamp: new Date().toISOString(),
+        response
+      });
     };
     next();
   };
