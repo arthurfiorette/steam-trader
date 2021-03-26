@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PencilFill, Plus, Power } from 'react-bootstrap-icons';
+import { PencilFill,  Power } from 'react-bootstrap-icons';
 import { AccountOptions } from '../services/accounts';
 import RegisterAccount from './registerAccount';
 
