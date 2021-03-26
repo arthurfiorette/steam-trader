@@ -4,6 +4,7 @@ import './main.css';
 import InfoBox from '../components/infoBox';
 import { Row, Container } from '../components/bootstrap';
 import Logs from '../components/logs';
+import Account from '../components/accounts';
 
 export default function Main() {
   return (
@@ -13,7 +14,9 @@ export default function Main() {
           <ColSm title="Logs">
             <Logs />
           </ColSm>
-          <ColSm title="Accounts" />
+          <ColSm title="Accounts">
+            <Account />
+          </ColSm>
         </Row>
         <Row>
           <div className="col-12">

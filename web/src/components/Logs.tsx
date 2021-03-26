@@ -18,19 +18,22 @@ export default class Logs extends Component<any, LogsState> {
 
   private openSocket() {
     this.socket.on('log', (msg: any) => {
-      this.setState({ logs: [...this.state.logs, createLog(msg)] });
+      let { logs } = this.state;
+      if (logs.length == 50) logs = logs.slice(1, 50);
+      logs.push(createLog(msg));
+      this.setState({ logs });
     });
   }
 
-  componentDidUpdate() {
-    const logger = this.logger.current;
-    logger && (logger.scrollTop = logger.scrollHeight);
-  }
+  // componentDidUpdate() {
+  //   const logger = this.logger.current;
+  //   logger && (logger.scrollTop = logger.scrollHeight);
+  // }
 
   render() {
     return (
       <div ref={this.logger} className="logger overflow-y-scroll">
-        {this.state.logs}
+        <div className="rounded">{this.state.logs}</div>
       </div>
     );
   }
@@ -40,7 +43,7 @@ function createLog({ message, level, timestamp }: any) {
   return (
     <div className={`log ${getColor(level)} border-bottom border-2`}>
       <span className="timestamp">{new Date(timestamp).toLocaleTimeString()}</span>
-      {message}
+      <span className="text-wrap text-muted">{message}</span>
     </div>
   );
 }
