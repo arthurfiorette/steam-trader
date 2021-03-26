@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PencilFill,  Power } from 'react-bootstrap-icons';
+import { PencilFill, Power } from 'react-bootstrap-icons';
 import { AccountOptions } from '../services/accounts';
 import RegisterAccount from './registerAccount';
 
@@ -59,7 +59,7 @@ export default class Account extends Component<any, AccountState> {
             aria-controls="registerAccount">
             Add new account
           </button>
-          <RegisterAccount id="registerAccount"/>
+          <RegisterAccount id="registerAccount" />
         </div>
       </div>
     );
