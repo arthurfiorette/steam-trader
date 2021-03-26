@@ -22,15 +22,15 @@ export default function RegisterAccount() {
             }
           />
           <TextInput
-          type="password"
-          id="identity"
-          title="Account Identity"
-          help={
-            <span>
-              Find the account Identity <a href="https://github.com/ArthurFiorette/steam-trader">here</a>.
-            </span>
-          }
-        />
+            type="password"
+            id="identity"
+            title="Account Identity"
+            help={
+              <span>
+                Find the account Identity <a href="https://github.com/ArthurFiorette/steam-trader">here</a>.
+              </span>
+            }
+          />
           <div className="mb-3">
             <label htmlFor="exampleInputPassword1" className="form-label">
               Password
