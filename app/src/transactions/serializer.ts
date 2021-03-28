@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { Server } from 'socket.io';
 import { Item, OfferContext } from '../transactions/types';
+import { getItemName } from '../steam/market';
 
 let server: Server;
 
@@ -36,14 +37,13 @@ function writeFile(id: string, content: any) {
 }
 
 function serializeTransaction(account: string, { offer, profit }: OfferContext, reason: string, accepted: boolean) {
-  const mapItems = (items: Item[]) => items.map((item) => item.market_hash_name);
   return {
     account,
     partner: offer.partner.getSteamID64(),
     offerId: offer.id,
     profit,
-    ourItems: mapItems(offer.itemsToGive),
-    theirItems: mapItems(offer.itemsToReceive),
+    ourItems: offer.itemsToGive.map(getItemName),
+    theirItems: offer.itemsToReceive.map(getItemName),
     reason,
     accepted
   };

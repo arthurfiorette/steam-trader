@@ -14,7 +14,7 @@ export async function getItemPrice(item: Item): Promise<ItemPrice> {
   return parseData(data);
 }
 
-function getItemName({ market_name, market_hash_name, name }: Item) {
+export function getItemName({ market_name, market_hash_name, name }: Item) {
   const isEmpty = (n: string) => n && n.length !== 0;
   if (isEmpty(market_hash_name)) return market_hash_name;
   if (isEmpty(market_name)) return market_name;
