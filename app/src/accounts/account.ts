@@ -38,7 +38,7 @@ export default class Account {
   }
 
   login() {
-    this.logger.info('logging In');
+    this.logger.info('Attempting to logging In');
     const { client, options, manager, trader } = this;
     const { username, password } = options.login;
     client.logOn({
@@ -54,6 +54,7 @@ export default class Account {
     client.on('loggedOn', () => this.onLogin());
     client.on('steamGuard', (_domain: any, callback: (code: string) => void) => callback(this.getAuthCode()));
     manager.on('newOffer', (offer: Offer) => trader.begin(offer));
+    client.on('error', (err: any) => this.logger.error(`Occurred an error on the last operation: ${err.message}`));
   }
 
   logoff() {
