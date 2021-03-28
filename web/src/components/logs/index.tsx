@@ -1,6 +1,6 @@
 import React, { Component, useState, createRef } from 'react';
 import io from 'socket.io-client';
-import './logs.css';
+import './index.css';
 
 interface LogsState {
   logs: JSX.Element[];

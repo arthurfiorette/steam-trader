@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AccountDisplay from './account';
 import { Offcanvas, Button } from './offcanvas';
 import { AccountOptions, getAccounts } from '../../services/accounts';
-import './display.css';
+import './index.css';
 
 interface DisplayState {
   accounts: AccountOptions[];
