@@ -25,7 +25,7 @@ async function saveToDisk(context: OfferContext, reason: string, accepted: boole
 async function emitToSocket(offer: OfferContext, reason: string, accepted: boolean) {
   const name = offer.processor.account.options.login.username;
   if (server) {
-    server.emit('trade', serializeTransaction(name, offer, reason, accepted));
+    server.emit('trade', serializeTransactionSocket(name, offer, reason, accepted));
   }
 }
 
@@ -46,5 +46,14 @@ function serializeTransaction(account: string, { offer, profit }: OfferContext, 
     theirItems: offer.itemsToReceive.map(getItemName),
     reason,
     accepted
+  };
+}
+
+function serializeTransactionSocket(account: string, context: OfferContext, reason: string, accepted: boolean) {
+  const { offer } = context;
+  return {
+    ...serializeTransaction(account, context, reason, accepted),
+    ourItems: offer.itemsToGive,
+    theirItems: offer.itemsToReceive
   };
 }
