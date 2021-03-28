@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AccountDisplay from './account';
 import { Offcanvas, Button } from './offcanvas';
 import { AccountOptions, getAccounts } from '../../services/accounts';
-import './display.css'
+import './display.css';
 
 interface DisplayState {
   accounts: AccountOptions[];
@@ -29,7 +29,7 @@ export default class Display extends Component<any, DisplayState> {
 
   private addAccount = (account: AccountOptions) => {
     this.setState({ accounts: [...this.state.accounts, account] });
-  }
+  };
 
   render() {
     return (

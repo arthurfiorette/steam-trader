@@ -3,7 +3,7 @@ import './main.css';
 
 import InfoBox from '../components/infoBox';
 import Logs from '../components/logs';
-import Account from '../components/accounts'
+import Account from '../components/accounts';
 import Trades from '../components/trades';
 
 export default function Main() {

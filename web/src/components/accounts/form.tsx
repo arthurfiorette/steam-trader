@@ -38,7 +38,14 @@ export default class Form extends Component<FormProps, FormInputs> {
 
   private SwitchInput = ({ name, title, help }: any) => (
     <div className="form-check form-switch mb-3">
-      <input className="form-check-input" type="checkbox" id={`${name}Id`} name={name} onChange={this.handleInputChange} checked/>
+      <input
+        className="form-check-input"
+        type="checkbox"
+        id={`${name}Id`}
+        name={name}
+        onChange={this.handleInputChange}
+        checked
+      />
       <label className="form-check-label" htmlFor={`${name}Id`}>
         {title}
       </label>
@@ -61,14 +68,13 @@ export default class Form extends Component<FormProps, FormInputs> {
       status: { gameId },
       trading: { owners, trashLimit, tradeWith0Profit }
     };
-    createAccount(options)
-      .then((r) => {
-        if(r.data.status === 'Success') {
-          this.props.onFormEntry(options)
-        } else {
-          alert(r.data.response)
-        }
-      })
+    createAccount(options).then((r) => {
+      if (r.data.status === 'Success') {
+        this.props.onFormEntry(options);
+      } else {
+        alert(r.data.response);
+      }
+    });
   };
 
   render() {

@@ -66,8 +66,8 @@ const config: Configuration = {
     react: 'React',
     'react-dom': 'ReactDOM',
     'socket.io-client': 'io',
-    axios:'axios',
-    'reactBootstrapIcons':'react-bootstrap-icons'
+    axios: 'axios',
+    reactBootstrapIcons: 'react-bootstrap-icons'
   }
 };
 
