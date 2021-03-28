@@ -1,0 +1,13 @@
+#accounts {
+  height: 50vh;
+  max-height: 50vh;
+}
+
+#accounts > #list {
+  height: 100%;
+  max-height: calc(50vh - 60px);
+}
+
+#accounts > #list:nth-child(even) {
+  background: hsla(0, 0%, 0%, 0.22);
+}

@@ -40,3 +40,7 @@ export function editAccount(options: AccountOptions) {
 export function login(name: string) {
   return axios({ method: 'POST', url: url(`${name}/login`) });
 }
+
+export function logout(name: string) {
+  return axios({ method: 'POST', url: url(`${name}/logout`) });
+}

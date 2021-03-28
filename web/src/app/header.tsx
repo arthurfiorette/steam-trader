@@ -1,14 +1,12 @@
 import React from 'react';
 import './header.css';
 
-import { Nav, NavBrand } from './bootstrap';
-
 export default function Header() {
   return (
     <header id="header" className="shadow">
-      <Nav>
-        <NavBrand>Steam Trader</NavBrand>
-      </Nav>
+      <nav className="justify-content-center navbar navbar-expand navbar-dark bg-dark">
+        <span className="navbar-brand">Steam Trader</span>
+      </nav>
     </header>
   );
 }

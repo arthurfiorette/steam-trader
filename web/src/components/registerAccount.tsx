@@ -1,5 +1,5 @@
 import React from 'react';
-import Offcanvas from './offCanvas';
+import Offcanvas from './offcanvas';
 import AccountForm from './accountForm';
 
 export default function AccountRegistration({ id }: any) {

@@ -2,36 +2,38 @@ import React from 'react';
 import './main.css';
 
 import InfoBox from '../components/infoBox';
-import { Row, Container } from '../components/bootstrap';
 import Logs from '../components/logs';
-import Account from '../components/accounts';
+import Account from '../components/accounts'
+import Trades from '../components/trades';
 
 export default function Main() {
   return (
     <main id="main" className="bg-light">
-      <Container>
+      <div className="container-fluid h-100 mt-3">
         <Row>
-          <ColSm title="Logs">
+          <Column size="sm-12 col-lg-6" title="Logs">
             <Logs />
-          </ColSm>
-          <ColSm title="Accounts">
+          </Column>
+          <Column size="sm-12 col-lg-6" title="Accounts">
             <Account />
-          </ColSm>
+          </Column>
+          <Column size="12" title="Trades">
+            <Trades />
+          </Column>
         </Row>
-        <Row>
-          <div className="col-12">
-            <InfoBox title="Trades"></InfoBox>
-          </div>
-        </Row>
-      </Container>
+      </div>
     </main>
   );
 }
 
-function ColSm({ title, children }: any) {
+function Column({ size, title, children }: any) {
   return (
-    <div className="col-sm-12 col-lg-6">
+    <div className={`col-${size}`}>
       <InfoBox title={title}>{children}</InfoBox>
     </div>
   );
+}
+
+function Row({ children }: any) {
+  return <div className="row mb-4">{children}</div>;
 }

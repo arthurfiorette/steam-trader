@@ -64,7 +64,10 @@ const config: Configuration = {
   externals: {
     bootstrap: 'bootstrap',
     react: 'React',
-    'react-dom': 'ReactDOM'
+    'react-dom': 'ReactDOM',
+    'socket.io-client': 'io',
+    axios:'axios',
+    'reactBootstrapIcons':'react-bootstrap-icons'
   }
 };
 
