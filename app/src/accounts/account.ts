@@ -66,7 +66,7 @@ export default class Account {
     this.logger.info('We logged in');
     const { options, client } = this;
     client.setPersona(1);
-    client.gamesPlayed(options.status.gameId);
+    client.gamesPlayed(Number(options.status.gameId));
   }
 
   private onWebSession(cookies: string[]) {
