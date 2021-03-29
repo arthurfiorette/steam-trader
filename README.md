@@ -28,42 +28,18 @@ This project aims to give an amazing trade client to you host it and auto trade 
 
 ## Downloading
 
-Open this repository [releases](https://github.com/ArthurFiorette/steam-trader/releases) tab and download the latest file.
+Open this repository [releases](https://github.com/ArthurFiorette/steam-trader/releases) tab and download the latest source code **.zip** file.
 
 ## Configuration
 
-At this moment, to run properly this app, you will need to configure the **config.json** file **BEFORE** executing it. This file is in the **app** folder.
+A config.json file already existed in previous versions, however, now everything is officially configured by our panel. To access it, start the application correctly and go to [localhost:1227](http://localhost:1227)
 
-### Attention!
+### Asked questions:
 
-The **config.json** file is renamed to **\_config.json**, so you must rename and edit it before starting it.
+#### SDA, Shared Secret and Identity Secret
+To register a steam account with **steam-trader**, you need to know the `Shared Secret` and `Identity Secret` of your account. These two secrets are responsible for the automatic generation of the steam guard mobile code and auto reconnection.
 
-**Asked questions:**
-
-- How do i find my shared secret and identity secret?
-  - You need to use [SDA](https://github.com/Jessecar96/SteamDesktopAuthenticator) and after that, you will find it [here](https://www.youtube.com/watch?v=JjdOJVSZ9Mo).
-
-```js
-{
-  help: 'Need help? https://github.com/ArthurFiorette/steam-trader#configuration',
-  login: {
-    username: 'username' /* The account username */,
-    password: 'password' /* The account password */,
-    sharedSecret: 'shared secret' /* The account shared secret */,
-    identity: 'identity' /* The account identity secret */
-  },
-  status: {
-    gameId: 730 /* The game id that the bot will play when online */
-  },
-  trading: {
-    trashLimit: 0.04 /* The minimum item price to be exchanged (you will not want 10000
-                        $0.01 cases for your knife) */,
-    owners: ['steam id 64', 'other steam id 64'] /* The bot will ALWAYS accept trades from this
-                                                      steam ids */,
-    tradeWith0Profit: true /* If you want to accept a trade with the same price in both sides */
-  }
-}
-```
+To get them easily, you will need to enable [SDA](https://github.com/Jessecar96/SteamDesktopAuthenticator) on the account and after that, you will find it [here](https://www.youtube.com/watch?v=JjdOJVSZ9Mo).
 
 ## Executing
 
@@ -73,7 +49,7 @@ This application can be run in different ways.
 
 2. If you are thinking of hosting it on any hosting platform, use the docker implementation to your advantage and host it easily. Maybe you will need to change the volumes at the **docker-compose** file.
 
-3. Or, in the most complicated way, you must have **Node.JS** installed on your pc.
+3. Or, in the most complicated way, you must have **Node.JS** installed on your PC.
 
 - To start the server, open the app folder, install and compile by running `npm install` and after `npm run build`. Start by running `npm start`.
 - To start the web page, open the web folder, install with `npm install` and build running `npm run build` and `npm run build:server`. Start by running `npm start`.
