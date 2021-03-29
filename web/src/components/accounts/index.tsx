@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import AccountDisplay from './account';
 import { Offcanvas, Button } from './offcanvas';
 import { AccountOptions, getAccounts } from '../../services/accounts';
-import './index.css';
 
 interface DisplayState {
   accounts: AccountOptions[];
@@ -33,15 +32,17 @@ export default class Display extends Component<any, DisplayState> {
 
   render() {
     return (
-      <div id="accounts" style={{ height: '50vh', maxHeight: '50vh' }}>
-        <div id="list" className="overflow-auto p-1" style={{ height: '100%', maxHeight: 'calc(50vh - 60px)' }}>
-          {this.renderAccounts()}
+      <Fragment>
+        <div id="accounts">
+          <div id="list" className="overflow-auto p-1" style={{ maxHeight: 'calc(50vh - 60px)' }}>
+            {this.renderAccounts()}
+          </div>
         </div>
         <div className="d-flex mt-2 justify-content-center">
           <Button id={this.id} message="Create a new account" />
           <Offcanvas id={this.id} onFormEntry={this.addAccount} />
         </div>
-      </div>
+      </Fragment>
     );
   }
 }

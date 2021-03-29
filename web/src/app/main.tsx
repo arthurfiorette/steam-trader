@@ -1,5 +1,4 @@
 import React from 'react';
-import './main.css';
 
 import InfoBox from '../components/infoBox';
 import Logs from '../components/logs';
@@ -8,17 +7,17 @@ import Trades from '../components/trades';
 
 export default function Main() {
   return (
-    <main id="main" className="bg-light">
-      <div className="container-fluid h-100 mt-3">
+    <main id="main">
+      <div className="container h-100 pb-5">
         <Row>
-          <Column size="sm-12 col-lg-6" title="Logs">
-            <Logs />
+          <Column size="12 col-xl-7 col-xxl-8" title="Trades">
+            <Trades />
           </Column>
-          <Column size="sm-12 col-lg-6" title="Accounts">
+          <Column size="12 col-md-6 col-xl-5 col-xxl-4" title="Accounts">
             <Account />
           </Column>
-          <Column size="12" title="Trades">
-            <Trades />
+          <Column size="12 col-md-6 col-xl-12" title="Logs">
+            <Logs />
           </Column>
         </Row>
       </div>
@@ -28,7 +27,7 @@ export default function Main() {
 
 function Column({ size, title, children }: any) {
   return (
-    <div className={`col-${size}`}>
+    <div className={`col-${size} mt-3`}>
       <InfoBox title={title}>{children}</InfoBox>
     </div>
   );

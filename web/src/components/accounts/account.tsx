@@ -5,7 +5,7 @@ import { login, logout } from '../../services/accounts';
 export default function Account({ account }: any) {
   const name = account.login.username;
   return (
-    <div className="d-flex my-1 p-1 justify-content-between align-items-center border border-2 border-secondary rounded">
+    <div className="d-flex my-1 p-1 justify-content-between align-items-center border-bottom rounded">
       <div className="user align-items-center">
         <ProfilePhoto account={account} />
         <span className="h3 lead ps-3 align-center text-muted">{name}</span>

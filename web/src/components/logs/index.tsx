@@ -1,13 +1,11 @@
-import React, { Component, useState, createRef } from 'react';
+import React, { Component, createRef } from 'react';
 import io from 'socket.io-client';
-import './index.css';
 
 interface LogsState {
   logs: JSX.Element[];
 }
 
 export default class Logs extends Component<any, LogsState> {
-  logger: React.RefObject<HTMLDivElement> = createRef();
   socket = io('ws://localhost:1228');
 
   constructor(props: any) {
@@ -27,8 +25,8 @@ export default class Logs extends Component<any, LogsState> {
 
   render() {
     return (
-      <div ref={this.logger} className="logger overflow-y-scroll">
-        <div className="rounded">{this.state.logs}</div>
+      <div className="logger">
+        {this.state.logs}
       </div>
     );
   }
@@ -36,9 +34,9 @@ export default class Logs extends Component<any, LogsState> {
 
 function createLog({ message, level, timestamp }: any) {
   return (
-    <div className={`log ${getColor(level)} border-bottom border-2`}>
-      <span className="timestamp">{new Date(timestamp).toLocaleTimeString()}</span>
-      <span className="text-wrap text-muted">{message}</span>
+    <div>
+      <span className={`pe-3 text-${getColor(level)}`}>{new Date(timestamp).toLocaleTimeString()}</span>
+      <span className="text-wrap text-muted mw-100">{message}</span>
     </div>
   );
 }
@@ -46,12 +44,14 @@ function createLog({ message, level, timestamp }: any) {
 function getColor(level: string) {
   switch (level) {
     case 'warn':
-      return 'border-warning';
+      return 'warning';
     case 'info':
-      return 'border-info';
+      return 'info';
     case 'debug':
-      return 'border-secondary';
+      return 'dark';
+    case 'error':
+      return 'danger';
     default:
-      return '';
+      return 'secondary';
   }
 }
