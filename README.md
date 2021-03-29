@@ -37,6 +37,7 @@ A config.json file already existed in previous versions, however, now everything
 ### Asked questions:
 
 #### SDA, Shared Secret and Identity Secret
+
 To register a steam account with **steam-trader**, you need to know the `Shared Secret` and `Identity Secret` of your account. These two secrets are responsible for the automatic generation of the steam guard mobile code and auto reconnection.
 
 To get them easily, you will need to enable [SDA](https://github.com/Jessecar96/SteamDesktopAuthenticator) on the account and after that, you will find it [here](https://www.youtube.com/watch?v=JjdOJVSZ9Mo).
