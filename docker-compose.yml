@@ -9,6 +9,8 @@ services:
     ports:
       - 1228:1228
   web:
+    depends_on:
+      - app
     build: ./web
     env_file:
       - ./web/.env
