@@ -1,6 +1,6 @@
 import React from 'react';
 import { Item as IItem, getItemName } from './util';
-import {GiftFill } from 'react-bootstrap-icons';
+import { GiftFill } from 'react-bootstrap-icons';
 
 export default function ItemFrame({ item, received }: { item: IItem; received: boolean }) {
   const name = getItemName(item);
@@ -19,13 +19,7 @@ export default function ItemFrame({ item, received }: { item: IItem; received: b
 }
 
 export function EmptyItemFrame() {
-  return (
-    <GiftFill
-      className="alert shadow-sm border-2 alert-secondary text-secondary p-1 m-1"
-      height="50px"
-      width="50px"
-    />
-  );
+  return <GiftFill className="alert shadow-sm border-2 alert-secondary text-secondary p-1 m-1" height="50px" width="50px" />;
 }
 
 function getImageUrl({ icon_url }: IItem) {

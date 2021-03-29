@@ -1,6 +1,3 @@
-
-
-
 export interface Trade {
   account: string;
   partner: string;

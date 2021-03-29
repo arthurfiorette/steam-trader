@@ -24,11 +24,7 @@ export default class Logs extends Component<any, LogsState> {
   }
 
   render() {
-    return (
-      <div className="logger">
-        {this.state.logs}
-      </div>
-    );
+    return <div className="logger">{this.state.logs}</div>;
   }
 }
 
