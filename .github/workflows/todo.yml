@@ -2,6 +2,8 @@ name: Generate issues from todos
 
 on:
   push:
+    branches:
+      - master
   
 jobs:
   todo:
