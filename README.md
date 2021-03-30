@@ -46,16 +46,13 @@ To get them easily, you will need to enable [SDA](https://github.com/Jessecar96/
 
 ## Executing
 
-This application can be run in different ways.
+Now, to start this application, you can ***run the [`start.cmd`](start.cmd) script at the root of this project*** and follow the installation and startup steps or run it manually as follows:
 
-1. If you have docker installed on your machine, you can simply type `docker-compose up` after editing the **config.yml** and you are ready to go.
+1. If you have a docker virtual machine, you can simply type `docker-compose up` or use any docker instance at any hosting service.
 
-2. If you are thinking of hosting it on any hosting platform, use the docker implementation to your advantage and host it easily. Maybe you will need to change the volumes at the **docker-compose** file.
-
-3. Or, in the most complicated way, you must have **Node.JS** installed on your PC.
-
-- To start the server, open the app folder, install and compile by running `npm install` and after `npm run build`. Start by running `npm start`.
-- To start the web page, open the web folder, install with `npm install` and build running `npm run build` and `npm run build:server`. Start by running `npm start`.
+2. If you doesn't have any access or knowledge to use docker, you can run it having **Node.JS** installed on your PC.
+   - To start the server, open the app folder, install and compile by running `npm install` and after `npm run build`. Start by running `npm start`.
+   - To start the web page, open the web folder, install with `npm install` and build running `npm run build` and `npm run build:server`. Start by running `npm start`.
 
 ## License
 
