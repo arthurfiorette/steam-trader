@@ -46,7 +46,7 @@ To get them easily, you will need to enable [SDA](https://github.com/Jessecar96/
 
 ## Executing
 
-Now, to start this application, you can ***run the [`start.cmd`](start.cmd) script at the root of this project*** and follow the installation and startup steps or run it manually as follows:
+Now, to start this application, you can **_run the [`start.cmd`](start.cmd) script at the root of this project_** and follow the installation and startup steps or run it manually as follows:
 
 1. If you have a docker virtual machine, you can simply type `docker-compose up` or use any docker instance at any hosting service.
 
