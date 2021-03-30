@@ -1,4 +1,4 @@
-// TODO [$6063a28e9877f20007ac188b]: Fetch user profile photo correctly
+// TODO [#3]: Fetch user profile photo correctly
 //
 // Probably only possible when Steam WEB API is successfully implemented
 export function fetchSteamUserImage() {

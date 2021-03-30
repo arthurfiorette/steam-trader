@@ -45,7 +45,7 @@ const CURRENCIES = {
 
 export default CURRENCIES;
 
-// TODO [$6063a28e9877f20007ac188a]: Create all currencies.
+// TODO [#2]: Create all currencies.
 //
 // In some DoctorMcKay node-steam-* repo I saw a complete implementation
 // https://github.com/DoctorMcKay
