@@ -1,9 +1,9 @@
 import React from 'react';
 
-import InfoBox from '../components/infoBox';
-import Logs from '../components/logs';
-import Account from '../components/accounts';
-import Trades from '../components/trades';
+import InfoBox from './components/infoBox';
+import Logs from './components/logs';
+import Account from './components/accounts';
+import Trades from './components/trades';
 
 export default function Main() {
   return (
@@ -27,9 +27,9 @@ export default function Main() {
 
 function Column({ size, title, children }: any) {
   return (
-    <div className={`col-${size} mt-3`}>
+    <section className={`col-${size} mt-3`}>
       <InfoBox title={title}>{children}</InfoBox>
-    </div>
+    </section>
   );
 }
 

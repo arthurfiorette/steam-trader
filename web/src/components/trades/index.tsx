@@ -1,31 +1,17 @@
-import React, { Component, createRef } from 'react';
-import { Item as IItem } from './util';
+import React, { useEffect, useState, Fragment } from 'react';
 import Trade from './trade';
-import io from 'socket.io-client';
+import socket from '../../services/socket';
 
-interface LogsState {
-  trades: JSX.Element[];
-}
+export default function Trades() {
+  let [trades, setTrades] = useState<JSX.Element[]>([]);
 
-export default class Trades extends Component<any, LogsState> {
-  socket = io('ws://localhost:1228');
-
-  constructor(props: any) {
-    super(props);
-    this.state = { trades: [] };
-    this.openSocket();
-  }
-
-  private openSocket() {
-    this.socket.on('trade', (trade: any) => {
-      let { trades } = this.state;
-      if (trades.length == 50) trades = trades.slice(1, 50);
+  useEffect(() => {
+    socket.on('trade', (trade: any) => {
+      if (trades.length >= 50) trades = trades.slice(1, 50);
       trades.push(<Trade trade={trade} />);
-      this.setState({ trades });
+      setTrades(trades);
     });
-  }
+  }, []);
 
-  render() {
-    return this.state.trades;
-  }
+  return <Fragment>{trades}</Fragment>;
 }

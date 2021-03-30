@@ -23,3 +23,7 @@ export function getItemName({ market_name, market_hash_name, name }: Item) {
   if (isEmpty(market_name)) return market_name;
   return name;
 }
+
+export function getImageUrl({ icon_url }: Item) {
+  return `https://steamcommunity-a.akamaihd.net/economy/image/${icon_url}`;
+}

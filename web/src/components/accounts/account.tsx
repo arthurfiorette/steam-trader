@@ -1,6 +1,7 @@
 import React from 'react';
 import { PencilFill, Power } from 'react-bootstrap-icons';
 import { login, logout } from '../../services/accounts';
+import { fetchSteamUserImage } from './util';
 
 export default function Account({ account }: any) {
   const name = account.login.username;
@@ -37,10 +38,4 @@ function ProfilePhoto({ account }: any) {
       width="40px"
     />
   );
-}
-
-// TODO: Fetch user profile photo correctly
-function fetchSteamUserImage(): string {
-  // Default steam profile photo
-  return 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b5/b5bd56c1aa4644a474a2e4972be27ef9e82e517e_full.jpg';
 }
