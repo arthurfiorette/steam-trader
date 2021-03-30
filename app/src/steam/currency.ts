@@ -48,7 +48,7 @@ export default CURRENCIES;
 // TODO: Create all currencies.
 //
 // In some DoctorMcKay node-steam-* repo I saw a complete implementation
-// https://github.com/DoctorMcKay 
+// https://github.com/DoctorMcKay
 //
 // Here are all steam codes:
 //
@@ -92,4 +92,3 @@ export default CURRENCIES;
 // - QAR = 39,
 // - CRC = 40,
 // - UYU = 41
-
