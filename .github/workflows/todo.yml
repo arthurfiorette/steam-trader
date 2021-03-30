@@ -1,0 +1,17 @@
+name: Generate issues from todos
+
+on:
+  push:
+  
+jobs:
+  todo:
+    runs-on: ubuntu-latest
+    name: Generate issues from todos
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Todo Actions
+        uses: dtinth/todo-actions@v0.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TODO_ACTIONS_MONGO_URL: ${{ secrets.TODO_ACTIONS_MONGO_URL }}
