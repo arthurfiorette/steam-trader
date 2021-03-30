@@ -3,7 +3,7 @@ name: Generate issues from todos
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
   
 jobs:
