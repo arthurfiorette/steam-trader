@@ -39,6 +39,10 @@ export default class Account {
 
   login() {
     this.logger.info('Attempting to logging In');
+    if(this.isOnline()) {
+      this.logger.warn('Login attempt, but we are already logged in');
+      return;
+    }
     const { client, options, manager, trader } = this;
     const { username, password } = options.login;
     client.logOn({
@@ -58,8 +62,16 @@ export default class Account {
   }
 
   logoff() {
-    this.logger.info(`Logging Off`);
+    this.logger.info(`Attempting to log Off`);
+    if(!this.isOnline()) {
+      this.logger.warn('Logoff attempt, but we are already logged off');
+      return;
+    }
     this.client.logOff();
+  }
+
+  isOnline() {
+    return !!this.client.steamID;
   }
 
   private onLogin() {
