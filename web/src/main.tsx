@@ -1,5 +1,3 @@
-import React from 'react';
-
 import InfoBox from './components/infoBox';
 import Logs from './components/logs';
 import Accounts from './components/accounts';

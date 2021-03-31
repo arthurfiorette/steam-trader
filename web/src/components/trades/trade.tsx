@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react';
 import ItemFrame, { EmptyItemFrame } from './item';
 import { Item, Trade as ITrade } from './util';
 import { ArrowLeftRight } from 'react-bootstrap-icons';

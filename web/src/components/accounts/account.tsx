@@ -1,4 +1,3 @@
-import React from 'react';
 import { PencilFill, Power } from 'react-bootstrap-icons';
 import { login, logout } from '../../services/accounts';
 import { fetchSteamUserImage } from './util';
@@ -28,6 +27,8 @@ function Button({ Icon, color, paddingLeft, onMouseDown }: any) {
   );
 }
 
+// TODO: Standardize thumbnail images
+// The accounts/account.tsx and trades/item.tsx images could be standardized (bootstrap '.img-thumbnail' ??) and extracted to a dedicated file.
 function ProfilePhoto({ account }: any) {
   return (
     <img

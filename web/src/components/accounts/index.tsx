@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import Account from './account';
 import { Offcanvas, Button } from './offcanvas';
 import { AccountOptions, getAccounts } from '../../services/accounts';

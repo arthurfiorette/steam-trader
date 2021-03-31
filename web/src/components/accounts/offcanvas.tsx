@@ -1,4 +1,3 @@
-import React from 'react';
 import OffcanvasTemplate from '../offcanvas';
 import Form from './form';
 

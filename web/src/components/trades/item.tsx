@@ -1,4 +1,3 @@
-import React from 'react';
 import { Item, getItemName, getImageUrl } from './util';
 import { GiftFill } from 'react-bootstrap-icons';
 

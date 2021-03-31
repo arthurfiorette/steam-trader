@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, DetailedHTMLProps, HTMLAttributes } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Log from './log';
 import socket from '../../services/socket';
 

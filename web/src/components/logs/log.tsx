@@ -1,4 +1,3 @@
-import React from 'react';
 import { getColor } from './util';
 
 export default function Log({ log }: any) {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import { useEffect, useState, Fragment } from 'react';
 import Trade from './trade';
 import socket from '../../services/socket';
 

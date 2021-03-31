@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function OffCanvas({ id, title, children}: any) {
   return (
     <div className="offcanvas offcanvas-start" id={id} aria-labelledby="offcanvasLabel">
