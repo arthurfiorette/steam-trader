@@ -1,17 +1,27 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState, useRef, DetailedHTMLProps, HTMLAttributes } from 'react';
 import Log from './log';
 import socket from '../../services/socket';
 
 export default function Logs() {
-  let [logs, setLogs] = useState<JSX.Element[]>([]);
+  const [logs, setLogs] = useState<JSX.Element[]>([]);
+  const ulRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     socket.on('log', (log: any) => {
-      if (logs.length >= 50) logs = logs.slice(1, 50);
-      logs.push(<Log log={log} />);
-      setLogs(logs);
+      setLogs((logs) => [...logs, <Log log={log} />]);
     });
   }, []);
 
-  return <Fragment>{logs}</Fragment>;
+  useEffect(() => {
+    if (ulRef.current) {
+      const { children } = ulRef.current;
+      children[children.length - 1]?.scrollIntoView();
+    }
+  }, [logs]);
+
+  return (
+    <ul ref={ulRef} className="list-unstyled">
+      {logs}
+    </ul>
+  );
 }
