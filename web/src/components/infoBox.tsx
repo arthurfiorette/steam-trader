@@ -1,4 +1,4 @@
-import {Fragment } from 'react';
+import { Fragment } from 'react';
 
 export default function InfoBox({ title, children }: any) {
   return (
