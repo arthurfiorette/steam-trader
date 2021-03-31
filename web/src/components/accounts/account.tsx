@@ -27,7 +27,7 @@ function Button({ Icon, color, paddingLeft, onMouseDown }: any) {
   );
 }
 
-// TODO: Standardize thumbnail images
+// TODO [#4]: Standardize thumbnail images
 // The accounts/account.tsx and trades/item.tsx images could be standardized (bootstrap '.img-thumbnail' ??) and extracted to a dedicated file.
 function ProfilePhoto({ account }: any) {
   return (
