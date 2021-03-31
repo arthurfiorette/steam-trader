@@ -39,7 +39,7 @@ export default class Account {
 
   login() {
     this.logger.info('Attempting to logging In');
-    if(this.isOnline()) {
+    if (this.isOnline()) {
       this.logger.warn('Login attempt, but we are already logged in');
       return;
     }
@@ -63,7 +63,7 @@ export default class Account {
 
   logoff() {
     this.logger.info(`Attempting to log Off`);
-    if(!this.isOnline()) {
+    if (!this.isOnline()) {
       this.logger.warn('Logoff attempt, but we are already logged off');
       return;
     }

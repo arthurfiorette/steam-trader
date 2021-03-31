@@ -15,7 +15,7 @@ export default function Logs() {
   useEffect(() => {
     if (ulRef.current) {
       const { children } = ulRef.current;
-      children[children.length - 1]?.scrollIntoView({behavior:'smooth'});
+      children[children.length - 1]?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [logs]);
 
