@@ -1,4 +1,4 @@
-import OffcanvasTemplate from  '../offCanvas';
+import OffcanvasTemplate from '../offCanvas';
 import Form from './form';
 
 export function Button({ id, message }: any) {
