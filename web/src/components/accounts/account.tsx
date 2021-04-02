@@ -12,11 +12,17 @@ export default function Account({ account }: any) {
         <span className="h3 lead ps-3 align-center text-muted">{name}</span>
       </div>
       <div>
-        <IconButton icon={Power} color="success" classes="me-2 p-2" onMouseDown={() => login(name)} />
-        <IconButton icon={Power} color="danger" classes="me-2 p-2" onMouseDown={() => logout(name)} />
-        <IconButton icon={PencilFill} color="info" classes="me-4 p-2" onMouseDown={() => logout(name)} />
+        <AccountButton icon={Power} color="success" onMouseDown={() => login(name)} />
+        <AccountButton icon={Power} color="danger" onMouseDown={() => logout(name)} />
+        <AccountButton icon={PencilFill} color="info" onMouseDown={() => {}} />
       </div>
     </div>
+  );
+}
+
+function AccountButton({ icon, color, onMouseDown }: any) {
+  return (
+    <IconButton icon={icon} color={color} onMouseDown={onMouseDown} classes={`m-1 p-1`} iconProps={{ className: 'm-1' }} />
   );
 }
 

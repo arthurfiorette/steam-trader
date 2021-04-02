@@ -1,8 +1,14 @@
+import { Github } from 'react-bootstrap-icons';
+import { IconButton } from './components/button';
+
 export default function Header() {
   return (
     <header id="header" className="shadow">
-      <nav className="justify-content-center navbar navbar-expand navbar-dark bg-dark">
-        <span className="navbar-brand">Steam Trader</span>
+      <nav className="navbar navbar-expand navbar-dark bg-dark px-4 justify-content-between">
+        <div className="navbar-brand">Steam Trader</div>
+        <a href="https://github.com/ArthurFiorette/steam-trader#README" target="_blank">
+          <IconButton icon={Github} color="light" classes="border-0 p-1" iconProps={{ size: '32' }} />
+        </a>
       </nav>
     </header>
   );
