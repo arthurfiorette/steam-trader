@@ -19,6 +19,8 @@ ECHO.
 ECHO 3 - Start with Docker  -   (docker-compose)
 ECHO 4 - Start with NodeJS  -   (npm)
 ECHO.
+ECHO 5 - Development mode   -   (npm)
+ECHO.
 SET /P T="Type the number and hit ENTER: "
 ECHO.
 IF %T%==0 GOTO EXIT
@@ -26,6 +28,7 @@ IF %T%==1 GOTO DOCKER-BUILD
 IF %T%==2 GOTO NODE-BUILD
 IF %T%==3 GOTO DOCKER-START
 IF %T%==4 GOTO NODE-START
+IF %T%==5 GOTO NODE-DEV
 GOTO MENU
 
 :NODE-BUILD
@@ -55,6 +58,11 @@ GOTO END
 ECHO Starting...
 ECHO.
 START "" /b CMD /c "docker-compose up -d"
+GOTO END
+
+:NODE-DEV
+START "" /b /d app CMD /c "npm run dev"
+START "" /b /d web CMD /c "npm run watch"
 GOTO END
 
 :END
