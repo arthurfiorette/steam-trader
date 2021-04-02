@@ -45,7 +45,6 @@ export default class Form extends Component<FormProps, FormInputs> {
         id={`${name}Id`}
         name={name}
         onChange={this.handleInputChange}
-        checked
       />
       <label className="form-check-label" htmlFor={`${name}Id`}>
         {title}
