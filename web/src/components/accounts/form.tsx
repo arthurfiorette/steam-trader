@@ -39,13 +39,7 @@ export default class Form extends Component<FormProps, FormInputs> {
 
   private SwitchInput = ({ name, title, help }: any) => (
     <div className="form-check form-switch mb-3">
-      <input
-        className="form-check-input"
-        type="checkbox"
-        id={`${name}Id`}
-        name={name}
-        onChange={this.handleInputChange}
-      />
+      <input className="form-check-input" type="checkbox" id={`${name}Id`} name={name} onChange={this.handleInputChange} />
       <label className="form-check-label" htmlFor={`${name}Id`}>
         {title}
       </label>
