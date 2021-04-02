@@ -49,13 +49,13 @@ export default class Account {
       accountName: username,
       password,
       twoFactorCode: this.getAuthCode(),
-      rememberPassword: true,
       machineName: 'steam-trader'
     });
     this.logger.debug('Starting to listen!');
     client.on('webSession', (_sessionId: number, cookies: string[]) => this.onWebSession(cookies));
     client.on('wallet', (_hasWallet: boolean, currency: number) => this.setCurrency(currency));
     client.on('loggedOn', () => this.onLogin());
+    client.on('disconnected', (_eResult: number, msg: string) => this.onDisconnect(msg));
     client.on('steamGuard', (_domain: any, callback: (code: string) => void) => callback(this.getAuthCode()));
     manager.on('newOffer', (offer: Offer) => trader.begin(offer));
     client.on('error', (err: any) => this.logger.error(`Occurred an error on the last operation: ${err.message}`));
@@ -79,6 +79,10 @@ export default class Account {
     const { options, client } = this;
     client.setPersona(1);
     client.gamesPlayed(Number(options.status.gameId));
+  }
+
+  private onDisconnect(msg: string) {
+    this.logger.info(`We logged off: ${msg}`);
   }
 
   private onWebSession(cookies: string[]) {

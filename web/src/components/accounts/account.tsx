@@ -9,7 +9,7 @@ export default function Account({ account }: any) {
     <div className="d-flex my-1 p-1 justify-content-between align-items-center border-bottom rounded">
       <div className="user align-items-center">
         <ProfilePhoto account={account} />
-        <span className="h3 lead ps-3 align-center text-muted">{name}</span>
+        <span className="h3 lead ms-3 align-center text-muted">{name}</span>
       </div>
       <div>
         <AccountButton icon={Power} color="success" onMouseDown={() => login(name)} />
