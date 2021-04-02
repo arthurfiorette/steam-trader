@@ -1,16 +1,12 @@
 import OffcanvasTemplate from '../offCanvas';
 import Form from './form';
+import { DarkButton } from '../button';
 
 export function Button({ id, message }: any) {
   return (
-    <button
-      className="m-1 p-2 me-2 btn btn-success"
-      type="button"
-      data-bs-toggle="offcanvas"
-      data-bs-target={`#${id}`}
-      aria-controls={`${id}`}>
+    <DarkButton data-bs-toggle="offcanvas" data-bs-target={`#${id}`} aria-controls={`${id}`}>
       {message}
-    </button>
+    </DarkButton>
   );
 }
 

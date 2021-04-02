@@ -1,3 +1,5 @@
+import {CloseButton} from "./button"
+
 export default function OffCanvas({ id, title, children }: any) {
   return (
     <div className="offcanvas offcanvas-start" id={id} aria-labelledby="offcanvasLabel">
@@ -5,7 +7,7 @@ export default function OffCanvas({ id, title, children }: any) {
         <h5 className="offcanvas-title" id="offcanvasLabel">
           {title}
         </h5>
-        <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" />
+        <CloseButton data-bs-dismiss="offcanvas" aria-label="Close" />
       </div>
       <div className="offcanvas-body pt-2">{children}</div>
     </div>

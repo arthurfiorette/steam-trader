@@ -1,10 +1,10 @@
 import { getColor } from './util';
 
-export default function Log({ log }: any) {
+export default function Log({level, message, date }: any) {
   return (
-    <li>
-      <span className={`pe-3 text-${getColor(log.level)}`}>{new Date(log.timestamp).toLocaleTimeString()}</span>
-      <span className="text-wrap text-muted mw-100">{log.message}</span>
+    <li key={date.getTime()}>
+      <span className={`pe-3 text-${getColor(level)}`}>{date.toLocaleTimeString()}</span>
+      <span className="text-wrap text-muted mw-100">{message}</span>
     </li>
   );
 }

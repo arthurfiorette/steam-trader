@@ -1,6 +1,7 @@
 import { PencilFill, Power } from 'react-bootstrap-icons';
 import { login, logout } from '../../services/accounts';
 import { fetchSteamUserImage } from './util';
+import { IconButton } from '../button';
 
 export default function Account({ account }: any) {
   const name = account.login.username;
@@ -11,19 +12,11 @@ export default function Account({ account }: any) {
         <span className="h3 lead ps-3 align-center text-muted">{name}</span>
       </div>
       <div>
-        <Button Icon={Power} color="success" onMouseDown={() => login(name)} />
-        <Button Icon={Power} color="danger" onMouseDown={() => logout(name)} paddingLeft="4" />
-        <Button Icon={PencilFill} color="info" onMouseDown={() => {}} />
+        <IconButton icon={Power} color="success" classes="me-2 p-2" onMouseDown={() => login(name)} />
+        <IconButton icon={Power} color="danger" classes="me-2 p-2" onMouseDown={() => logout(name)} />
+        <IconButton icon={PencilFill} color="info" classes="me-4 p-2" onMouseDown={() => logout(name)} />
       </div>
     </div>
-  );
-}
-
-function Button({ Icon, color, paddingLeft, onMouseDown }: any) {
-  return (
-    <button type="button" onMouseDown={onMouseDown} className={`p-2 btn btn-${color} me-${paddingLeft ? paddingLeft : '2'}`}>
-      <Icon size="20px" />
-    </button>
   );
 }
 

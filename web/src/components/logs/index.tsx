@@ -8,7 +8,9 @@ export default function Logs() {
 
   useEffect(() => {
     socket.on('log', (log: any) => {
-      setLogs((logs) => [...logs, <Log log={log} />]);
+      const { level, message, timestamp } = log;
+      const date = new Date(timestamp);
+      setLogs((logs) => [...logs, <Log level={level} message={message} date={date} key={date.getTime()} />]);
     });
   }, []);
 

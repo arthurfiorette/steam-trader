@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { AccountOptions, createAccount } from '../../services/accounts';
+import { DarkButton } from '../button';
 
 interface FormInputs {
   username: string;
@@ -97,9 +98,7 @@ export default class Form extends Component<FormProps, FormInputs> {
           title="Trade with 0 profit"
           help="Should the bot accept a trade with the same price in both sides?"
         />
-        <button type="submit" className="btn btn-outline-success">
-          Create
-        </button>
+        <DarkButton type="submit">Create</DarkButton>
       </form>
     );
   }
