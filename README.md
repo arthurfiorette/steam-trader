@@ -23,7 +23,7 @@
 > <pre align="center">We are building the web panel for this app. Probably launched at 1.3.0. Wait for it <a href=https://github.com/ArthurFiorette/steam-trader/releases>here</a>!</pre>
 
 <p align="center">
-  <img src=".github/assets/webpage-empty.png" alt="Web panel empty" width="720px">
+  <img src=".github/assets/webpage.png" alt="Web panel empty" width="720px">
 </p>
 
 ## About
