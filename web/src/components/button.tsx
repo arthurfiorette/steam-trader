@@ -1,4 +1,4 @@
-import {Icon, Props as IconProps} from 'react-bootstrap-icons';
+import { Icon, Props as IconProps } from 'react-bootstrap-icons';
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   classes?: string;
@@ -18,7 +18,7 @@ type IconButtonProps = ColoredButtonProps & {
   iconProps?: IconProps;
 };
 
-function ButtonTemplate({children, classes, ...props}: ButtonProps) {
+function ButtonTemplate({ children, classes, ...props }: ButtonProps) {
   return (
     <button type="button" className={`border-2 rounded-3 shadow ${classes}`} {...props}>
       {children}
@@ -26,7 +26,7 @@ function ButtonTemplate({children, classes, ...props}: ButtonProps) {
   );
 }
 
-export function CloseButton({children, classes = '', ariaLabel = 'Close', ...props}: CloseButtonProps) {
+export function CloseButton({ children, classes = '', ariaLabel = 'Close', ...props }: CloseButtonProps) {
   return (
     <ButtonTemplate classes={`btn-close text-reset ${classes}`} {...props} aria-label={ariaLabel}>
       {children}
@@ -34,7 +34,7 @@ export function CloseButton({children, classes = '', ariaLabel = 'Close', ...pro
   );
 }
 
-export function ColoredButton({children, color = 'primary', classes = '', ...props}: ColoredButtonProps) {
+export function ColoredButton({ children, color = 'primary', classes = '', ...props }: ColoredButtonProps) {
   return (
     <ButtonTemplate classes={`btn btn-outline-${color} ${classes}`} {...props}>
       {children}
@@ -42,7 +42,7 @@ export function ColoredButton({children, color = 'primary', classes = '', ...pro
   );
 }
 
-export function SuccessButton({children, ...props}: ButtonProps) {
+export function SuccessButton({ children, ...props }: ButtonProps) {
   return (
     <ColoredButton {...props} color="success">
       {children}
@@ -50,7 +50,7 @@ export function SuccessButton({children, ...props}: ButtonProps) {
   );
 }
 
-export function DarkButton({children, ...props}: ButtonProps) {
+export function DarkButton({ children, ...props }: ButtonProps) {
   return (
     <ColoredButton {...props} color="dark">
       {children}
@@ -58,7 +58,7 @@ export function DarkButton({children, ...props}: ButtonProps) {
   );
 }
 
-export function DangerButton({children, ...props}: ButtonProps) {
+export function DangerButton({ children, ...props }: ButtonProps) {
   return (
     <ColoredButton {...props} color="danger">
       {children}
@@ -66,7 +66,7 @@ export function DangerButton({children, ...props}: ButtonProps) {
   );
 }
 
-export function IconButton({children, icon: Icon, iconProps, ...props}: IconButtonProps) {
+export function IconButton({ children, icon: Icon, iconProps, ...props }: IconButtonProps) {
   return (
     <ColoredButton {...props}>
       <Icon {...iconProps}>{children}</Icon>
