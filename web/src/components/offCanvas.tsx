@@ -1,4 +1,4 @@
-import {CloseButton} from "./button"
+import { CloseButton } from './button';
 
 export default function OffCanvas({ id, title, children }: any) {
   return (
