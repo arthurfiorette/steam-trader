@@ -5,10 +5,10 @@
   "main": "src/index.ts",
   "private": true,
   "scripts": {
-    "build": "babel src -d build --copy-files --extensions .ts",
-    "dev": "nodemon",
     "start": "node build/index.js",
-    "start:dev": "ts-node src/index.ts"
+    "watch": "nodemon",
+    "build": "babel src -d build --copy-files --extensions .ts",
+    "start:nodemon": "ts-node src/index.ts"
   },
   "repository": {
     "type": "git",

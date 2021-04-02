@@ -50,9 +50,9 @@ Now, to start this application, you can **_run the [`start.cmd`](start.cmd) scri
 
 1. If you have a docker virtual machine, you can simply type `docker-compose up` or use any docker instance at any hosting service.
 
-2. If you doesn't have any access or knowledge to use docker, you can run it having **Node.JS** installed on your PC.
+2. If you doesn't have any access or knowledge to use docker, you can run it having **Node.JS** installed.
    - To start the server, open the app folder, install and compile by running `npm install` and after `npm run build`. Start by running `npm start`.
-   - To start the web page, open the web folder, install with `npm install` and build running `npm run build` and `npm run build:server`. Start by running `npm start`.
+   - To start the web page, open the web folder, install with `npm install` and build running `npm run build`. Start by running `npm start`.
 
 ## License
 

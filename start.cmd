@@ -1,3 +1,4 @@
+:://TODO: Convert this to bash.
 @ECHO off
 TITLE Steam Trader
 CLS
@@ -37,10 +38,9 @@ ECHO Building app...
 START "" /w /d app CMD /c "npm install && npm run build"
 ECHO Built app.
 ECHO Building web...
-START "" /w /d web CMD /c "npm install && npm run build && npm run build:server"
+START "" /w /d web CMD /c "npm install && npm run build"
 ECHO Built web.
 GOTO END
-
 :NODE-START
 ECHO Starting...
 ECHO.
@@ -61,7 +61,7 @@ START "" /b CMD /c "docker-compose up -d"
 GOTO END
 
 :NODE-DEV
-START "" /b /d app CMD /c "npm run dev"
+START "" /b /d app CMD /c "npm run watch"
 START "" /b /d web CMD /c "npm run watch"
 GOTO END
 
