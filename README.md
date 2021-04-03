@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/ArthurFiorette/steam-trader/network"><img
+  <a href="https://github.com/ArthurFiorette/steam-trader/network/members"><img
       src="https://img.shields.io/github/forks/ArthurFiorette/steam-trader?logo=github&style=flat-square&label=Forks"
       alt="Forks" /></a>
   <a href="https://github.com/ArthurFiorette/steam-trader/issues"><img
