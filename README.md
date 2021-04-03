@@ -1,14 +1,14 @@
 <p align="center">
-  <a href="https://github.com/ArthurFiorette/nickrep/network"><img
+  <a href="https://github.com/ArthurFiorette/steam-trader/network"><img
       src="https://img.shields.io/github/forks/ArthurFiorette/steam-trader?logo=github&style=flat-square&label=Forks"
       alt="Forks" /></a>
-  <a href="https://github.com/ArthurFiorette/nickrep/issues"><img
+  <a href="https://github.com/ArthurFiorette/steam-trader/issues"><img
       src="https://img.shields.io/github/issues/ArthurFiorette/steam-trader?logo=github&style=flat-square&label=Issues"
       alt="Issues" /></a>
-  <a href="https://github.com/ArthurFiorette/nickrep/stargazers"><img
+  <a href="https://github.com/ArthurFiorette/steam-trader/stargazers"><img
       src="https://img.shields.io/github/stars/ArthurFiorette/steam-trader?logo=github&style=flat-square&label=Stars"
       alt="Stars" /></a>
-  <a href="https://github.com/ArthurFiorette/nickrep/blob/main/LICENSE"><img
+  <a href="https://github.com/ArthurFiorette/steam-trader/blob/main/LICENSE"><img
       src="https://img.shields.io/github/license/ArthurFiorette/steam-trader?logo=github&style=flat-square&label=License"
       alt="License" /></a>
 </p>
@@ -21,7 +21,8 @@
 </p>
 
 > <pre align="center">The web panel was launched at <a href=https://github.com/ArthurFiorette/steam-trader/releases/tag/v1.3.0>1.3.0</a>. Now all your work can be done on your browser!</pre>
-> <br />
+
+<br />
 
 <p align="center">
   <img src=".github/assets/webpage.png" alt="Web panel empty" width="720px">
