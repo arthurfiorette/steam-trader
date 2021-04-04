@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchSteamUserImage } from './util';
-import { AccountOptions, getAccount, logout, login } from '../../services/accounts';
+import { AccountOptions, getAccount, logout as logoutAcc, login as loginAcc } from '../../services/accounts';
 import { IconButton } from '../button';
 import { PencilFill, Power } from 'react-bootstrap-icons';
 
@@ -28,20 +28,14 @@ export default function Account({ account }: any) {
         <span className="lead ms-3 align-center text-dark">{login.username}</span>
       </div>
       <div>
-        <PowerButton status={status} login={login} />
+        <AccountButton
+          icon={Power}
+          color={status.online ? 'danger' : 'success'}
+          onClick={() => (status.online ? logoutAcc : loginAcc)(login.username)}
+        />
         <AccountButton icon={PencilFill} color="info" />
       </div>
     </li>
-  );
-}
-
-function PowerButton({ status, login: _login }: any) {
-  return (
-    <AccountButton
-      icon={Power}
-      color={status.online ? 'success' : 'danger'}
-      onClick={() => (status.online ? logout : login)(_login.username)}
-    />
   );
 }
 
@@ -56,7 +50,7 @@ function ProfilePhoto({ account }: any) {
     <img
       className="shadow border border-2 rounded"
       src={fetchSteamUserImage()}
-      alt={`${account.username}'s profile photo`}
+      alt={`${account.login.username}'s profile photo`}
       height="40px"
       width="40px"
     />
