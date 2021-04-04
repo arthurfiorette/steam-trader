@@ -3,12 +3,12 @@ import Account, { AccountOptions } from './account';
 const accounts = new Map<string, Account>();
 
 export function getAll() {
-  return [true, [...accounts.values()].map((acc) => acc.options)];
+  return [true, [...accounts.values()].map((acc) => acc.serialize())];
 }
 
 export function getByName(name: string) {
   const account = accounts.get(name);
-  return [!!account, account?.options];
+  return [!!account, account ? account.serialize() : `Account doesn't exist` ];
 }
 
 export function login(name: string) {

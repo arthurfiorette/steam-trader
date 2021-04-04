@@ -4,6 +4,7 @@ import TradeProcessor from '../transactions/processor';
 import { ICurrency, getCurrency } from '../steam/currency';
 import { Offer } from '../transactions/types';
 import createLogger from '../logger';
+import { serializer } from './serializer';
 
 const language = 'en';
 
@@ -39,7 +40,7 @@ export default class Account {
 
   login() {
     this.logger.info('Attempting to logging In');
-    if (this.isOnline()) {
+    if (this.online) {
       this.logger.warn('Login attempt, but we are already logged in');
       return;
     }
@@ -63,15 +64,11 @@ export default class Account {
 
   logoff() {
     this.logger.info(`Attempting to log Off`);
-    if (!this.isOnline()) {
+    if (!this.online) {
       this.logger.warn('Logoff attempt, but we are already logged off');
       return;
     }
     this.client.logOff();
-  }
-
-  isOnline() {
-    return !!this.client.steamID;
   }
 
   private onLogin() {
@@ -104,5 +101,13 @@ export default class Account {
     const auth = SteamTotp.generateAuthCode(sharedSecret);
     this.logger.debug(`Requested steam guard auth code '${auth}'`);
     return auth;
+  }
+
+  get online() {
+    return !!this.client.steamID;
+  }
+
+  serialize() {
+    return serializer(this);
   }
 }

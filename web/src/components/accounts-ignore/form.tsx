@@ -63,8 +63,11 @@ export default class Form extends Component<FormProps, FormInputs> {
       trading: { owners, trashLimit, tradeWith0Profit }
     };
     createAccount(options).then((r) => {
-      if (r.data.status === 'Success') this.props.onFormEntry(options);
-      else alert(r.data.response);
+      if (r.data.status === 'Success') {
+        this.props.onFormEntry(options);
+      } else {
+        alert(r.data.response);
+      }
     });
   };
 

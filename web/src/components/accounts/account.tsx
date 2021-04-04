@@ -1,29 +1,52 @@
-import { PencilFill, Power } from 'react-bootstrap-icons';
-import { login, logout } from '../../services/accounts';
+import { useState, useEffect } from 'react';
 import { fetchSteamUserImage } from './util';
+import { AccountOptions, getAccount, logout, login } from '../../services/accounts';
 import { IconButton } from '../button';
+import { PencilFill, Power } from 'react-bootstrap-icons';
 
 export default function Account({ account }: any) {
-  const name = account.login.username;
+  const [{ login, status }, setOptions] = useState<AccountOptions>(account);
+
+  useEffect(() => {
+    const i = setInterval(
+      () =>
+        getAccount(login.username)
+          .then((resp) => resp.data.response)
+          .then(setOptions),
+      5 * 1000
+    );
+    return () => clearInterval(i);
+  }, []);
+
   return (
-    <div className="d-flex my-1 p-1 justify-content-between align-items-center border-bottom rounded">
-      <div className="user align-items-center">
+    <li
+      className={`d-flex my-1 p-1 justify-content-between align-items-center border border-2 rounded border-${
+        status.online ? 'success' : 'danger'
+      }`}>
+      <div className="align-items-center">
         <ProfilePhoto account={account} />
-        <span className="h3 lead ms-3 align-center text-muted">{name}</span>
+        <span className="lead ms-3 align-center text-dark">{login.username}</span>
       </div>
       <div>
-        <AccountButton icon={Power} color="success" onMouseDown={() => login(name)} />
-        <AccountButton icon={Power} color="danger" onMouseDown={() => logout(name)} />
-        <AccountButton icon={PencilFill} color="info" onMouseDown={() => {}} />
+        <PowerButton status={status} login={login} />
+        <AccountButton icon={PencilFill} color="info" />
       </div>
-    </div>
+    </li>
   );
 }
 
-function AccountButton({ icon, color, onMouseDown }: any) {
+function PowerButton({ status, login: _login }: any) {
   return (
-    <IconButton icon={icon} color={color} onMouseDown={onMouseDown} classes={`m-1 p-1`} iconProps={{ className: 'm-1' }} />
+    <AccountButton
+      icon={Power}
+      color={status.online ? 'success' : 'danger'}
+      onClick={() => (status.online ? logout : login)(_login.username)}
+    />
   );
+}
+
+function AccountButton({ icon, color, onClick }: any) {
+  return <IconButton icon={icon} color={color} onClick={onClick} classes="m-1 p-1" iconProps={{ className: 'm-1' }} />;
 }
 
 // TODO [#4]: Standardize thumbnail images
@@ -31,7 +54,7 @@ function AccountButton({ icon, color, onMouseDown }: any) {
 function ProfilePhoto({ account }: any) {
   return (
     <img
-      className="shadow border rounded"
+      className="shadow border border-2 rounded"
       src={fetchSteamUserImage()}
       alt={`${account.username}'s profile photo`}
       height="40px"

@@ -9,6 +9,7 @@ export interface AccountOptions {
   };
   status: {
     gameId: number;
+    online?: boolean;
   };
   trading: {
     trashLimit: number;
