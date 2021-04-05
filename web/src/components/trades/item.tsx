@@ -1,4 +1,5 @@
 import { Item as IItem, getItemName, getImageUrl } from './util';
+import If, { Else } from '../if';
 
 export default function Item({ item, received }: { item: IItem; received: boolean }) {
   const name = getItemName(item);
@@ -38,11 +39,14 @@ export function EmptyItem({ received }: any) {
 export function ItemSet({ items, received = false }: any) {
   return (
     <ul className="list-inline text-center mb-0" style={{ maxWidth: '48%' }}>
-      {items.length === 0 ? (
+      <If test={items.length === 0}>
         <EmptyItem received={received} />
-      ) : (
-        items.map((item: any) => <Item item={item} received={received} />)
-      )}
+        <Else>
+          {items.map((item: any) => (
+            <Item item={item} received={received} />
+          ))}
+        </Else>
+      </If>
     </ul>
   );
 }
