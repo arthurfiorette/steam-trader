@@ -17,12 +17,12 @@
   <strong>Steam Trader 📈</strong>
 </h1>
 <p align="center">
-  <i>An deployment ready and automated steam trade client!</i>
+  <i>Trade items smartly with multiple automated steam accounts at the same time!</i>
 </p>
 
 > <pre align="center">
 > Now all your work can be done on your browser:
-> <a href=https://github.com/ArthurFiorette/steam-trader/releases/tag/v1.3.0>Introducing the dashboard</a>!
+> <a href="https://github.com/ArthurFiorette/steam-trader/releases/tag/v1.3.0">Introducing the dashboard</a>!
 > </pre>
 
 <br />
