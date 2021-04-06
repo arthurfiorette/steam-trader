@@ -21,8 +21,8 @@
 </p>
 
 > <pre align="center">
-> All your work can be done on your browser!
-> The web panel was launched at <a href=https://github.com/ArthurFiorette/steam-trader/releases/tag/v1.3.0>1.3.0</a>.
+> Now all your work can be done on your browser:
+> <a href=https://github.com/ArthurFiorette/steam-trader/releases/tag/v1.3.0>Introducing the dashboard</a>!
 > </pre>
 
 <br />
