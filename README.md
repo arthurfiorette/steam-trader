@@ -14,7 +14,7 @@
 </p>
 
 <h1 align="center">
-  <strong>Steam Trader 📈</strong>
+  <a href="https://github.com/ArthurFiorette/steam-trader/"><strong>Steam Trader 📈</strong></a>
 </h1>
 <p align="center">
   <i>Trade items smartly with multiple automated steam accounts at the same time!</i>
