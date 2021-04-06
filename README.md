@@ -20,7 +20,10 @@
   <i>An deployment ready and automated steam trade client!</i>
 </p>
 
-> <pre align="center">The web panel was launched at <a href=https://github.com/ArthurFiorette/steam-trader/releases/tag/v1.3.0>1.3.0</a>. Now all your work can be done on your browser!</pre>
+> <pre align="center">
+> All your work can be done on your browser!
+> The web panel was launched at <a href=https://github.com/ArthurFiorette/steam-trader/releases/tag/v1.3.0>1.3.0</a>.
+> </pre>
 
 <br />
 
