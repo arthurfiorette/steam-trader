@@ -2,6 +2,6 @@ node_modules
 build
 dist
 .vscode
-*-ignore.*
+*_ignore*
 *.log
 output

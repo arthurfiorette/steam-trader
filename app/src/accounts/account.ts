@@ -5,8 +5,7 @@ import { ICurrency, getCurrency } from '../steam/currency';
 import { Offer } from '../transactions/types';
 import createLogger from '../logger';
 import { serializer } from './serializer';
-
-const language = 'en';
+import { socketUpdater } from '../server/socket/updater';
 
 export interface AccountOptions {
   readonly login: {
@@ -29,7 +28,7 @@ export interface AccountOptions {
 export default class Account {
   readonly client = new SteamUser();
   readonly community = new SteamCommunity();
-  readonly manager = new TradeOfferManager({ steam: this.client, community: this.community, language });
+  readonly manager = new TradeOfferManager({ steam: this.client, community: this.community, language: 'en' });
   readonly logger;
   readonly trader = new TradeProcessor(this);
 
@@ -45,13 +44,8 @@ export default class Account {
       return;
     }
     const { client, options, manager, trader } = this;
-    const { username, password } = options.login;
-    client.logOn({
-      accountName: username,
-      password,
-      twoFactorCode: this.getAuthCode(),
-      machineName: 'steam-trader'
-    });
+    const { username: accountName, password } = options.login;
+    client.logOn({ accountName, password, twoFactorCode: this.getAuthCode(), machineName: 'steam-trader' });
     this.logger.debug('Starting to listen!');
     client.on('webSession', (_sessionId: number, cookies: string[]) => this.onWebSession(cookies));
     client.on('wallet', (_hasWallet: boolean, currency: number) => this.setCurrency(currency));
@@ -72,19 +66,21 @@ export default class Account {
   }
 
   private onLogin() {
-    this.logger.info('We logged in');
-    const { options, client } = this;
+    const { options, client, logger } = this;
+    logger.info('We logged in');
     client.setPersona(1);
     client.gamesPlayed(Number(options.status.gameId));
+    socketUpdater.update(this);
   }
 
   private onDisconnect(msg: string) {
     this.logger.info(`We logged off: ${msg}`);
+    socketUpdater.update(this);
   }
 
   private onWebSession(cookies: string[]) {
-    this.logger.debug('Started web session, delivering cookies');
-    const { community, options, manager } = this;
+    const { community, options, manager, logger } = this;
+    logger.debug('Started web session, delivering cookies');
     manager.setCookies(cookies);
     community.setCookies(cookies);
     community.startConfirmationChecker(2000, options.login.identity);

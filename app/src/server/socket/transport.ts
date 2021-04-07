@@ -8,7 +8,7 @@ export default class SocketTransport extends Transport {
   }
 
   log(info: any, next: () => void) {
-    if (this.server) this.server.emit('log', info);
-    if (next) return next();
+    this.server?.emit('log', info);
+    return next?.();
   }
 }

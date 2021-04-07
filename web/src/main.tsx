@@ -6,7 +6,7 @@ import Trades from './components/trades';
 export default function Main() {
   return (
     <main id="main">
-      <div className="container mb-3">
+      <div className="container-lg mb-3">
         <div className="row">
           <InfoBoxColumn size="xl-7 col-xxl-8" title="Trades" Children={Trades} />
           <InfoBoxColumn size="md-6 col-xl-5 col-xxl-4" title="Accounts" Children={Accounts} />

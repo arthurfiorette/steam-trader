@@ -1,28 +1,33 @@
 import { useState, useEffect } from 'react';
 import { fetchSteamUserImage } from './util';
-import { AccountOptions, getAccount, logout as logoutAcc, login as loginAcc } from '../../services/accounts';
+import {
+  AccountOptions,
+  getAccount,
+  logout as logoutAcc,
+  login as loginAcc
+} from '../../services/accounts';
 import { IconButton } from '../button';
 import { PencilFill, Power } from 'react-bootstrap-icons';
+import socket from '../../services/socket';
 
 export default function Account({ account }: any) {
   const [{ login, status }, setOptions] = useState<AccountOptions>(account);
 
   useEffect(() => {
-    const i = setInterval(
-      () =>
-        getAccount(login.username)
-          .then((resp) => resp.data.response)
-          .then(setOptions),
-      5 * 1000
-    );
-    return () => clearInterval(i);
+    socket.on('updateAccount', setOptions);
+
+    getAccount(login.username)
+      .then(({ data }) => data.response)
+      .then(setOptions);
   }, []);
 
+  // TODO: Handle large user names
   return (
     <li
-      className={`d-flex my-1 p-1 justify-content-between align-items-center border border-2 rounded border-${
+      className={`d-flex my-1 p-1 justify-content-between align-items-center shadow-sm border-2 rounded alert alert-${
         status.online ? 'success' : 'danger'
-      }`}>
+      }`}
+      style={{ backgroundColor: '#fff' }}>
       <div className="align-items-center">
         <ProfilePhoto account={account} />
         <span className="lead ms-3 align-center text-dark">{login.username}</span>
@@ -40,7 +45,15 @@ export default function Account({ account }: any) {
 }
 
 function AccountButton({ icon, color, onClick }: any) {
-  return <IconButton icon={icon} color={color} onClick={onClick} classes="m-1 p-1" iconProps={{ className: 'm-1' }} />;
+  return (
+    <IconButton
+      icon={icon}
+      color={color}
+      onClick={onClick}
+      classes="m-1 p-1"
+      iconProps={{ className: 'm-1' }}
+    />
+  );
 }
 
 // TODO [#4]: Standardize thumbnail images
@@ -48,7 +61,7 @@ function AccountButton({ icon, color, onClick }: any) {
 function ProfilePhoto({ account }: any) {
   return (
     <img
-      className="shadow border border-2 rounded"
+      className="shadow rounded"
       src={fetchSteamUserImage()}
       alt={`${account.login.username}'s profile photo`}
       height="40px"

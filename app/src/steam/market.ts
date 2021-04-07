@@ -9,7 +9,6 @@ const priceOverview = 'http://steamcommunity.com/market/priceoverview';
 export async function getItemPrice(item: Item): Promise<ItemPrice> {
   const { appid } = item;
   const params = { appid, currency: Currency.DEFAULT.currencyId, market_hash_name: getItemName(item) };
-  console.log(item, priceOverview, { params });
   const { data } = await axios.get(priceOverview, { params });
   return parseData(data);
 }

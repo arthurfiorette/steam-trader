@@ -1,4 +1,5 @@
 import Account, { AccountOptions } from './account';
+import { socketUpdater } from '../server/socket/updater';
 
 const accounts = new Map<string, Account>();
 
@@ -8,7 +9,7 @@ export function getAll() {
 
 export function getByName(name: string) {
   const account = accounts.get(name);
-  return [!!account, account ? account.serialize() : `Account doesn't exist` ];
+  return [!!account, account ? account.serialize() : `Account doesn't exist`];
 }
 
 export function login(name: string) {
@@ -33,11 +34,14 @@ export function logout(name: string) {
 
 export function create(options: AccountOptions) {
   const { username } = options.login;
-  if (accounts.has(username)) {
+  if (username === '') {
+    return [false, `Account name can't be empty`];
+  } else if (accounts.has(username)) {
     return [false, 'Account already exists'];
   } else {
     const account = new Account(options);
     accounts.set(username, account);
+    update();
     return [true, `Created user ${username}`, 201];
   }
 }
@@ -47,9 +51,9 @@ export function edit(name: string, { status, trading }: AccountOptions) {
   if (!account) {
     return [false, `Account doesn't exist`];
   } else {
+    account.logoff();
     account.options.status = { ...account.options.status, ...status };
     account.options.trading = { ...account.options.trading, ...trading };
-    account.logoff();
     return [true, 'Modified.'];
   }
 }
@@ -61,6 +65,11 @@ export function remove(name: string) {
   } else {
     account.logoff();
     accounts.delete(name);
+    update();
     return [true, 'Deleted.'];
   }
+}
+
+function update() {
+  socketUpdater.updateAll([...accounts.values()]);
 }

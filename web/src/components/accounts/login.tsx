@@ -1,5 +1,5 @@
 import OffcanvasTemplate from '../offCanvas';
-import Form from './form';
+import Form from './form/login';
 import { DarkButton } from '../button';
 import { GIT_URL } from '../../constants';
 
@@ -11,7 +11,7 @@ export function Button({ id, message }: any) {
   );
 }
 
-export function Offcanvas({ id, onFormEntry }: any) {
+export function Offcanvas({ id }: any) {
   return (
     <OffcanvasTemplate id={id} title="Register a new account">
       <div className="text-muted mb-4">
@@ -20,7 +20,7 @@ export function Offcanvas({ id, onFormEntry }: any) {
           here
         </a>
       </div>
-      <Form onFormEntry={onFormEntry} />
+      <Form  />
     </OffcanvasTemplate>
   );
 }

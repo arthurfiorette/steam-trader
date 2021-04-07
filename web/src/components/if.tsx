@@ -10,10 +10,11 @@ export default function If({ test, children }: IfProps) {
 
   if (Array.isArray(children)) {
     for (let child of children) {
-      console.log(child);
       if (child.type === Else) elseChild.props.children.push(child);
       else childArr.push(child);
     }
+  } else {
+    childArr.push(children);
   }
 
   return <Fragment>{test ? childArr : elseChild}</Fragment>;
