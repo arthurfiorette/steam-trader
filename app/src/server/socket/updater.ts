@@ -9,7 +9,10 @@ export default class SocketUpdater {
   }
 
   updateAll(accounts: Account[]) {
-    this.server?.emit('updateAccounts', accounts.map(acc => acc.serialize()));
+    this.server?.emit(
+      'updateAccounts',
+      accounts.map((acc) => acc.serialize())
+    );
   }
 }
 

@@ -40,7 +40,12 @@ export function CheckInput({ title, help, required, onChange }: InputProps) {
   const helpId = `${id}Help`;
   return (
     <div className="mb-3 form-check">
-      <input className="form-check-input" type="checkbox" area-describedby={helpId} {...{ id, onChange, required }} />
+      <input
+        className="form-check-input"
+        type="checkbox"
+        area-describedby={helpId}
+        {...{ id, onChange, required }}
+      />
       <label className="form-check-label" htmlFor={id}>
         {title}
       </label>

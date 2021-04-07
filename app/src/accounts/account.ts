@@ -28,7 +28,11 @@ export interface AccountOptions {
 export default class Account {
   readonly client = new SteamUser();
   readonly community = new SteamCommunity();
-  readonly manager = new TradeOfferManager({ steam: this.client, community: this.community, language: 'en' });
+  readonly manager = new TradeOfferManager({
+    steam: this.client,
+    community: this.community,
+    language: 'en'
+  });
   readonly logger;
   readonly trader = new TradeProcessor(this);
 
@@ -45,15 +49,24 @@ export default class Account {
     }
     const { client, options, manager, trader } = this;
     const { username: accountName, password } = options.login;
-    client.logOn({ accountName, password, twoFactorCode: this.getAuthCode(), machineName: 'steam-trader' });
+    client.logOn({
+      accountName,
+      password,
+      twoFactorCode: this.getAuthCode(),
+      machineName: 'steam-trader'
+    });
     this.logger.debug('Starting to listen!');
     client.on('webSession', (_sessionId: number, cookies: string[]) => this.onWebSession(cookies));
     client.on('wallet', (_hasWallet: boolean, currency: number) => this.setCurrency(currency));
     client.on('loggedOn', () => this.onLogin());
     client.on('disconnected', (_eResult: number, msg: string) => this.onDisconnect(msg));
-    client.on('steamGuard', (_domain: any, callback: (code: string) => void) => callback(this.getAuthCode()));
+    client.on('steamGuard', (_domain: any, callback: (code: string) => void) =>
+      callback(this.getAuthCode())
+    );
     manager.on('newOffer', (offer: Offer) => trader.begin(offer));
-    client.on('error', (err: any) => this.logger.error(`Occurred an error on the last operation: ${err.message}`));
+    client.on('error', (err: any) =>
+      this.logger.error(`Occurred an error on the last operation: ${err.message}`)
+    );
   }
 
   logoff() {

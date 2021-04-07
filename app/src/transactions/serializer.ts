@@ -36,7 +36,12 @@ function writeFile(id: string, content: any) {
   });
 }
 
-function serializeTransaction(account: string, { offer, profit }: OfferContext, reason: string, accepted: boolean) {
+function serializeTransaction(
+  account: string,
+  { offer, profit }: OfferContext,
+  reason: string,
+  accepted: boolean
+) {
   return {
     account,
     partner: offer.partner.getSteamID64(),
@@ -49,7 +54,12 @@ function serializeTransaction(account: string, { offer, profit }: OfferContext, 
   };
 }
 
-function serializeTransactionSocket(account: string, context: OfferContext, reason: string, accepted: boolean) {
+function serializeTransactionSocket(
+  account: string,
+  context: OfferContext,
+  reason: string,
+  accepted: boolean
+) {
   const { offer } = context;
   return {
     ...serializeTransaction(account, context, reason, accepted),

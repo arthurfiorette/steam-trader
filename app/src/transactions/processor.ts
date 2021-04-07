@@ -7,7 +7,15 @@ import serialize from './serializer';
 export type Processor = (offer: Offer) => Promise<Offer>;
 
 function createContext(offer: Offer, processor: TradeProcessor): OfferContext {
-  return { offer, processor, giveItemsPrices: [], givePrice: 0, receiveItemsPrices: [], receivePrice: 0, profit: 0 };
+  return {
+    offer,
+    processor,
+    giveItemsPrices: [],
+    givePrice: 0,
+    receiveItemsPrices: [],
+    receivePrice: 0,
+    profit: 0
+  };
 }
 
 export default class TradeProcessor {

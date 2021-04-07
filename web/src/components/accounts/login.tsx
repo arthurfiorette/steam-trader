@@ -20,7 +20,7 @@ export function Offcanvas({ id }: any) {
           here
         </a>
       </div>
-      <Form  />
+      <Form />
     </OffcanvasTemplate>
   );
 }
