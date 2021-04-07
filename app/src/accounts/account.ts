@@ -60,13 +60,9 @@ export default class Account {
     client.on('wallet', (_hasWallet: boolean, currency: number) => this.setCurrency(currency));
     client.on('loggedOn', () => this.onLogin());
     client.on('disconnected', (_eResult: number, msg: string) => this.onDisconnect(msg));
-    client.on('steamGuard', (_domain: any, callback: (code: string) => void) =>
-      callback(this.getAuthCode())
-    );
+    client.on('steamGuard', (_domain: any, callback: (code: string) => void) => callback(this.getAuthCode()));
     manager.on('newOffer', (offer: Offer) => trader.begin(offer));
-    client.on('error', (err: any) =>
-      this.logger.error(`Occurred an error on the last operation: ${err.message}`)
-    );
+    client.on('error', (err: any) => this.logger.error(`Occurred an error on the last operation: ${err.message}`));
   }
 
   logoff() {
