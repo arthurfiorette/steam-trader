@@ -22,7 +22,7 @@ jobs:
         with:
           prettier_options: --write ./**/*.{js,jsx,ts,tsx,md,json,html,css,yml}
           same_commit: false
-          only_changed: ${{ github.event_name == 'push' }}
+          only_changed: false
           commit_message: Prettified code
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
