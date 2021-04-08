@@ -19,11 +19,7 @@ export const socketTransport = new SocketTransport(levelFormat);
 const loggers: Logger[] = [];
 
 export default function createLogger(account: string) {
-  const logger = _createLogger(
-    account,
-    new transports.File({ filename: `${getPath(account)}.log` }),
-    socketTransport
-  );
+  const logger = _createLogger(account, new transports.File({ filename: `${getPath(account)}.log` }), socketTransport);
   loggers.push(logger);
   return logger;
 }

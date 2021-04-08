@@ -10,16 +10,7 @@ type CloseButtonProps = ButtonProps & {
 };
 
 type ColoredButtonProps = ButtonProps & {
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'danger'
-    | 'warning'
-    | 'info'
-    | 'light'
-    | 'dark'
-    | 'link';
+  color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | 'link';
 };
 
 type IconButtonProps = ColoredButtonProps & {
@@ -35,12 +26,7 @@ function ButtonTemplate({ children, classes, ...props }: ButtonProps) {
   );
 }
 
-export function CloseButton({
-  children,
-  classes = '',
-  ariaLabel = 'Close',
-  ...props
-}: CloseButtonProps) {
+export function CloseButton({ children, classes = '', ariaLabel = 'Close', ...props }: CloseButtonProps) {
   return (
     <ButtonTemplate classes={`btn-close text-reset ${classes}`} {...props} aria-label={ariaLabel}>
       {children}
@@ -48,12 +34,7 @@ export function CloseButton({
   );
 }
 
-export function ColoredButton({
-  children,
-  color = 'primary',
-  classes = '',
-  ...props
-}: ColoredButtonProps) {
+export function ColoredButton({ children, color = 'primary', classes = '', ...props }: ColoredButtonProps) {
   return (
     <ButtonTemplate classes={`btn btn-outline-${color} ${classes}`} {...props}>
       {children}
