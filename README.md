@@ -29,8 +29,7 @@
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/ArthurFiorette/steam-trader/main/.github/assets/webpage.png"
-        alt="Web panel empty"
-        width="720px" />
+        alt="Web panel empty" />
 </p>
 
 ## About
