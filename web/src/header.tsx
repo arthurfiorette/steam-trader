@@ -8,7 +8,10 @@ export default function Header() {
       <nav className="navbar navbar-expand navbar-dark bg-dark px-4 justify-content-between">
         <div className="navbar-brand fs-4">Steam Trader</div>
         <div>
-          <a className="me-3" href={`${PAGE_URL}#configuration`} target="_blank">
+          <a
+            className="me-3"
+            href={`${PAGE_URL}#configuration`}
+            target="_blank">
             <IconButton
               icon={QuestionSquare}
               color="light"
