@@ -16,7 +16,9 @@ export default function Accounts() {
 
   return (
     <Fragment>
-      <ul className="overflow-auto p-1" style={{ maxHeight: 'calc(50vh - 60px)' }}>
+      <ul
+        className="overflow-auto p-1"
+        style={{ maxHeight: 'calc(50vh - 60px)' }}>
         <AccountList accounts={accounts} />
       </ul>
       <div className="d-flex mt-2 justify-content-center">
@@ -28,5 +30,7 @@ export default function Accounts() {
 }
 
 function AccountList({ accounts }: any) {
-  return accounts.map((acc: AccountOptions) => <Account key={acc.login.username} account={acc} />);
+  return accounts.map((acc: AccountOptions) => (
+    <Account key={acc.login.username} account={acc} />
+  ));
 }

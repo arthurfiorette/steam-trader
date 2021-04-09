@@ -5,7 +5,10 @@ import { GIT_URL } from '../../constants';
 
 export function Button({ id, message }: any) {
   return (
-    <DarkButton data-bs-toggle="offcanvas" data-bs-target={`#${id}`} aria-controls={`${id}`}>
+    <DarkButton
+      data-bs-toggle="offcanvas"
+      data-bs-target={`#${id}`}
+      aria-controls={`${id}`}>
       {message}
     </DarkButton>
   );

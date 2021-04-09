@@ -10,7 +10,16 @@ type CloseButtonProps = ButtonProps & {
 };
 
 type ColoredButtonProps = ButtonProps & {
-  color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | 'link';
+  color?:
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'danger'
+    | 'warning'
+    | 'info'
+    | 'light'
+    | 'dark'
+    | 'link';
 };
 
 type IconButtonProps = ColoredButtonProps & {
@@ -20,21 +29,37 @@ type IconButtonProps = ColoredButtonProps & {
 
 function ButtonTemplate({ children, classes, ...props }: ButtonProps) {
   return (
-    <button type="button" className={`border-2 rounded-3 shadow ${classes}`} {...props}>
+    <button
+      type="button"
+      className={`border-2 rounded-3 shadow ${classes}`}
+      {...props}>
       {children}
     </button>
   );
 }
 
-export function CloseButton({ children, classes = '', ariaLabel = 'Close', ...props }: CloseButtonProps) {
+export function CloseButton({
+  children,
+  classes = '',
+  ariaLabel = 'Close',
+  ...props
+}: CloseButtonProps) {
   return (
-    <ButtonTemplate classes={`btn-close text-reset ${classes}`} {...props} aria-label={ariaLabel}>
+    <ButtonTemplate
+      classes={`btn-close text-reset ${classes}`}
+      {...props}
+      aria-label={ariaLabel}>
       {children}
     </ButtonTemplate>
   );
 }
 
-export function ColoredButton({ children, color = 'primary', classes = '', ...props }: ColoredButtonProps) {
+export function ColoredButton({
+  children,
+  color = 'primary',
+  classes = '',
+  ...props
+}: ColoredButtonProps) {
   return (
     <ButtonTemplate classes={`btn btn-outline-${color} ${classes}`} {...props}>
       {children}
@@ -66,7 +91,12 @@ export function DangerButton({ children, ...props }: ButtonProps) {
   );
 }
 
-export function IconButton({ children, icon: Icon, iconProps, ...props }: IconButtonProps) {
+export function IconButton({
+  children,
+  icon: Icon,
+  iconProps,
+  ...props
+}: IconButtonProps) {
   return (
     <ColoredButton {...props}>
       <Icon {...iconProps}>{children}</Icon>

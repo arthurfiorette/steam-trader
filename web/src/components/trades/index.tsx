@@ -8,7 +8,10 @@ export default function Trades() {
 
   useEffect(() => {
     socket.on('trade', (trade: any) => {
-      setTrades((trades) => [...trades, <Trade trade={trade} key={trade.offerId} />]);
+      setTrades((trades) => [
+        ...trades,
+        <Trade trade={trade} key={trade.offerId} />
+      ]);
       if (ulRef.current) {
         const { children } = ulRef.current;
         children[children.length - 1]?.scrollIntoView({ behavior: 'smooth' });

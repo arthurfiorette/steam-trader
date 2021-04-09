@@ -9,10 +9,20 @@ export default function Header() {
         <div className="navbar-brand fs-4">Steam Trader</div>
         <div>
           <a className="me-3" href={PAGE_URL} target="_blank">
-            <IconButton icon={QuestionSquare} color="light" classes="border-0 p-1" iconProps={{ size: '32' }} />
+            <IconButton
+              icon={QuestionSquare}
+              color="light"
+              classes="border-0 p-1"
+              iconProps={{ size: '32' }}
+            />
           </a>
           <a href={GIT_URL} target="_blank">
-            <IconButton icon={Github} color="light" classes="border-0 p-1" iconProps={{ size: '32' }} />
+            <IconButton
+              icon={Github}
+              color="light"
+              classes="border-0 p-1"
+              iconProps={{ size: '32' }}
+            />
           </a>
         </div>
       </nav>

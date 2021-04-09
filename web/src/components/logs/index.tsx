@@ -12,7 +12,13 @@ export default function Logs() {
       const date = new Date(timestamp);
       setLogs((logs) => [
         ...logs,
-        <Log level={level} message={message} account={account} date={date} key={date.getTime()} />
+        <Log
+          level={level}
+          message={message}
+          account={account}
+          date={date}
+          key={date.getTime()}
+        />
       ]);
     });
   }, []);

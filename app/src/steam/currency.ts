@@ -5,7 +5,9 @@ export interface ICurrency {
 }
 
 function replaceAt(str: string, index: number, replacement: string) {
-  return str.substr(0, index) + replacement + str.substr(index + replacement.length);
+  return (
+    str.substr(0, index) + replacement + str.substr(index + replacement.length)
+  );
 }
 
 function replaceComma(str: string) {
@@ -20,11 +22,16 @@ function replaceInvalid(str: string) {
   return str.split('-').join('0').split(' ').join('');
 }
 
-function currency(name: string, currencyId: number, /* [index at pos 0, index at last pos] */ [a, b]: number[]): ICurrency {
+function currency(
+  name: string,
+  currencyId: number,
+  /* [index at pos 0, index at last pos] */ [a, b]: number[]
+): ICurrency {
   return {
     name,
     currencyId,
-    parse: (str: string) => Number(replaceComma(replaceInvalid(str.slice(a, str.length + b))))
+    parse: (str: string) =>
+      Number(replaceComma(replaceInvalid(str.slice(a, str.length + b))))
   };
 }
 

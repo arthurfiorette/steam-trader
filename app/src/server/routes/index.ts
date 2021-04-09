@@ -20,7 +20,9 @@ function responsePattern(_req: Request, res: Response, next: NextFunction) {
   ]) {
     res.send = oldSend;
     logger.http(
-      `Sent a ${status ? 'successful' : 'failed'} response from ${_req.originalUrl}`
+      `Sent a ${status ? 'successful' : 'failed'} response from ${
+        _req.originalUrl
+      }`
     );
     return res.status(code).send({
       status: status ? 'Success' : 'Failure',

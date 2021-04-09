@@ -8,7 +8,12 @@ export function fetchSteamUserImage() {
 
 export function emptyAccount(merge?: AccountOptions | any): AccountOptions {
   return {
-    login: { username: null, password: null, identity: null, sharedSecret: null },
+    login: {
+      username: null,
+      password: null,
+      identity: null,
+      sharedSecret: null
+    },
     status: { gameId: null },
     trading: { owners: [], tradeWith0Profit: false, trashLimit: null },
     ...merge

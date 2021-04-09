@@ -35,7 +35,11 @@ export function getAccount(name: string) {
 }
 
 export function editAccount(options: AccountOptions) {
-  return axios({ method: 'PUT', url: url(options.login.username), data: options });
+  return axios({
+    method: 'PUT',
+    url: url(options.login.username),
+    data: options
+  });
 }
 
 export function login(name: string) {

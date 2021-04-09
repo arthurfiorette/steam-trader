@@ -28,4 +28,3 @@ export function simplifyOffer({
     theirItems: itemsToReceive.map((i) => (mapItems ? getItemName(i) : i))
   };
 }
-

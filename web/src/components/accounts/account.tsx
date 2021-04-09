@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
 import { fetchSteamUserImage } from './util';
-import { AccountOptions, getAccount, logout as logoutAcc, login as loginAcc } from '../../services/accounts';
+import {
+  AccountOptions,
+  getAccount,
+  logout as logoutAcc,
+  login as loginAcc
+} from '../../services/accounts';
 import { IconButton } from '../button';
 import { PencilFill, Power } from 'react-bootstrap-icons';
 import socket from '../../services/socket';
@@ -25,7 +30,9 @@ export default function Account({ account }: any) {
       style={{ backgroundColor: '#fff' }}>
       <div className="align-items-center">
         <ProfilePhoto account={account} />
-        <span className="lead ms-3 align-center text-dark">{login.username}</span>
+        <span className="lead ms-3 align-center text-dark">
+          {login.username}
+        </span>
       </div>
       <div>
         <AccountButton
@@ -40,7 +47,15 @@ export default function Account({ account }: any) {
 }
 
 function AccountButton({ icon, color, onClick }: any) {
-  return <IconButton icon={icon} color={color} onClick={onClick} classes="m-1 p-1" iconProps={{ className: 'm-1' }} />;
+  return (
+    <IconButton
+      icon={icon}
+      color={color}
+      onClick={onClick}
+      classes="m-1 p-1"
+      iconProps={{ className: 'm-1' }}
+    />
+  );
 }
 
 // TODO [#4]: Standardize thumbnail images

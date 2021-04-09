@@ -1,5 +1,13 @@
 import { Router, json } from 'express';
-import { getAll, getByName, create, edit, remove, login, logout } from '../../accounts/controller';
+import {
+  getAll,
+  getByName,
+  create,
+  edit,
+  remove,
+  login,
+  logout
+} from '../../accounts/controller';
 
 const router = Router();
 
