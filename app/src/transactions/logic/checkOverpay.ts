@@ -3,8 +3,6 @@ import { Reason } from '../processor';
 import { OfferContext } from '../types';
 
 export default function middleware(context: OfferContext, next: NextFunction) {
-  context.profit = context.receivePrice - context.givePrice;
-
   const { processor, profit } = context;
   const { trading } = context.processor.account.options;
 

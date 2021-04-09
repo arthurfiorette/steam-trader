@@ -1,20 +1,21 @@
 import axios from 'axios';
 import { ItemPrice, Item } from '../transactions/types';
-import Currency from './currency';
-
-const { parse: cleanPrice } = Currency.DEFAULT;
+import Currency, { ICurrency } from './currency';
 
 const priceOverview = 'http://steamcommunity.com/market/priceoverview';
 
-export async function getItemPrice(item: Item): Promise<ItemPrice> {
+export async function getItemPrice(
+  item: Item,
+  currency: ICurrency | undefined = Currency.USD
+): Promise<ItemPrice> {
   const { appid } = item;
   const params = {
     appid,
-    currency: Currency.DEFAULT.currencyId,
+    currency: currency.currencyId,
     market_hash_name: getItemName(item)
   };
   const { data } = await axios.get(priceOverview, { params });
-  return parseData(data);
+  return parseData(data, currency);
 }
 
 export function getItemName({ market_name, market_hash_name, name }: Item) {
@@ -24,14 +25,20 @@ export function getItemName({ market_name, market_hash_name, name }: Item) {
   return name;
 }
 
-function parseData({ success, lowest_price, median_price }: any): ItemPrice {
+function parseData(
+  { success, lowest_price, median_price }: any,
+  { parse }: ICurrency
+): ItemPrice {
   return {
     success,
-    lowest_price: cleanPrice(lowest_price),
-    median_price: median_price ? cleanPrice(median_price) : undefined
+    lowest_price: parse(lowest_price),
+    median_price: median_price ? parse(median_price) : undefined
   };
 }
 
-export async function getAllItemsPrice(items: Item[]): Promise<ItemPrice[]> {
-  return Promise.all(items.map((item) => getItemPrice(item)));
+export async function getAllItemsPrice(
+  items: Item[],
+  currency?: ICurrency
+): Promise<ItemPrice[]> {
+  return Promise.all(items.map((item) => getItemPrice(item, currency)));
 }

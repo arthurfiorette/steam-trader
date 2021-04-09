@@ -14,7 +14,9 @@ export default function Account({ account }: any) {
   const [{ login, status }, setOptions] = useState<AccountOptions>(account);
 
   useEffect(() => {
-    socket.on('updateAccount', setOptions);
+    socket.on('updateAccount', (acc: AccountOptions) => {
+      if (acc.login.username === login.username) setOptions(acc);
+    });
 
     getAccount(login.username)
       .then(({ data }) => data.response)

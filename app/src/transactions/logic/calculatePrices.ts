@@ -9,27 +9,31 @@ export default async function middleware(
   next: NextFunction
 ) {
   const { processor, itemsToReceive, itemsToGive } = context;
+  const { options } = processor.account;
+  context.receiveItemsPrices = await getAllItemsPrice(
+    itemsToReceive,
+    processor.account.options.status.currency
+  );
 
-  context.receiveItemsPrices = await getAllItemsPrice(itemsToReceive);
-
-  if (
-    context.receiveItemsPrices.some((item) =>
-      isTrash(item, processor.account.options)
-    )
-  ) {
+  if (context.receiveItemsPrices.some((item) => isTrash(item, options))) {
     processor.decline(context, Reason.TRASH);
   }
 
   context.receivePrice = reducePrices(context.receiveItemsPrices);
 
-  context.giveItemsPrices = await getAllItemsPrice(itemsToGive);
+  context.giveItemsPrices = await getAllItemsPrice(
+    itemsToGive,
+    options.status.currency
+  );
   context.givePrice = reducePrices(context.giveItemsPrices);
+
+  context.profit = context.receivePrice - context.givePrice;
 
   return next();
 }
 
-export function isTrash(item: ItemPrice, options: AccountOptions): boolean {
-  return calculatePrice(item) <= options.trading.trashLimit;
+export function isTrash(item: ItemPrice, { trading }: AccountOptions): boolean {
+  return calculatePrice(item) <= trading.trashLimit;
 }
 
 export function calculatePrice({

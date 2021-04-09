@@ -14,7 +14,8 @@ function createContext(offer: Offer, processor: TradeProcessor): OfferContext {
     givePrice: 0,
     receiveItemsPrices: [],
     receivePrice: 0,
-    profit: 0
+    // @ts-ignore
+    profit: 'Not calculated'
   };
 }
 
