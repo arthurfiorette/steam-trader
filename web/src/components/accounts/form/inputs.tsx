@@ -4,7 +4,10 @@ type InputProps = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   title: string;
   help?: string;
-  required?: boolean;
+  inputProps?: React.DetailedHTMLProps<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  >;
 };
 
 type TextInputProps = InputProps & {
@@ -15,7 +18,7 @@ export function TextInput({
   type,
   title,
   help,
-  required,
+  inputProps,
   onChange
 }: TextInputProps) {
   const id = `${title.toLowerCase().replace(/ +/, '')}Id`;
@@ -25,7 +28,7 @@ export function TextInput({
       <input
         className="form-control"
         area-describedby={helpId}
-        {...{ type, id, onChange, required }}
+        {...{ type, id, onChange, ...inputProps }}
         placeholder=" "
         style={{ borderRadius: '1rem' }}
       />
@@ -41,7 +44,7 @@ export function TextInput({
   );
 }
 
-export function CheckInput({ title, help, required, onChange }: InputProps) {
+export function CheckInput({ title, help, inputProps, onChange }: InputProps) {
   const id = `${title.toLowerCase().replace(/ +/, '')}Id`;
   const helpId = `${id}Help`;
   return (
@@ -50,7 +53,7 @@ export function CheckInput({ title, help, required, onChange }: InputProps) {
         className="form-check-input"
         type="checkbox"
         area-describedby={helpId}
-        {...{ id, onChange, required }}
+        {...{ id, onChange, ...inputProps }}
       />
       <label className="form-check-label" htmlFor={id}>
         {title}

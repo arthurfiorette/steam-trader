@@ -26,34 +26,34 @@ export default function Form({ initialData = emptyAccount() }: FormProps) {
     });
   };
 
-  const INPUTS: [string, string, string, (val: any) => void, boolean?][] = [
+  const INPUTS: [string, string, string, (val: any) => void, {}?][] = [
     [
       'text',
       'Username',
       'Your steam username',
       (val) => (login.username = val),
-      true
+      { required: true }
     ],
     [
       'password',
       'Password',
       'Your steam password',
       (val) => (login.password = val),
-      true
+      { required: true }
     ],
     [
       'password',
       'Shared Secret',
       'Your steam shared secret',
       (val) => (login.sharedSecret = val),
-      true
+      { required: true }
     ],
     [
       'password',
       'Identity Secret',
       'Your steam identity secret',
       (val) => (login.identity = val),
-      true
+      { required: true }
     ],
     [
       'number',
@@ -66,7 +66,7 @@ export default function Form({ initialData = emptyAccount() }: FormProps) {
       'Trash Limit',
       'The minimum item price accepted',
       (val) => (trading.trashLimit = val),
-      true
+      { step: 0.01 }
     ],
     [
       'number',
@@ -84,11 +84,11 @@ export default function Form({ initialData = emptyAccount() }: FormProps) {
 
   return (
     <form className="needs-validation" {...{ onSubmit }}>
-      {INPUTS.map(([type, title, help, callback, required]: any) => {
+      {INPUTS.map(([type, title, help, callback, inputProps]: any) => {
         const Input = getInput(type);
         return (
           <Input
-            {...{ type, title, help, required }}
+            {...{ type, title, help, inputProps }}
             onChange={({
               target: { type, checked, value }
             }: React.ChangeEvent<HTMLInputElement>) => {
