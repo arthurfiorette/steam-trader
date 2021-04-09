@@ -5,10 +5,11 @@ export function getColor(level: string) {
     case 'info':
       return 'info';
     case 'debug':
-      return 'dark';
+    case 'http':
+      return 'success';
     case 'error':
       return 'danger';
     default:
-      return 'secondary';
+      return 'dark';
   }
 }

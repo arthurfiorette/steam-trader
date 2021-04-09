@@ -1,7 +1,17 @@
-import Account, { AccountOptions } from './account';
-import { socketUpdater } from '../server/socket/updater';
+import Account from './account';
+import { AccountOptions } from './options';
+import { updateAll } from '../server/socket/updater';
+import { readAccounts, writeAccounts } from '../storage/accounts';
 
 const accounts = new Map<string, Account>();
+
+readAccounts().then((opt) => {
+  opt
+    .map((opt) => new Account(opt))
+    .forEach((acc) => {
+      accounts.set(acc.options.login.username, acc);
+    });
+});
 
 export function getAll() {
   return [true, [...accounts.values()].map((acc) => acc.serialize())];
@@ -41,7 +51,8 @@ export function create(options: AccountOptions) {
   } else {
     const account = new Account(options);
     accounts.set(username, account);
-    update();
+    emitAccounts();
+    saveAccounts();
     return [true, `Created user ${username}`, 201];
   }
 }
@@ -54,6 +65,7 @@ export function edit(name: string, { status, trading }: AccountOptions) {
     account.logoff();
     account.options.status = { ...account.options.status, ...status };
     account.options.trading = { ...account.options.trading, ...trading };
+    saveAccounts();
     return [true, 'Modified.'];
   }
 }
@@ -65,11 +77,16 @@ export function remove(name: string) {
   } else {
     account.logoff();
     accounts.delete(name);
-    update();
+    emitAccounts();
+    saveAccounts();
     return [true, 'Deleted.'];
   }
 }
 
-function update() {
-  socketUpdater.updateAll([...accounts.values()]);
+function emitAccounts() {
+  updateAll([...accounts.values()]);
+}
+
+function saveAccounts() {
+  writeAccounts([...accounts.values()].map((acc) => acc.options));
 }

@@ -1,29 +1,12 @@
 import { SteamCommunity, TradeOfferManager, SteamUser } from '../untyped';
 import SteamTotp from 'steam-totp';
 import TradeProcessor from '../transactions/processor';
-import { ICurrency, getCurrency } from '../steam/currency';
+import { getCurrency } from '../steam/currency';
 import { Offer } from '../transactions/types';
 import createLogger from '../logger';
 import { serializer } from './serializer';
-import { socketUpdater } from '../server/socket/updater';
-
-export interface AccountOptions {
-  readonly login: {
-    username: string;
-    password: string;
-    sharedSecret: string;
-    identity: string;
-  };
-  status: {
-    gameId: number;
-    currency?: ICurrency;
-  };
-  trading: {
-    trashLimit: number;
-    owners: string[];
-    tradeWith0Profit: boolean;
-  };
-}
+import { update } from '../server/socket/updater';
+import { AccountOptions } from './options';
 
 export default class Account {
   readonly client = new SteamUser();
@@ -38,7 +21,9 @@ export default class Account {
 
   constructor(readonly options: AccountOptions) {
     this.logger = createLogger(options.login.username);
-    this.logger.info(`'${options.login.username}' was created, waiting for login...`);
+    this.logger.info(
+      `'${options.login.username}' was created, waiting for login...`
+    );
   }
 
   login() {
@@ -56,13 +41,25 @@ export default class Account {
       machineName: 'steam-trader'
     });
     this.logger.debug('Starting to listen!');
-    client.on('webSession', (_sessionId: number, cookies: string[]) => this.onWebSession(cookies));
-    client.on('wallet', (_hasWallet: boolean, currency: number) => this.setCurrency(currency));
+    client.on('webSession', (_sessionId: number, cookies: string[]) =>
+      this.onWebSession(cookies)
+    );
+    client.on('wallet', (_hasWallet: boolean, currency: number) =>
+      this.setCurrency(currency)
+    );
     client.on('loggedOn', () => this.onLogin());
-    client.on('disconnected', (_eResult: number, msg: string) => this.onDisconnect(msg));
-    client.on('steamGuard', (_domain: any, callback: (code: string) => void) => callback(this.getAuthCode()));
+    client.on('disconnected', (_eResult: number, msg: string) =>
+      this.onDisconnect(msg)
+    );
+    client.on('steamGuard', (_domain: any, callback: (code: string) => void) =>
+      callback(this.getAuthCode())
+    );
     manager.on('newOffer', (offer: Offer) => trader.begin(offer));
-    client.on('error', (err: any) => this.logger.error(`Occurred an error on the last operation: ${err.message}`));
+    client.on('error', (err: any) =>
+      this.logger.error(
+        `Occurred an error on the last operation: ${err.message}`
+      )
+    );
   }
 
   logoff() {
@@ -79,12 +76,12 @@ export default class Account {
     logger.info('We logged in');
     client.setPersona(1);
     client.gamesPlayed(Number(options.status.gameId));
-    socketUpdater.update(this);
+    update(this);
   }
 
   private onDisconnect(msg: string) {
     this.logger.info(`We logged off: ${msg}`);
-    socketUpdater.update(this);
+    update(this);
   }
 
   private onWebSession(cookies: string[]) {

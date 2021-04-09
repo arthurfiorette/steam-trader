@@ -19,8 +19,6 @@ export function hasInvalidKeys(obj: {}): boolean {
   return Object.keys(obj).some((key) => {
     const val = obj[key];
     if (val === null || Number.isNaN(val) || val === undefined || val === '') {
-      console.log(key, val);
-      console.log(val === null, Number.isNaN(val), val === undefined, val === '');
       return true;
     }
     if (typeof val === 'object') return hasInvalidKeys(val);

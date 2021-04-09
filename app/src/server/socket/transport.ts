@@ -1,14 +1,14 @@
 import Transport from 'winston-transport';
-import { Server } from 'socket.io';
+import { io } from '../index';
 
 export default class SocketTransport extends Transport {
-  constructor({ format, level }: any, public server?: Server) {
+  constructor({ format, level }: any) {
     super({ format, level });
     this.setMaxListeners(30);
   }
 
   log(info: any, next: () => void) {
-    this.server?.emit('log', info);
+    io.emit('log', info);
     return next?.();
   }
 }

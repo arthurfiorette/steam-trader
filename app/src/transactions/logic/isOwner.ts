@@ -3,10 +3,10 @@ import { Reason } from '../processor';
 import { OfferContext } from '../types';
 
 export default function middleware(context: OfferContext, next: NextFunction) {
-  const { processor, offer } = context;
+  const { processor, partner } = context;
   const { owners } = processor.account.options.trading;
 
-  if (owners.includes(offer.partner.getSteamID64())) {
+  if (owners.includes(partner.getSteamID64())) {
     processor.accept(context, Reason.OWNER);
     return;
   }

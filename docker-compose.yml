@@ -6,6 +6,7 @@ services:
       - ./app/.env
     volumes:
       - ./app/output:/usr/app/output
+      - ./app/config:/usr/app/config
     ports:
       - 1228:1228
   web:

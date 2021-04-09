@@ -5,3 +5,4 @@ dist
 *_ignore*
 *.log
 output
+/app/config

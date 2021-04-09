@@ -2,13 +2,13 @@ import Account from '../accounts/account';
 import { Offer, OfferContext } from './types';
 import logic from './logic';
 import Pipeline from '../util/middleware';
-import serialize from './serializer';
+import { saveOffer } from '../storage/trades';
 
 export type Processor = (offer: Offer) => Promise<Offer>;
 
 function createContext(offer: Offer, processor: TradeProcessor): OfferContext {
   return {
-    offer,
+    ...offer,
     processor,
     giveItemsPrices: [],
     givePrice: 0,
@@ -30,27 +30,33 @@ export default class TradeProcessor {
 
   async decline(offer: OfferContext, reason: Reason) {
     const { logger } = this.account;
-    logger.info(`${reason}. Declining trade ${offer.offer.id}...`);
-    await offer.offer.decline((err) => {
+    logger.info(`${reason}. Declining trade ${offer.id}...`);
+    await offer.decline((err) => {
       if (err) {
-        logger.error(`Catch an error while trying to decline the trade ${offer.offer.id}`, err);
+        logger.error(
+          `Catch an error while trying to decline the trade ${offer.id}`,
+          err
+        );
         return;
       }
-      serialize(offer, reason, false);
-      logger.info(`Declined trade ${offer.offer.id}`);
+      saveOffer(offer, reason, false);
+      logger.info(`Declined trade ${offer.id}`);
     });
   }
 
   async accept(offer: OfferContext, reason: Reason) {
     const { logger } = this.account;
-    logger.info(`${reason}. Accepting trade ${offer.offer.id}...`);
-    await offer.offer.accept((err) => {
+    logger.info(`${reason}. Accepting trade ${offer.id}...`);
+    await offer.accept((err) => {
       if (err) {
-        logger.error(`Catch an error while trying to accept the trade ${offer.offer.id}`, err);
+        logger.error(
+          `Catch an error while trying to accept the trade ${offer.id}`,
+          err
+        );
         return;
       }
-      serialize(offer, reason, true);
-      logger.info(`Accepted trade ${offer.offer.id}`);
+      saveOffer(offer, reason, true);
+      logger.info(`Accepted trade ${offer.id}`);
     });
   }
 }

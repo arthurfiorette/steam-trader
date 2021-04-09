@@ -3,9 +3,9 @@ import { Reason } from '../processor';
 import { OfferContext } from '../types';
 
 export default function middleware(context: OfferContext, next: NextFunction) {
-  const { processor, offer } = context;
+  const { processor, isGlitched } = context;
 
-  if (offer.isGlitched()) {
+  if (isGlitched()) {
     processor.decline(context, Reason.GLITCHED);
     return;
   }

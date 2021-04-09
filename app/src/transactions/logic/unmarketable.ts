@@ -3,9 +3,9 @@ import { Reason } from '../processor';
 import { OfferContext } from '../types';
 
 export default function middleware(context: OfferContext, next: NextFunction) {
-  const { processor, offer } = context;
+  const { processor, itemsToReceive } = context;
 
-  const unmarketable = offer.itemsToReceive.filter((item) => !item.marketable);
+  const unmarketable = itemsToReceive.filter((item) => !item.marketable);
   if (unmarketable.length > 0) {
     processor.decline(context, Reason.UNMARKETABLE);
   }

@@ -1,19 +1,13 @@
-import { Server } from 'socket.io';
 import Account from '../../accounts/account';
+import { io } from '../index';
 
-export default class SocketUpdater {
-  constructor(public server?: Server) {}
-
-  update(acc: Account) {
-    this.server?.emit('updateAccount', acc.serialize());
-  }
-
-  updateAll(accounts: Account[]) {
-    this.server?.emit(
-      'updateAccounts',
-      accounts.map((acc) => acc.serialize())
-    );
-  }
+export function update(acc: Account) {
+  io.emit('updateAccount', acc.serialize());
 }
 
-export const socketUpdater = new SocketUpdater();
+export function updateAll(accounts: Account[]) {
+  io.emit(
+    'updateAccounts',
+    accounts.map((acc) => acc.serialize())
+  );
+}
