@@ -8,16 +8,9 @@ const { combine, json, timestamp, colorize, cli } = format;
 const levelFormat = { level: 'debug', format: combine(timestamp(), json()) };
 
 const socketTransport = new SocketTransport(levelFormat);
-const loggers: Logger[] = [];
 
 export default function createLogger(account: string) {
-  const logger = _createLogger(
-    account,
-    getFileTransport(account),
-    socketTransport
-  );
-  loggers.push(logger);
-  return logger;
+  return _createLogger(account, getFileTransport(account), socketTransport);
 }
 
 function _createLogger(account: string, ..._transports: Transport[]) {
