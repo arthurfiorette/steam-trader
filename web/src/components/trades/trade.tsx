@@ -2,7 +2,7 @@ import { ItemSet } from './item';
 import { Trade as ITrade } from './util';
 import { ArrowLeftRight } from 'react-bootstrap-icons';
 
-// TODO: Display the account that received the trade and display the profit currency
+// TODO [#7]: Display the account that received the trade and display the profit currency
 export default function Trade({ trade }: { trade: ITrade }) {
   const title = `Profit: ${trade.profit} - Partner: ${trade.partner} - Trade Id: ${trade.offerId}`;
   return (
