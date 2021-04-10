@@ -90,7 +90,7 @@ After building and installing it for the first time, you are ready to go and you
 
 ## License
 
-Licensed under the **GNU General Public License v3.0**. See <a href="LICENSE" target="_blank">`LICENSE.txt`</a> for more informations.
+Licensed under the **GNU General Public License v3.0**. See <a href="LICENSE.txt" target="_blank">`LICENSE`</a> for more informations.
 
 ## Contact
 
