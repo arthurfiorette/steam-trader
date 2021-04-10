@@ -54,11 +54,36 @@ To get them easily, you will need to enable [SDA](https://github.com/Jessecar96/
 
 Now, to start this application, you can **_run the [`start.cmd`](start.cmd) script at the root of this project_** and follow the installation and startup steps or run it manually as follows:
 
-1. If you have a docker virtual machine, you can simply type `docker-compose up` or use any docker instance at any hosting service.
+1. ##### You can host it docker on any hosting service that supports containerized applications or using the docker locally, simply by typing:
 
-2. If you doesn't have any access or knowledge to use docker, you can run it having **Node.JS** installed.
-   - To start the server, open the app folder, install and compile by running `npm install` and after `npm run build`. Start by running `npm start`.
-   - To start the web page, open the web folder, install with `npm install` and build running `npm run build`. Start by running `npm start`.
+```sh
+$ docker-compose up
+
+# Or in detached mnode:
+$ docker-compose up -d
+```
+
+2. ##### If you have no access or knowledge to use Docker, you can run it having **Node.JS** installed. As we have a `package.json` in our root containing some scripts, all you need to do is follow these steps.
+
+<p align="center">
+  ⚠ <b>Attention:</b> Always prefer to use Docker, as this application was built based on it and is totally more optimized.
+</p>
+
+```sh
+# Install yarn and concurrently globally.
+$ npm run prepare
+
+# Install all dependencies.
+$ npm run install
+
+# Build and compile all code.
+$ npm run build
+
+# Start concurrently the web and the app.
+$ npm run start
+```
+
+After building and installing it for the first time, you are ready to go and you can start it every time only running the last command.
 
 ## License
 

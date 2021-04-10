@@ -1,15 +1,17 @@
 FROM node:14.16-alpine
 
+LABEL maintainer="arthur.fiorette@gmail.com"
+LABEL version="1.3.0"
+
 WORKDIR /usr/web
 
 COPY . .
 
-RUN npm install
-RUN npm run build
-RUN npm run build:server
+RUN yarn && yarn cache clean
+RUN yarn run build
 
 ENV NODE_ENV=production
 
 EXPOSE 1227
 
-CMD ["npm", "run", "start"]
+CMD ["yarn", "start"]
