@@ -1,7 +1,6 @@
 FROM node:14.16-alpine
 
 LABEL maintainer="arthur.fiorette@gmail.com"
-LABEL version="1.3.0"
 
 WORKDIR /usr/app
 
