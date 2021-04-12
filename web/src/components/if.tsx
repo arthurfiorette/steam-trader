@@ -1,11 +1,9 @@
-import { Fragment } from 'react';
-
 type ChildrenProp = { children: any };
 
 type IfProps = ChildrenProp & { test: boolean };
 
 export default function If({ test, children }: IfProps) {
-  let elseChild = <Fragment children={[]} />;
+  let elseChild = <>{[]}</>;
   let childArr = [];
 
   if (Array.isArray(children)) {
@@ -17,9 +15,9 @@ export default function If({ test, children }: IfProps) {
     childArr.push(children);
   }
 
-  return <Fragment>{test ? childArr : elseChild}</Fragment>;
+  return <>{test ? childArr : elseChild}</>;
 }
 
 export function Else({ children }: ChildrenProp) {
-  return <Fragment>{children}</Fragment>;
+  return <>{children}</>;
 }

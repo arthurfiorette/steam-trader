@@ -14,8 +14,8 @@ export function emptyAccount(merge?: AccountOptions | any): AccountOptions {
       identity: null,
       sharedSecret: null
     },
-    status: { gameId: null },
-    trading: { owners: [], tradeWith0Profit: false, trashLimit: null },
+    status: { gameId: -1 },
+    trading: { owners: [], tradeWith0Profit: false, trashLimit: 0 },
     ...merge
   };
 }

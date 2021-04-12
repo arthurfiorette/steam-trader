@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import server from './server';
 import * as Ads from './ads';
 

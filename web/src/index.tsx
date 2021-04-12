@@ -1,14 +1,15 @@
-import { Fragment } from 'react';
+
 import ReactDOM from 'react-dom';
 
 import Header from './header';
-import Main from './main';
+import App from './app';
+
 
 const element = (
-  <Fragment>
+  <>
     <Header />
-    <Main />
-  </Fragment>
+    <App />
+  </>
 );
 
 ReactDOM.render(element, document.getElementById('app'));

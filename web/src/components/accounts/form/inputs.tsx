@@ -66,12 +66,3 @@ export function CheckInput({ title, help, inputProps, onChange }: InputProps) {
     </div>
   );
 }
-
-export function getInput(type: string) {
-  switch (type) {
-    case 'checkbox':
-      return CheckInput;
-    default:
-      return TextInput;
-  }
-}

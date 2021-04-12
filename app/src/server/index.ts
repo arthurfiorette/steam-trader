@@ -9,7 +9,7 @@ const app = express();
 const http = createServer(app);
 export const io = new Server(http, { cors: { origin: process.env.CORS } });
 
-app.use(cors());
+app.use(cors({ origin: process.env.CORS }));
 
 setRoutes(app);
 

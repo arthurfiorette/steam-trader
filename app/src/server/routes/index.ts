@@ -1,5 +1,4 @@
 import { Express, NextFunction, Request, Response } from 'express';
-import { logger } from '../../logger';
 import users from './users';
 import ping from './ping';
 import _404 from './404';
@@ -19,11 +18,6 @@ function responsePattern(_req: Request, res: Response, next: NextFunction) {
     number?
   ]) {
     res.send = oldSend;
-    logger.http(
-      `Sent a ${status ? 'successful' : 'failed'} response from ${
-        _req.originalUrl
-      }`
-    );
     return res.status(code).send({
       status: status ? 'Success' : 'Failure',
       timestamp: new Date().toISOString(),

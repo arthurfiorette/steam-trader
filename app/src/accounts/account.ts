@@ -75,7 +75,9 @@ export default class Account {
     const { options, client, logger } = this;
     logger.info('We logged in');
     client.setPersona(1);
-    client.gamesPlayed(Number(options.status.gameId));
+    if (options.status.gameId !== -1) {
+      client.gamesPlayed(Number(options.status.gameId));
+    }
     update(this);
   }
 

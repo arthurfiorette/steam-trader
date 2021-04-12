@@ -4,11 +4,12 @@ import _webpackDevServer from 'webpack-dev-server';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+const production = process.env.NODE_ENV === 'production';
 
 const resolve = (...segment: string[]) => path.resolve(__dirname, ...segment);
 
 const config: Configuration = {
-  mode: 'production',
+  mode: production ? 'production' : 'development',
   entry: resolve('src', 'index.tsx'),
   output: {
     path: resolve('dist'),
@@ -18,6 +19,7 @@ const config: Configuration = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
   },
+  devtool: production ? 'eval' : false,
   module: {
     rules: [
       {
@@ -70,8 +72,7 @@ const config: Configuration = {
     react: 'React',
     'react-dom': 'ReactDOM',
     'socket.io-client': 'io',
-    axios: 'axios',
-    reactBootstrapIcons: 'react-bootstrap-icons'
+    axios: 'axios'
   }
 };
 
