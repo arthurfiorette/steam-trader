@@ -7,6 +7,7 @@ import createLogger from '../logger';
 import { serializer } from './serializer';
 import { update } from '../server/socket/updater';
 import { AccountOptions } from './options';
+import { nextTick } from 'process';
 
 export default class Account {
   readonly client = new SteamUser();
@@ -78,12 +79,12 @@ export default class Account {
     if (options.status.gameId !== -1) {
       client.gamesPlayed(Number(options.status.gameId));
     }
-    update(this);
+    this.update();
   }
 
   private onDisconnect(msg: string) {
     this.logger.info(`We logged off: ${msg}`);
-    update(this);
+    this.update();
   }
 
   private onWebSession(cookies: string[]) {
@@ -105,6 +106,10 @@ export default class Account {
     const auth = SteamTotp.generateAuthCode(sharedSecret);
     this.logger.debug(`Requested steam guard auth code '${auth}'`);
     return auth;
+  }
+
+  update() {
+    nextTick(() => update(this));
   }
 
   get online() {
