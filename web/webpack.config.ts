@@ -58,7 +58,7 @@ const config: Configuration = {
     new HtmlWebpackPlugin({
       template: resolve('public', 'index.html'),
       favicon: resolve('public/favicon.ico'),
-      minify: true,
+      minify: true
     })
   ],
   devServer: {

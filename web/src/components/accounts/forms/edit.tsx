@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AccountOptions,  editAccount } from '../../../services/accounts';
+import { AccountOptions, editAccount } from '../../../services/accounts';
 import { CheckInput, TextInput } from './inputs';
 import { emptyAccount, hasInvalidKeys } from '../util';
 import { DarkButton, IconButton } from '../../button';
