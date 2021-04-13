@@ -29,13 +29,6 @@
 > Check it out in <a href="https://github.com/ArthurFiorette/steam-trader/releases/tag/v1.4.0" target="_blank">v1.4.0</a>!
 > </pre>
 
-<br />
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ArthurFiorette/steam-trader/main/.github/assets/webpage.png"
-        alt="Web panel empty" />
-</p>
-
 ## About
 
 This project is an open source initiative to host multiple steam accounts making them exchange bots, automatically calculating the prices and items in each exchange sent and responding to them at the same time, like the Trading Card Exchange bots. We still have a lot to improve, such as a better interface, smarter verification steps, etc. Feel free to ask any questions or suggestions.
