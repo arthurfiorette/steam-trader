@@ -57,7 +57,8 @@ const config: Configuration = {
     new MiniCssExtractPlugin({ filename: 'styles.[contenthash].css' }),
     new HtmlWebpackPlugin({
       template: resolve('public', 'index.html'),
-      favicon: resolve('public/favicon.ico')
+      favicon: resolve('public/favicon.ico'),
+      minify: true,
     })
   ],
   devServer: {

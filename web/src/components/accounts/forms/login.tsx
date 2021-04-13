@@ -4,14 +4,9 @@ import { CheckInput, TextInput } from './inputs';
 import { emptyAccount, hasInvalidKeys } from '../util';
 import { DarkButton } from '../../button';
 
-export interface FormProps {
-  initialData?: AccountOptions;
-  onFormSend?: () => void;
-}
-
-export default function Form({ initialData = emptyAccount() }: FormProps) {
+export default function Form() {
   const [{ login, status, trading }, setData] = useState<AccountOptions>(
-    initialData
+    emptyAccount()
   );
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -43,6 +38,7 @@ export default function Form({ initialData = emptyAccount() }: FormProps) {
         help="Your steam username"
         onChange={onChangeFactory((val) => (login.username = val))}
         inputProps={{ required: true }}
+        idPrefix="edit"
       />
       <TextInput
         type="password"
@@ -50,6 +46,7 @@ export default function Form({ initialData = emptyAccount() }: FormProps) {
         help="Your steam password"
         onChange={onChangeFactory((val) => (login.password = val))}
         inputProps={{ required: true }}
+        idPrefix="edit"
       />
       <TextInput
         type="password"
@@ -57,6 +54,7 @@ export default function Form({ initialData = emptyAccount() }: FormProps) {
         help="Your steam shared secret"
         onChange={onChangeFactory((val) => (login.sharedSecret = val))}
         inputProps={{ required: true }}
+        idPrefix="edit"
       />
       <TextInput
         type="password"
@@ -64,29 +62,34 @@ export default function Form({ initialData = emptyAccount() }: FormProps) {
         help="Your steam identity secret"
         onChange={onChangeFactory((val) => (login.identity = val))}
         inputProps={{ required: true }}
+        idPrefix="edit"
       />
       <TextInput
         type="number"
         title="Game Id"
         help="A steam game id to keep playing"
         onChange={onChangeFactory((val) => (status.gameId = val))}
+        idPrefix="edit"
       />
       <TextInput
         type="number"
         title="Trash Limit"
         help="The minimum item price accepted"
         onChange={onChangeFactory((val) => (trading.trashLimit = val))}
+        idPrefix="edit"
       />
       <TextInput
         type="number"
         title="Owner Id"
         help="It will ALWAYS accept trades from this steam id"
         onChange={onChangeFactory((val) => (trading.owners = [val]))}
+        idPrefix="edit"
       />
       <CheckInput
         title="Trade With 0 Profit"
         help="Accept trades with the same two prices?"
         onChange={onChangeFactory((val) => (trading.tradeWith0Profit = val))}
+        idPrefix="edit"
       />
       <DarkButton type="submit">Create</DarkButton>
     </form>

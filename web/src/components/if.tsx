@@ -1,4 +1,4 @@
-type ChildrenProp = { children: any };
+type ChildrenProp = { children?: any };
 
 type IfProps = ChildrenProp & { test: boolean };
 

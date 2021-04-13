@@ -2,7 +2,7 @@ import { getColor } from './util';
 
 export default function Log({ level, message, date, account }: any) {
   return (
-    <li key={date.getTime()}>
+    <li key={`${date.getTime()}-${message.length}`}>
       <span
         className={`text-${getColor(level)}`}
         data-bs-toggle="tooltip"

@@ -42,6 +42,10 @@ export function editAccount(options: AccountOptions) {
   });
 }
 
+export function deleteAccount(name: string) {
+  return axios({ method: 'DELETE', url: url(name) });
+}
+
 export function login(name: string) {
   return axios({ method: 'POST', url: url(`${name}/login`) });
 }

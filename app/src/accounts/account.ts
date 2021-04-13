@@ -25,42 +25,43 @@ export default class Account {
     this.logger.info(
       `'${options.login.username}' was created, waiting for login...`
     );
-  }
 
-  login() {
-    this.logger.info('Attempting to logging In');
-    if (this.online) {
-      this.logger.warn('Login attempt, but we are already logged in');
-      return;
-    }
-    const { client, options, manager, trader } = this;
-    const { username: accountName, password } = options.login;
-    client.logOn({
-      accountName,
-      password,
-      twoFactorCode: this.getAuthCode(),
-      machineName: 'steam-trader'
-    });
-    this.logger.debug('Starting to listen!');
-    client.on('webSession', (_sessionId: number, cookies: string[]) =>
+    this.client.on('webSession', (_sessionId: number, cookies: string[]) =>
       this.onWebSession(cookies)
     );
-    client.on('wallet', (_hasWallet: boolean, currency: number) =>
+    this.client.on('wallet', (_hasWallet: boolean, currency: number) =>
       this.setCurrency(currency)
     );
-    client.on('loggedOn', () => this.onLogin());
-    client.on('disconnected', (_eResult: number, msg: string) =>
+    this.client.on('loggedOn', () => this.onLogin());
+    this.client.on('disconnected', (_eResult: number, msg: string) =>
       this.onDisconnect(msg)
     );
-    client.on('steamGuard', (_domain: any, callback: (code: string) => void) =>
-      callback(this.getAuthCode())
+    this.client.on(
+      'steamGuard',
+      (_domain: any, callback: (code: string) => void) =>
+        callback(this.getAuthCode())
     );
-    manager.on('newOffer', (offer: Offer) => trader.begin(offer));
-    client.on('error', (err: any) =>
+    this.manager.on('newOffer', (offer: Offer) => this.trader.begin(offer));
+    this.client.on('error', (err: any) =>
       this.logger.error(
         `Occurred an error on the last operation: ${err.message}`
       )
     );
+  }
+
+  login() {
+    const { client, options, logger, online } = this;
+    logger.info('Attempting to logging In');
+    if (online) {
+      logger.warn('Login attempt, but we are already logged in');
+      return;
+    }
+    client.logOn({
+      accountName: options.login.username,
+      password: options.login.password,
+      twoFactorCode: this.getAuthCode(),
+      machineName: 'steam-trader'
+    });
   }
 
   logoff() {

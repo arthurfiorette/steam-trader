@@ -13,10 +13,9 @@ export default function App() {
       testConnection().then((conn) => conn !== connected && setConnected(conn));
 
     connect();
-
     const interval = setInterval(connect, RECONNECT_INTERVAL * 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [connected]);
 
   return (
     <If test={connected}>

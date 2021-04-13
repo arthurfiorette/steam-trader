@@ -17,6 +17,7 @@ export default function Trades() {
         children[children.length - 1]?.scrollIntoView({ behavior: 'smooth' });
       }
     });
+    return () => setTrades([]);
   }, []);
 
   return <ul ref={ulRef}>{trades}</ul>;

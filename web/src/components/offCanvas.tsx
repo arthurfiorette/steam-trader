@@ -5,9 +5,9 @@ export default function OffCanvas({ id, title, children }: any) {
     <div
       className="offcanvas offcanvas-start"
       id={id}
-      aria-labelledby="offcanvasLabel">
+      aria-labelledby={`${id}-offcanvasLabel`}>
       <div className="offcanvas-header pb-2">
-        <h5 className="offcanvas-title" id="offcanvasLabel">
+        <h5 className="offcanvas-title" id={`${id}-offcanvasLabel`}>
           {title}
         </h5>
         <CloseButton data-bs-dismiss="offcanvas" aria-label="Close" />

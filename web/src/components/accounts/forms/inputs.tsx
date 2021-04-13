@@ -1,13 +1,14 @@
 import If from '../../if';
 
 type InputProps = {
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   title: string;
   help?: string;
   inputProps?: React.DetailedHTMLProps<
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   >;
+  idPrefix?: string;
 };
 
 type TextInputProps = InputProps & {
@@ -19,10 +20,10 @@ export function TextInput({
   title,
   help,
   inputProps,
+  idPrefix = '',
   onChange
 }: TextInputProps) {
-  const id = `${title.toLowerCase().replace(/ +/, '')}Id`;
-  const helpId = `${id}Help`;
+  const [id, helpId] = generateId(idPrefix, title);
   return (
     <div className="form-floating mb-3">
       <input
@@ -44,9 +45,14 @@ export function TextInput({
   );
 }
 
-export function CheckInput({ title, help, inputProps, onChange }: InputProps) {
-  const id = `${title.toLowerCase().replace(/ +/, '')}Id`;
-  const helpId = `${id}Help`;
+export function CheckInput({
+  title,
+  help,
+  inputProps,
+  idPrefix = '',
+  onChange
+}: InputProps) {
+  const [id, helpId] = generateId(idPrefix, title);
   return (
     <div className="mb-3 form-check">
       <input
@@ -65,4 +71,9 @@ export function CheckInput({ title, help, inputProps, onChange }: InputProps) {
       </If>
     </div>
   );
+}
+
+function generateId(prefix: string, name: string) {
+  const id = `${prefix}-${name.toLowerCase().replace(/ +/, '')}Id`;
+  return [id, `${id}Help`];
 }

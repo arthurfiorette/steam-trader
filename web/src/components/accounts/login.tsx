@@ -1,5 +1,5 @@
-import OffcanvasTemplate from '../offCanvas';
-import Form from './form/login';
+import OffcanvasTemplate from '../offcanvas';
+import Form from './forms/login';
 import { DarkButton } from '../button';
 import { GIT_URL } from '../../constants';
 
