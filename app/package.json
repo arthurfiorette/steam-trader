@@ -1,6 +1,6 @@
 {
   "name": "steam-trader-app",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "An deployment ready and automated steam trade client!",
   "main": "src/index.ts",
   "private": true,

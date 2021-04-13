@@ -25,8 +25,8 @@
 </p>
 
 > <pre align="center">
-> Now all your work can be done on your browser:
-> <a href="https://github.com/ArthurFiorette/steam-trader/releases/tag/v1.3.0" target="_blank">Introducing the dashboard</a>!
+> Now more stable and with fewer bugs!
+> Check it out in <a href="https://github.com/ArthurFiorette/steam-trader/releases/tag/v1.4.0" target="_blank">v1.4.0</a>!
 > </pre>
 
 <br />
