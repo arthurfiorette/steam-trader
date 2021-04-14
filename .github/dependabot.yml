@@ -1,10 +1,10 @@
 version: 2
 updates:
   - package-ecosystem: 'npm'
-    directory: "/"
-    schedule: 
+    directory: '/'
+    schedule:
       interval: 'live'
   - package-ecosystem: 'docker'
-    directory: "/"
-    schedule: 
+    directory: '/'
+    schedule:
       interval: 'live'
