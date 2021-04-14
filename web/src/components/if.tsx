@@ -1,23 +1,30 @@
-type ChildrenProp = { children?: any };
+import React from 'react';
 
-type IfProps = ChildrenProp & { test: boolean };
+export const If = (({ test, children }) => {
+  const elseElements: any[] = [];
+  const ifElements: any[] = [];
 
-export default function If({ test, children }: IfProps) {
-  let elseChild = <>{[]}</>;
-  let childArr = [];
+  // Push element to correct array
+  const push = (el: any) =>
+    (el?.type === Else ? elseElements : ifElements).push(el);
 
+  // More than one child
   if (Array.isArray(children)) {
-    for (let child of children) {
-      if (child.type === Else) elseChild.props.children.push(child);
-      else childArr.push(child);
-    }
+    children.forEach(push);
   } else {
-    childArr.push(children);
+    push(children);
   }
 
-  return <>{test ? childArr : elseChild}</>;
-}
+  return <>{test ? ifElements : elseElements}</>;
+}) as React.FC<{
+  test: boolean;
+  /* Force a child to exists and ignore types */
+  children: any;
+}>;
 
-export function Else({ children }: ChildrenProp) {
-  return <>{children}</>;
-}
+/**
+ * Dummy component just to crate the else element
+ */
+export const Else = (({ children }) => {
+  return children;
+}) as React.FC<{}>;

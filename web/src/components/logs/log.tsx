@@ -1,6 +1,6 @@
 import { getColor } from './util';
 
-export default function Log({ level, message, date, account }: any) {
+export const Log = (({ level, message, date, account }) => {
   return (
     <li key={`${date.getTime()}-${message.length}`}>
       <span
@@ -14,13 +14,9 @@ export default function Log({ level, message, date, account }: any) {
         className="ms-3 text-wrap text-muted mw-100"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
-        title={getTooltipTitle(account)}>
+        title={account === 'system' ? 'System log' : account}>
         {message}
       </span>
     </li>
   );
-}
-
-function getTooltipTitle(text: string) {
-  return text === 'system' ? 'System log' : text;
-}
+}) as React.FC<{ level: string; message: string; date: Date; account: string }>;

@@ -1,21 +1,4 @@
-export interface Trade {
-  account: string;
-  partner: string;
-  offerId: string;
-  profit: number;
-  ourItems: Item[];
-  theirItems: Item[];
-  reason: string;
-  accepted: boolean;
-}
-
-export interface Item {
-  name: string;
-  market_name: string;
-  market_hash_name: string;
-  name_color: string;
-  icon_url: string;
-}
+import {Item} from '../../types'
 
 export function getItemName({ market_name, market_hash_name, name }: Item) {
   const isEmpty = (n: string) => n && n.length !== 0;

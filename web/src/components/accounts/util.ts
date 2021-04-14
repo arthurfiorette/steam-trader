@@ -1,4 +1,4 @@
-import { AccountOptions } from '../../services/accounts';
+import { AccountOptions } from "../../types";
 
 export function emptyAccount(merge?: AccountOptions | any): AccountOptions {
   return {

@@ -1,39 +1,28 @@
 import { useEffect, useState, useRef } from 'react';
-import Log from './log';
+import { Log } from './log';
+import { LogJSON } from '../../types';
 import socket from '../../services/socket';
 
-export default function Logs() {
-  const [logs, setLogs] = useState<JSX.Element[]>([]);
-  const ulRef = useRef<HTMLUListElement>(null);
+export const LogsBox = (({}) => {
+  const [logs, setLogs] = useState<LogJSON[]>([]);
+  const ref = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    socket.on('log', (log: any) => {
-      const { level, message, timestamp, account } = log;
-      const date = new Date(timestamp);
-      setLogs((logs) => [
-        ...logs,
-        <Log
-          level={level}
-          message={message}
-          account={account}
-          date={date}
-          key={date.getTime()}
-        />
-      ]);
+    socket.on('log', (log: LogJSON) => {
+      setLogs((logs) => [...logs, log]);
+      if (ref.current) {
+        const { children } = ref.current;
+        children[children.length - 1]?.scrollIntoView({ behavior: 'smooth' });
+      }
     });
     return () => setLogs([]);
   }, []);
 
-  useEffect(() => {
-    if (ulRef.current) {
-      const { children } = ulRef.current;
-      children[children.length - 1]?.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [logs]);
-
   return (
-    <ul ref={ulRef} className="list-unstyled">
-      {logs}
+    <ul ref={ref} className="list-unstyled">
+      {logs.map(({ level, message, timestamp, account }) => (
+        <Log {...{ level, message, account, date: new Date(timestamp) }} />
+      ))}
     </ul>
   );
-}
+}) as React.FC<{}>;

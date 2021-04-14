@@ -1,13 +1,12 @@
 import ReactDOM from 'react-dom';
 
-import Header from './header';
-import App from './app';
+import { Header } from './header';
+import { App } from './app';
 
-const element = (
+ReactDOM.render(
   <>
     <Header />
     <App />
-  </>
+  </>,
+  document.getElementById('app')
 );
-
-ReactDOM.render(element, document.getElementById('app'));

@@ -1,22 +1,5 @@
 import axios from 'axios';
-
-export interface AccountOptions {
-  login: {
-    username: string;
-    password: string;
-    sharedSecret: string;
-    identity: string;
-  };
-  status: {
-    gameId: number;
-    online?: boolean;
-  };
-  trading: {
-    trashLimit: number;
-    owners: string[];
-    tradeWith0Profit: boolean;
-  };
-}
+import { AccountOptions } from '../types';
 
 function url(path: string = ''): string {
   return `http://localhost:1228/users/${path}`;

@@ -1,4 +1,4 @@
-export default function InfoBox({ title, children }: any) {
+export const InfoBox = (({ title, children }) => {
   return (
     <>
       <h6 className="px-3 display-6 text-dark text-center mb-2">{title}</h6>
@@ -9,14 +9,12 @@ export default function InfoBox({ title, children }: any) {
       </div>
     </>
   );
-}
+}) as React.FC<{ title: string }>;
 
-export function InfoBoxColumn({ size, title, Children }: any) {
+export const InfoBoxColumn = (({ title, size, children }) => {
   return (
     <section className={`col-12 col-${size} mt-3`}>
-      <InfoBox title={title}>
-        <Children />
-      </InfoBox>
+      <InfoBox title={title}>{children}</InfoBox>
     </section>
   );
-}
+}) as React.FC<{ title: string; size: string }>;

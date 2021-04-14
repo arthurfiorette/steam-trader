@@ -1,45 +1,42 @@
 import { useState } from 'react';
-import Account from './account';
-import { AccountOptions, deleteAccount } from '../../services/accounts';
+import { Account } from './account';
+import { deleteAccount } from '../../services/accounts';
+import { AccountOptions } from "../../types";
 import { GIT_URL } from '../../constants';
-import EditForm from './forms/edit';
-import Offcanvas from '../offcanvas';
-import If from '../if';
+import { EditForm } from './forms/edit';
+import { Offcanvas } from '../offcanvas';
+import { If } from '../if';
 import { emptyAccount } from './util';
-import { IconButton } from '../button';
+import { ColoredIconButton } from '../button';
 import { Trash } from 'react-bootstrap-icons';
 
-export default function AccountList({ accounts }: any) {
+export const AccountList = (({ accounts }) => {
   const [selected, setSelected] = useState<AccountOptions>();
-  const id = 'editAccount';
 
   return (
     <>
       <ul
         className="overflow-auto p-1"
         style={{ maxHeight: 'calc(50vh - 60px)' }}>
-        <AccountArr
-          accounts={accounts}
-          onSelect={(acc: any) => selected !== acc && setSelected(acc)}
-        />
+        {accounts.map((account: AccountOptions) => (
+          <Account
+            key={account.login.username}
+            {...{ account }}
+            onSelect={(acc: any) => selected !== acc && setSelected(acc)}
+          />
+        ))}
       </ul>
-      <Offcanvas id={id} title="Edit Menu">
+      <Offcanvas id="editAccount" title="Edit Menu">
         <If test={!!selected && selected !== emptyAccount()}>
-          <AccountListHeader data={selected} />
+          <OffcanvasHeader {...{ selected }} />
           <EditForm data={selected} />
         </If>
       </Offcanvas>
     </>
   );
-}
+}) as React.FC<{ accounts: AccountOptions[] }>;
 
-function AccountArr({ accounts, onSelect }: any) {
-  return accounts.map((account: AccountOptions) => (
-    <Account key={account.login.username} {...{ account, onSelect }} />
-  ));
-}
-
-function AccountListHeader({ data }: any) {
+const OffcanvasHeader = (({ selected }) => {
   return (
     <div className="mb-5 position-relative">
       <div className="text-muted">
@@ -49,17 +46,19 @@ function AccountListHeader({ data }: any) {
         </a>
         .
       </div>
-      <IconButton
+      <ColoredIconButton
         icon={Trash}
         color="danger"
         classes="position-absolute top-0 end-0"
         onClick={() => {
-          deleteAccount(data.login.username).then((r) => {
-            if (r.data.status !== 'Success') alert(r.data.response);
-            else alert('Account deleted successfully');
-          });
+          if (selected) {
+            deleteAccount(selected.login.username).then((r) => {
+              if (r.data.status !== 'Success') alert(r.data.response);
+              else alert('Account deleted successfully');
+            });
+          }
         }}
       />
     </div>
   );
-}
+}) as React.FC<{ selected: AccountOptions | undefined }>;

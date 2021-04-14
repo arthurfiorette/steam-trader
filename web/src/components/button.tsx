@@ -4,30 +4,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   classes?: string;
 };
 
-type CloseButtonProps = ButtonProps & {
-  classes?: string;
-  ariaLabel?: string;
-};
-
-type ColoredButtonProps = ButtonProps & {
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'danger'
-    | 'warning'
-    | 'info'
-    | 'light'
-    | 'dark'
-    | 'link';
-};
-
-type IconButtonProps = ColoredButtonProps & {
-  icon: Icon;
-  iconProps?: IconProps;
-};
-
-function ButtonTemplate({ children, classes, ...props }: ButtonProps) {
+const ButtonTemplate = (({ children, classes, ...props }) => {
   return (
     <button
       type="button"
@@ -36,14 +13,14 @@ function ButtonTemplate({ children, classes, ...props }: ButtonProps) {
       {children}
     </button>
   );
-}
+}) as React.FC<ButtonProps>;
 
-export function CloseButton({
-  children,
-  classes = '',
+export const CloseButton = (({
+  classes,
   ariaLabel = 'Close',
+  children,
   ...props
-}: CloseButtonProps) {
+}) => {
   return (
     <ButtonTemplate
       classes={`btn-close text-reset ${classes}`}
@@ -52,54 +29,27 @@ export function CloseButton({
       {children}
     </ButtonTemplate>
   );
-}
+}) as React.FC<ButtonProps & { ariaLabel?: string }>;
 
-export function ColoredButton({
-  children,
-  color = 'primary',
-  classes = '',
-  ...props
-}: ColoredButtonProps) {
+type ColoredButtonProps = ButtonProps & { color: string };
+
+export const ColoredButton = (({ children, color, classes, ...props }) => {
   return (
     <ButtonTemplate classes={`btn btn-outline-${color} ${classes}`} {...props}>
       {children}
     </ButtonTemplate>
   );
-}
+}) as React.FC<ColoredButtonProps>;
 
-export function SuccessButton({ children, ...props }: ButtonProps) {
-  return (
-    <ColoredButton {...props} color="success">
-      {children}
-    </ColoredButton>
-  );
-}
-
-export function DarkButton({ children, ...props }: ButtonProps) {
-  return (
-    <ColoredButton {...props} color="dark">
-      {children}
-    </ColoredButton>
-  );
-}
-
-export function DangerButton({ children, ...props }: ButtonProps) {
-  return (
-    <ColoredButton {...props} color="danger">
-      {children}
-    </ColoredButton>
-  );
-}
-
-export function IconButton({
-  children,
+export const ColoredIconButton = (({
   icon: Icon,
   iconProps,
+  children,
   ...props
-}: IconButtonProps) {
+}) => {
   return (
     <ColoredButton {...props}>
-      <Icon {...iconProps}>{children}</Icon>
+      <Icon {...iconProps} />
     </ColoredButton>
   );
-}
+}) as React.FC<ColoredButtonProps & { icon: Icon; iconProps?: IconProps }>;

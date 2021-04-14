@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react';
-import { AccountOptions, editAccount } from '../../../services/accounts';
+import { editAccount } from '../../../services/accounts';
+import { AccountOptions } from "../../../types";
 import { CheckInput, TextInput } from './inputs';
 import { emptyAccount, hasInvalidKeys } from '../util';
-import { DarkButton, IconButton } from '../../button';
-import { PencilSquare } from 'react-bootstrap-icons';
+import { ColoredButton } from '../../button';
 
-export interface EditProps {
-  data?: AccountOptions;
-}
-
-export default function EditForm({ data = emptyAccount() }: EditProps) {
+export const EditForm = (({ data = emptyAccount() }) => {
   const [{ login, status, trading }, setData] = useState<AccountOptions>(data);
+
+  // Set new data state when updated.
   useEffect(() => {
     setData(data);
   }, [data]);
@@ -89,18 +87,9 @@ export default function EditForm({ data = emptyAccount() }: EditProps) {
         onChange={onChangeFactory((val) => (trading.tradeWith0Profit = val))}
         inputProps={{ checked: trading.tradeWith0Profit }}
       />
-      <DarkButton type="submit">Edit</DarkButton>
+      <ColoredButton color="dark" type="submit">
+        Edit
+      </ColoredButton>
     </form>
   );
-}
-
-export function EditButton({ id }: any) {
-  return (
-    <IconButton
-      data-bs-toggle="offcanvas"
-      data-bs-target={`#${id}`}
-      aria-controls={id}
-      icon={PencilSquare}
-    />
-  );
-}
+}) as React.FC<{ data?: AccountOptions }>;

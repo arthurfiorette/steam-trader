@@ -1,13 +1,22 @@
-import { Item as IItem, getItemName, getImageUrl } from './util';
-import If, { Else } from '../if';
+import { Item, getItemName, getImageUrl } from './util';
+import { If, Else } from '../if';
 
-export default function Item({
-  item,
-  received
-}: {
-  item: IItem;
-  received: boolean;
-}) {
+export const ItemList = (({ items, received }) => {
+  return (
+    <ul className="list-inline text-center mb-0" style={{ maxWidth: '48%' }}>
+      <If test={items.length === 0}>
+        <EmptyItemPicture received={received} />
+        <Else>
+          {items.map((item: any) => (
+            <ItemPicture item={item} received={received} />
+          ))}
+        </Else>
+      </If>
+    </ul>
+  );
+}) as React.FC<{ items: Item[]; received: boolean }>;
+
+const ItemPicture = (({ item, received }) => {
   const name = getItemName(item);
   return (
     <li className="list-inline-item m-0">
@@ -25,9 +34,9 @@ export default function Item({
       />
     </li>
   );
-}
+}) as React.FC<{ item: Item; received: boolean }>;
 
-export function EmptyItem({ received }: any) {
+const EmptyItemPicture = (({ received }) => {
   return (
     <li className="list-inline-item m-0">
       <img
@@ -44,19 +53,5 @@ export function EmptyItem({ received }: any) {
       />
     </li>
   );
-}
+}) as React.FC<{ received: boolean }>;
 
-export function ItemSet({ items, received = false }: any) {
-  return (
-    <ul className="list-inline text-center mb-0" style={{ maxWidth: '48%' }}>
-      <If test={items.length === 0}>
-        <EmptyItem received={received} />
-        <Else>
-          {items.map((item: any) => (
-            <Item item={item} received={received} />
-          ))}
-        </Else>
-      </If>
-    </ul>
-  );
-}

@@ -1,6 +1,6 @@
 import { CloseButton } from './button';
 
-export default function OffCanvas({ id, title, children }: any) {
+export const Offcanvas = (({ id, title, children }) => {
   return (
     <div
       className="offcanvas offcanvas-start"
@@ -15,4 +15,4 @@ export default function OffCanvas({ id, title, children }: any) {
       <div className="offcanvas-body pt-2">{children}</div>
     </div>
   );
-}
+}) as React.FC<{ id: string; title: string }>;

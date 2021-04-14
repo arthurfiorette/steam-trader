@@ -1,17 +1,21 @@
 import { useState, useEffect } from 'react';
 import {
-  AccountOptions,
   getAccount,
   logout as logoutAcc,
   login as loginAcc
 } from '../../services/accounts';
-import { IconButton, ColoredButton } from '../button';
+import { AccountOptions } from "../../types";
+import { ColoredIconButton, ColoredButton } from '../button';
 import { Power, Person } from 'react-bootstrap-icons';
 import socket from '../../services/socket';
 
-export default function Account({ account, onSelect }: any) {
+type AccountProps = {
+  account: AccountOptions;
+  onSelect: (acc: AccountOptions) => void;
+};
+
+export const Account = (({ account, onSelect }) => {
   const [options, setOptions] = useState<AccountOptions>(account);
-  const id = 'editAccount';
   const { login, status } = options;
 
   useEffect(() => {
@@ -19,8 +23,9 @@ export default function Account({ account, onSelect }: any) {
       if (acc.login.username === login.username) setOptions(acc);
     });
 
+    // FIXME: Check if still needed;
     getAccount(login.username)
-      .then(({ data }) => data.response)
+      .then((resp) => resp.data.response)
       .then(setOptions);
   }, []);
 
@@ -39,25 +44,32 @@ export default function Account({ account, onSelect }: any) {
           {login.username}
         </span>
       </div>
-      <div>
-        <IconButton
-          icon={Power}
-          color={status.online ? 'danger' : 'success'}
-          classes="m-0 me-1 p-1"
-          onClick={() => (status.online ? logoutAcc : loginAcc)(login.username)}
-          iconProps={{ size: '20px' }}
-        />
-        <ColoredButton
-          color="info"
-          classes={'m=0 me-1 p-1'}
-          onMouseOver={() => onSelect(options)}
-          data-bs-toggle="offcanvas"
-          data-bs-target={`#${id}`}
-          aria-controls={id}>
-          Edit
-        </ColoredButton>
-        {/* <AccountButton icon={PencilFill} color="info" /> */}
-      </div>
+      <AccountButtons {...{ account, onSelect }} />
     </li>
   );
-}
+}) as React.FC<AccountProps>;
+
+const AccountButtons = (({ account, onSelect }) => {
+  const { login, status } = account;
+  const id = 'editAccount';
+  return (
+    <div>
+      <ColoredIconButton
+        icon={Power}
+        color={status.online ? 'danger' : 'success'}
+        classes="m-0 me-1 p-1"
+        onClick={() => (status.online ? logoutAcc : loginAcc)(login.username)}
+        iconProps={{ size: '20px' }}
+      />
+      <ColoredButton
+        color="info"
+        classes={'m=0 me-1 p-1'}
+        onMouseOver={() => onSelect(account)}
+        data-bs-toggle="offcanvas"
+        data-bs-target={`#${id}`}
+        aria-controls={id}>
+        Edit
+      </ColoredButton>
+    </div>
+  );
+}) as React.FC<AccountProps>;

@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
-import Account from './account';
-import { AccountOptions, getAccounts } from '../../services/accounts';
+import { getAccounts } from '../../services/accounts';
+import { AccountOptions } from "../../types";
 import socket from '../../services/socket';
-import Form from './forms/login';
+import { LoginForm } from './forms/login';
 import { ColoredButton } from '../button';
 import { GIT_URL } from '../../constants';
-import Offcanvas from '../offcanvas';
-import AccountList from './accountList';
+import { Offcanvas } from '../offcanvas';
+import { AccountList } from './accountList';
 
-export default function Accounts() {
+export const AccountsBox = (({}) => {
   const [accounts, setAccounts] = useState<AccountOptions[]>([]);
-  const registerId = 'registerAccount';
+  const id = 'registerOffcanvas';
 
   useEffect(() => {
     socket.on('updateAccounts', setAccounts);
@@ -27,21 +27,27 @@ export default function Accounts() {
         <ColoredButton
           color="dark"
           data-bs-toggle="offcanvas"
-          data-bs-target={`#${registerId}`}
-          aria-controls={registerId}>
+          data-bs-target={`#${id}`}
+          aria-controls={id}>
           Register
         </ColoredButton>
-        <Offcanvas id={registerId} title="Register Menu">
-          <div className="text-muted mb-4">
-            You can get help
-            <a href={GIT_URL} target="_blank" className="ms-1">
-              here
-            </a>
-            .
-          </div>
-          <Form />
+        <Offcanvas id={id} title="Register Menu">
+          <OffcanvasHeader />
+          <LoginForm />
         </Offcanvas>
       </div>
     </>
   );
-}
+}) as React.FC<{}>;
+
+export const OffcanvasHeader = (({}) => {
+  return (
+    <div className="text-muted mb-4">
+      You can get help
+      <a href={GIT_URL} target="_blank" className="ms-1">
+        here
+      </a>
+      .
+    </div>
+  );
+}) as React.FC<{}>;
