@@ -4023,10 +4023,10 @@ steam-totp@^2.0.1, steam-totp@^2.1.1:
   resolved "https://registry.npmjs.org/steam-totp/-/steam-totp-2.1.1.tgz"
   integrity sha512-d+tjnr3wwDkbrKFxjYZ0uK4CSF09oJwCmlGH8SdOlTDkbtBPuNhPKY0XzZxQVltZF6/JkEYj+uz+kBr6UrY7BQ==
 
-steam-tradeoffer-manager@2.10.2:
-  version "2.10.2"
-  resolved "https://registry.npmjs.org/steam-tradeoffer-manager/-/steam-tradeoffer-manager-2.10.2.tgz"
-  integrity sha512-gJnwidZj1R395Rz49qb5aChtqu4Sx0iVEpAKlrW0CxIq04wA13POLaB783bczzP5ewgAdzMRr5L7assXCc7akQ==
+steam-tradeoffer-manager@2.10.3:
+  version "2.10.3"
+  resolved "https://registry.yarnpkg.com/steam-tradeoffer-manager/-/steam-tradeoffer-manager-2.10.3.tgz#56ba618bbd0e84082e37b1c57e341a543f0774e9"
+  integrity sha512-/e8yc4iORfHFDPF/tR8Oh2vdbZ+vR4puFEVc2fgQTLIBBJK2rnRsu3np2M4knd/T47DihJt54gUTn++ttjCOnA==
   dependencies:
     "@doctormckay/stdlib" "^1.5.1"
     appdirectory "^0.1.0"
