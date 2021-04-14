@@ -1,15 +1,19 @@
 version: 2
 updates:
   - package-ecosystem: 'npm'
-    directory: |
-      "/app"
-      "/web"
+    directory: '/app'
+    schedule:
+      interval: 'daily'
+  - package-ecosystem: 'docker'
+    directory: '/app'
     schedule:
       interval: 'daily'
 
-  - package-ecosystem: 'docker'
-    directory: |
-      "/app"
-      "/web"
+  - package-ecosystem: 'npm'
+    directory: '/web'
     schedule:
-      interval: 'weekly'
+      interval: 'daily'
+  - package-ecosystem: 'docker'
+    directory: '/web'
+    schedule:
+      interval: 'daily'
