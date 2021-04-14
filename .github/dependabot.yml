@@ -8,7 +8,7 @@ updates:
     directory: '/app'
     schedule:
       interval: 'daily'
-      
+
   - package-ecosystem: 'npm'
     directory: '/web'
     schedule:
