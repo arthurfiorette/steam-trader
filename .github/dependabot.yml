@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: |
+      "/app"
+      "/web"
+    schedule:
+      interval: "daily"
+      
+  - package-ecosystem: "docker"
+    directory: |
+      "/app"
+      "/web"
+    schedule:
+      interval: "weekly"
