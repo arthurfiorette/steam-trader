@@ -25,7 +25,7 @@
 </p>
 
 > <pre align="center">
-> Now more stable and with fewer bugs!
+> Now more stable and with fewer bugs.
 > Check it out in <a href="https://github.com/ArthurFiorette/steam-trader/releases/tag/v1.4.0" target="_blank">v1.4.0</a>!
 > </pre>
 
@@ -43,7 +43,7 @@ Open this repository <a href="https://github.com/ArthurFiorette/steam-trader/rel
 
 A `config.json` file already existed in previous versions, however, now everything is officially configured by our panel. To access it, start the application correctly and go to localhost at the specified port.
 
-#### SDA, Shared Secret and Identity Secret
+#### 🔐 SDA, Shared Secret and Identity Secret
 
 To register a steam account with **steam-trader**, you need to know the `Shared Secret` and `Identity Secret` of your account. These two secrets are responsible for the automatic generation of the steam guard mobile code and auto reconnection.
 
@@ -53,7 +53,7 @@ To get them easily, you will need to enable <a href="https://github.com/Jessecar
 
 You can host it docker on any hosting service that supports containerized applications or use docker locally, simply by typing:
 
-###### _For any help with docker, here are the <a href="https://docs.docker.com/compose/" target="_blank">docs</a>._
+> _For any help with docker, here are the <a href="https://docs.docker.com/compose/" target="_blank">docs</a>._
 
 ```sh
 # Install, build and run with docker
@@ -65,7 +65,7 @@ $ docker-compose up -d
 
 If you have no access or knowledge to use Docker, you can run it having **Node.JS** installed. As we have a `package.json` in our root containing some scripts, all you need to do is follow these steps.
 
-###### _Always prefer to use Docker, as this application was built based on it and is totally faster._
+> _Always prefer to use Docker, as this application was built based on it and is totally faster._
 
 ```sh
 # Install yarn and concurrently globally.
