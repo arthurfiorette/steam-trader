@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getAccounts } from '../../services/accounts';
-import { AccountOptions } from "../../types";
+import { AccountOptions } from '../../types';
 import socket from '../../services/socket';
 import { LoginForm } from './forms/login';
 import { ColoredButton } from '../button';

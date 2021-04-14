@@ -4,7 +4,7 @@ import {
   logout as logoutAcc,
   login as loginAcc
 } from '../../services/accounts';
-import { AccountOptions } from "../../types";
+import { AccountOptions } from '../../types';
 import { ColoredIconButton, ColoredButton } from '../button';
 import { Power, Person } from 'react-bootstrap-icons';
 import socket from '../../services/socket';

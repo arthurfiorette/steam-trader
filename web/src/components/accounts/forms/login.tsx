@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { createAccount } from '../../../services/accounts';
-import { AccountOptions } from "../../../types";
+import { AccountOptions } from '../../../types';
 import { CheckInput, TextInput } from './inputs';
 import { emptyAccount, hasInvalidKeys } from '../util';
 import { ColoredButton } from '../../button';

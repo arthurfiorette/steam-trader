@@ -1,4 +1,4 @@
-import {Item} from '../../types'
+import { Item } from '../../types';
 
 export function getItemName({ market_name, market_hash_name, name }: Item) {
   const isEmpty = (n: string) => n && n.length !== 0;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Account } from './account';
 import { deleteAccount } from '../../services/accounts';
-import { AccountOptions } from "../../types";
+import { AccountOptions } from '../../types';
 import { GIT_URL } from '../../constants';
 import { EditForm } from './forms/edit';
 import { Offcanvas } from '../offcanvas';

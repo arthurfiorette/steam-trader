@@ -23,7 +23,6 @@ export type LogJSON = {
   account: string;
 };
 
-
 export type TradeJSON = {
   account: string;
   partner: string;
@@ -33,7 +32,7 @@ export type TradeJSON = {
   theirItems: Item[];
   reason: string;
   accepted: boolean;
-}
+};
 
 export type Item = {
   name: string;
@@ -41,4 +40,4 @@ export type Item = {
   market_hash_name: string;
   name_color: string;
   icon_url: string;
-}
+};

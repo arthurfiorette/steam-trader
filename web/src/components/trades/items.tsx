@@ -54,4 +54,3 @@ const EmptyItemPicture = (({ received }) => {
     </li>
   );
 }) as React.FC<{ received: boolean }>;
-
