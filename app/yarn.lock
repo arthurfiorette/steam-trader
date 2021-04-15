@@ -4037,10 +4037,10 @@ steam-tradeoffer-manager@2.10.3:
     steamcommunity "^3.33.1"
     steamid "^1.1.0"
 
-steam-user@4.19.3:
-  version "4.19.3"
-  resolved "https://registry.npmjs.org/steam-user/-/steam-user-4.19.3.tgz"
-  integrity sha512-zQ7gVypnYajI59xxNBAw5+9Z77OdstP1FDfnlip/ZivAGnHAnZ12WV0L8O9woCaLcIl4COa6AO45XTvS3wImaA==
+steam-user@4.19.4:
+  version "4.19.4"
+  resolved "https://registry.yarnpkg.com/steam-user/-/steam-user-4.19.4.tgz#258cc044bce9dabce33fbac7eb8d60496fca9e6e"
+  integrity sha512-mqWuymix+Uzru8Um1lq1nq0TMRMGZJT9wAX/0Q1YgcQ7W/t36E6mSCrydbsIGl0cUkUNo98RhcL/SirnEN77bg==
   dependencies:
     "@bbob/parser" "^2.2.0"
     "@doctormckay/stdlib" "^1.11.1"
