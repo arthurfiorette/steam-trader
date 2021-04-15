@@ -70,8 +70,10 @@ If you have no access or knowledge to use Docker, you can run it having **Node.J
 > _Always prefer to use Docker, as this application was built based on it and is totally faster._
 
 ```sh
-# Install yarn and concurrently globally.
-$ npm run prepare
+# (At the project root)
+
+# Install yarn and concurrently to run the next scripts.
+$ npm install
 
 # Install all dependencies.
 $ npm run install

@@ -14,7 +14,6 @@
   },
   "homepage": "https://github.com/ArthurFiorette/steam-trader#readme",
   "scripts": {
-    "prepare": "npm i -g yarn && npm i -G concurrently && yarn --version",
     "install": "concurrently \"yarn:install:*\"",
     "install:app": "cd app && yarn",
     "install:web": "cd web && yarn",
@@ -24,5 +23,9 @@
     "start": "concurrently \"yarn:start:*\"",
     "start:app": "cd app && yarn start",
     "start:web": "cd web && yarn start"
+  },
+  "devDependencies": {
+    "yarn": "^1.22.10",
+    "concurrently": "^6.0.2"
   }
 }
