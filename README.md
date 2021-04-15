@@ -37,6 +37,8 @@
 
 ## 📁 Downloading
 
+> _The main branch is used for development, to download the code, prefer to download a specific tag._
+
 Open this repository <a href="https://github.com/ArthurFiorette/steam-trader/releases" target="_blank">releases</a> tab and download the latest source code **.zip** file.
 
 ## ⚙️ Configuration
