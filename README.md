@@ -31,9 +31,7 @@
 
 ## 📖 About
 
-<p align="center">
-  This project is an open source initiative to host multiple steam bot accounts to trade inventory items, automatically calculating the prices and items in each exchange sent and responding to them at the same time, like some Trading Card Exchange bots, but with any item. We still have a lot to improve, and that is what i'll do in the next days, Feel free to send a PR or open a new issue.
-</p>
+This project is an open source initiative to host multiple steam bot accounts to trade inventory items, automatically calculating the prices and items in each exchange sent and responding to them at the same time, like some Trading Card Exchange bots, but with any item. We still have a lot to improve, and that is what i'll do in the next days, Feel free to send a PR or open a new issue.
 
 ## 📁 Downloading
 
