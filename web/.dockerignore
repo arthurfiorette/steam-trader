@@ -6,7 +6,8 @@
 !public/*
 !server/*
 
-!package*.json
+!package.json
+!yarn.lock
 !tsconfig.json
 
 !webpack.config.ts

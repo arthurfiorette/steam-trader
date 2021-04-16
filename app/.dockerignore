@@ -4,12 +4,11 @@
 
 !src/*
 
-!nodemon.json
-!package*.json
+!package.json
+!yarn.lock
 !tsconfig.json
-!config.json
-!.env
 
 !.babelrc
+!.env
 
 !Dockerfile
