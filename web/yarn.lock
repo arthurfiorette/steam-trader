@@ -1033,10 +1033,10 @@
   resolved "https://registry.npmjs.org/@types/mime/-/mime-1.3.2.tgz"
   integrity sha512-YATxVxgRqNH6nHEIsvg6k2Boc1JHI9ZbH5iWFFv/MTkchz3b1ieGDa5T0a9RznNdI0KhVbdbWSN+KWWrQZRxTw==
 
-"@types/mini-css-extract-plugin@^1.2.2":
-  version "1.4.1"
-  resolved "https://registry.npmjs.org/@types/mini-css-extract-plugin/-/mini-css-extract-plugin-1.4.1.tgz"
-  integrity sha512-MB+ghVm4f62cwwP7xuiEvKVkSryrkeVAENI0324ZOI/2m5shATwvkAeeXRpKPiEBJ5wLE1QA/NG4t2uggDs+sw==
+"@types/mini-css-extract-plugin@^1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@types/mini-css-extract-plugin/-/mini-css-extract-plugin-1.4.3.tgz#4907ee3953fecd199fab24ef056dabef51ff19a2"
+  integrity sha512-jyOSVaF4ie2jUGr1uohqeyDrp7ktRthdFxDKzTgbPZtl0QI5geEopW7UKD/DEfn0XgV1KEq/RnZlUmnrEAWbmg==
   dependencies:
     "@types/node" "*"
     tapable "^2.2.0"
