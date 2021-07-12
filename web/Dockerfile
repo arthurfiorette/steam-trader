@@ -1,4 +1,4 @@
-FROM node:15.14.0-alpine
+FROM node:16.4.2-alpine
 
 LABEL maintainer="arthur.fiorette@gmail.com"
 
