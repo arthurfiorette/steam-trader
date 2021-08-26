@@ -4,7 +4,7 @@ import { deleteAccount } from '../../services/accounts';
 import { AccountOptions } from '../../types';
 import { GIT_URL } from '../../constants';
 import { EditForm } from './forms/edit';
-import { Offcanvas } from '../offcanvas';
+import { Offcanvas } from '../offCanvas';
 import { If } from '../if';
 import { emptyAccount } from './util';
 import { ColoredIconButton } from '../button';
