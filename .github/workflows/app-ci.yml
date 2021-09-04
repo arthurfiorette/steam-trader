@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build and lint app on Node ${{ matrix.node }} and ${{ matrix.os }}
+    name: Build and lint app on Node 15 and ${{ matrix.os }}
     defaults:
       run:
         working-directory: ./app
@@ -16,10 +16,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node:
-          - '14.x'
-          - '15.x'
-          - '16.x'
         os:
           - ubuntu-latest
           - windows-latest
@@ -32,10 +28,10 @@ jobs:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
 
-      - name: Use Node ${{ matrix.node }}
+      - name: Use Node 15
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node }}
+          node-version: '15'
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -49,6 +45,9 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+
+      - name: Test path
+        run: ls
 
       - name: Lint
         run: yarn lint
