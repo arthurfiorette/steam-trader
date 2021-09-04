@@ -102,6 +102,13 @@ $ npm run start
 After building and installing it for the first time, you are ready to go and you can start it every
 time only running the last command.
 
+### Security
+
+We assume that all connections are secure and trustworthy, so we don't require any passwords. If
+you're hosting it on third-party services like AWS or Azure, make sure you only allow its IP address
+to connect to the web interface and server. You can also use a proxy between authenticated
+connections to prevent unauthorized requests.
+
 ## 📃 License
 
 Licensed under the **GNU General Public License v3.0**. See
