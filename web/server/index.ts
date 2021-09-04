@@ -9,7 +9,7 @@ const dist = path.resolve(__dirname, '..', 'dist');
 
 const app = express();
 
-app.use('/', express.static(dist, { maxAge: STATIC_AGE }));
+app.use(express.static(dist, { maxAge: STATIC_AGE }));
 
 app.get('/', (_, res) => res.sendFile(path.resolve(dist, 'index.html')));
 
