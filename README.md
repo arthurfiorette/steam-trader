@@ -84,13 +84,8 @@ have a `package.json` in our root containing some scripts, all you need to do is
 > _Always prefer to use Docker, as this application was built based on it and is totally faster._
 
 ```sh
-# (At the project root)
-
 # Install yarn and concurrently to run the next scripts.
 $ npm install
-
-# Install all dependencies.
-$ npm run install
 
 # Build and compile all code.
 $ npm run build
