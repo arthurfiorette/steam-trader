@@ -14,9 +14,9 @@ export function emptyAccount(merge?: AccountOptions | any): AccountOptions {
   };
 }
 
-export function hasInvalidKeys(obj: {}): boolean {
+export function hasInvalidKeys(obj: object): boolean {
   return Object.keys(obj).some((key) => {
-    const val = obj[key];
+    const val = obj[key as keyof typeof obj];
     if (val === null || Number.isNaN(val) || val === undefined || val === '') {
       return true;
     }

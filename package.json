@@ -29,6 +29,9 @@
     "start": "concurrently \"yarn:start:*\"",
     "start:app": "cd app && yarn start",
     "start:web": "cd web && yarn start",
+    "lint": "concurrently \"yarn:lint:*\"",
+    "lint:app": "cd app && yarn lint",
+    "lint:web": "cd web && yarn lint",
     "prettify": "prettier --write ."
   },
   "devDependencies": {
