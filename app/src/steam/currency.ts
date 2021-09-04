@@ -20,11 +20,7 @@ function replaceInvalid(str: string) {
   return str.split('-').join('0').split(' ').join('');
 }
 
-function currency(
-  name: string,
-  currencyId: number,
-  [a, b]: [number, number]
-): ICurrency {
+function currency(name: string, currencyId: number, [a, b]: [number, number]): ICurrency {
   return {
     name,
     currencyId,
