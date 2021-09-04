@@ -13,16 +13,16 @@
     "start:nodemon": "ts-node src/index.ts"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.3",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "socket.io": "^4.0.0",
     "steam-totp": "^2.1.1",
     "steam-tradeoffer-manager": "2.10.3",
-    "steam-user": "4.19.4",
-    "steamcommunity": "3.42.0",
+    "steam-user": "4.19.12",
+    "steamcommunity": "3.43.1",
     "winston": "^3.3.3"
   },
   "devDependencies": {
