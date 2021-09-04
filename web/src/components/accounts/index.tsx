@@ -5,7 +5,7 @@ import socket from '../../services/socket';
 import { LoginForm } from './forms/login';
 import { ColoredButton } from '../button';
 import { GIT_URL } from '../../constants';
-import { Offcanvas } from '../offcanvas';
+import { Offcanvas } from '../offCanvas';
 import { AccountList } from './accountList';
 
 export const AccountsBox = (({}) => {
