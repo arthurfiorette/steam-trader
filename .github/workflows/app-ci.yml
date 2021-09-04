@@ -1,9 +1,9 @@
-name: CI
+name: App CI
 
 on:
   push:
     paths:
-      - './app/**'
+      - 'app/**'
   workflow_dispatch:
 
 jobs:
