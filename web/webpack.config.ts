@@ -6,10 +6,12 @@ import TerserPlugin from 'terser-webpack-plugin';
 import { Configuration } from 'webpack';
 import type DevServer from 'webpack-dev-server';
 
+type WebpackConfig = Configuration & { devServer: DevServer.Configuration };
+
 const production = process.env['NODE_ENV'] === 'production';
 const resolve = (...segment: string[]) => path.resolve(__dirname, ...segment);
 
-const config: Configuration = {
+const config: WebpackConfig = {
   mode: production ? 'production' : 'development',
   entry: resolve('src', 'index.tsx'),
 
@@ -20,12 +22,14 @@ const config: Configuration = {
   },
 
   devServer: {
-    historyApiFallback: true,
-    contentBase: resolve(__dirname, 'dist'),
-    compress: true,
+    port: 1227,
     hot: true,
-    port: 1227
-  } as DevServer.Configuration,
+    liveReload: true,
+    historyApiFallback: true,
+    devMiddleware: {
+      writeToDisk: true
+    }
+  },
 
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx']
