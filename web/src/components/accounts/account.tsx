@@ -1,13 +1,9 @@
-import { useState, useEffect } from 'react';
-import {
-  getAccount,
-  logout as logoutAcc,
-  login as loginAcc
-} from '../../services/accounts';
-import { AccountOptions } from '../../types';
-import { ColoredIconButton, ColoredButton } from '../button';
-import { Power, Person } from 'react-bootstrap-icons';
+import React, { useEffect, useState } from 'react';
+import { Person, Power } from 'react-bootstrap-icons';
+import { getAccount, login as loginAcc, logout as logoutAcc } from '../../services/accounts';
 import socket from '../../services/socket';
+import { AccountOptions } from '../../types';
+import { ColoredButton, ColoredIconButton } from '../button';
 
 type AccountProps = {
   account: AccountOptions;
@@ -34,12 +30,10 @@ export const Account = (({ account, onSelect }) => {
       style={{ backgroundColor: '#fff' }}
       className={`d-flex my-1 p-1 justify-content-between align-items-center shadow-sm border-2 rounded alert alert-${
         status.online ? 'success' : 'danger'
-      }`}>
+      }`}
+    >
       <div>
-        <Person
-          size="40px"
-          className={`text-${status.online ? 'success' : 'danger'}`}
-        />
+        <Person size="40px" className={`text-${status.online ? 'success' : 'danger'}`} />
         <span className="lead ms-3 align-center text-dark align-middle text-capitalize">
           {login.username}
         </span>
@@ -67,7 +61,8 @@ const AccountButtons = (({ account, onSelect }) => {
         onMouseOver={() => onSelect(account)}
         data-bs-toggle="offcanvas"
         data-bs-target={`#${id}`}
-        aria-controls={id}>
+        aria-controls={id}
+      >
         Edit
       </ColoredButton>
     </div>

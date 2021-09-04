@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ItemPrice, Item } from '../transactions/types';
+import { Item, ItemPrice } from '../transactions/types';
 import Currency, { ICurrency } from './currency';
 
 const priceOverview = 'http://steamcommunity.com/market/priceoverview';
@@ -25,10 +25,7 @@ export function getItemName({ market_name, market_hash_name, name }: Item) {
   return name;
 }
 
-function parseData(
-  { success, lowest_price, median_price }: any,
-  { parse }: ICurrency
-): ItemPrice {
+function parseData({ success, lowest_price, median_price }: any, { parse }: ICurrency): ItemPrice {
   return {
     success,
     lowest_price: parse(lowest_price),
@@ -36,9 +33,6 @@ function parseData(
   };
 }
 
-export async function getAllItemsPrice(
-  items: Item[],
-  currency?: ICurrency
-): Promise<ItemPrice[]> {
+export async function getAllItemsPrice(items: Item[], currency?: ICurrency): Promise<ItemPrice[]> {
   return Promise.all(items.map((item) => getItemPrice(item, currency)));
 }

@@ -1,23 +1,21 @@
-import { useState } from 'react';
-import { Account } from './account';
+import React, { useState } from 'react';
+import { Trash } from 'react-bootstrap-icons';
+import { GIT_URL } from '../../constants';
 import { deleteAccount } from '../../services/accounts';
 import { AccountOptions } from '../../types';
-import { GIT_URL } from '../../constants';
-import { EditForm } from './forms/edit';
-import { Offcanvas } from '../offcanvas';
-import { If } from '../if';
-import { emptyAccount } from './util';
 import { ColoredIconButton } from '../button';
-import { Trash } from 'react-bootstrap-icons';
+import { If } from '../if';
+import { Offcanvas } from '../offcanvas';
+import { Account } from './account';
+import { EditForm } from './forms/edit';
+import { emptyAccount } from './util';
 
 export const AccountList = (({ accounts }) => {
   const [selected, setSelected] = useState<AccountOptions>();
 
   return (
     <>
-      <ul
-        className="overflow-auto p-1"
-        style={{ maxHeight: 'calc(50vh - 60px)' }}>
+      <ul className="overflow-auto p-1" style={{ maxHeight: 'calc(50vh - 60px)' }}>
         {accounts.map((account: AccountOptions) => (
           <Account
             key={account.login.username}

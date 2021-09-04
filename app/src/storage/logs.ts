@@ -1,6 +1,6 @@
-import { transports } from 'winston';
-import { resolve } from 'path';
 import fs from 'fs/promises';
+import { resolve } from 'path';
+import { transports } from 'winston';
 
 function getPath(...paths: string[]) {
   return resolve(__dirname, '../../output/logs/', ...paths);
@@ -10,9 +10,7 @@ function getPath(...paths: string[]) {
 fs.mkdir(getPath()).catch(() => {});
 
 function getDate(fileName: string) {
-  return fileName !== 'system'
-    ? ''
-    : `-${new Date().toLocaleDateString().replace(/\//gi, '')}`;
+  return fileName !== 'system' ? '' : `-${new Date().toLocaleDateString().replace(/\//gi, '')}`;
 }
 
 export function getFileTransport(fileName: string) {

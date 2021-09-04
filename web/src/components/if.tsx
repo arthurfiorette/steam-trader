@@ -5,8 +5,7 @@ export const If = (({ test, children }) => {
   const ifElements: any[] = [];
 
   // Push element to correct array
-  const push = (el: any) =>
-    (el?.type === Else ? elseElements : ifElements).push(el);
+  const push = (el: any) => (el?.type === Else ? elseElements : ifElements).push(el);
 
   // More than one child
   if (Array.isArray(children)) {

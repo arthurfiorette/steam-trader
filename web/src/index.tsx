@@ -1,7 +1,7 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
-
-import { Header } from './header';
 import { App } from './app';
+import { Header } from './header';
 
 ReactDOM.render(
   <>

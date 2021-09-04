@@ -1,14 +1,12 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { createAccount } from '../../../services/accounts';
 import { AccountOptions } from '../../../types';
-import { CheckInput, TextInput } from './inputs';
-import { emptyAccount, hasInvalidKeys } from '../util';
 import { ColoredButton } from '../../button';
+import { emptyAccount, hasInvalidKeys } from '../util';
+import { CheckInput, TextInput } from './inputs';
 
 export const LoginForm = (({}) => {
-  const [{ login, status, trading }, setData] = useState<AccountOptions>(
-    emptyAccount()
-  );
+  const [{ login, status, trading }, setData] = useState<AccountOptions>(emptyAccount());
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -23,9 +21,7 @@ export const LoginForm = (({}) => {
   };
 
   const onChangeFactory = (cb: (val: any) => any) => {
-    return ({
-      target: { type, checked, value }
-    }: React.ChangeEvent<HTMLInputElement>) => {
+    return ({ target: { type, checked, value } }: React.ChangeEvent<HTMLInputElement>) => {
       cb(type === 'checkbox' ? checked : value);
       setData({ login, status, trading });
     };

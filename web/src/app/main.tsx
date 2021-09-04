@@ -1,6 +1,7 @@
+import React from 'react';
+import { AccountsBox } from '../components/accounts';
 import { InfoBoxColumn } from '../components/infoBox';
 import { LogsBox } from '../components/logs';
-import { AccountsBox } from '../components/accounts';
 import { TradesBox } from '../components/trades';
 
 export const Main = (({}) => {

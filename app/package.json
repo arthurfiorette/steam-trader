@@ -3,23 +3,15 @@
   "version": "1.4.0",
   "description": "An deployment ready and automated steam trade client!",
   "main": "src/index.ts",
+  "license": "GPL-3.0",
   "private": true,
   "scripts": {
+    "lint": "tsc --noEmit",
     "start": "node build/index.js",
     "watch": "nodemon",
     "build": "babel src -d build --copy-files --extensions .ts",
     "start:nodemon": "ts-node src/index.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ArthurFiorette/steam-trader.git"
-  },
-  "author": "Arthur Fiorette",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/ArthurFiorette/steam-trader/issues"
-  },
-  "homepage": "https://github.com/ArthurFiorette/steam-trader#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "colors": "^1.4.0",
@@ -43,10 +35,9 @@
     "@babel/preset-typescript": "^7.13.0",
     "@types/cors": "^2.8.10",
     "@types/express": "^4.17.11",
-    "@types/node": "^14.14.39",
+    "@types/node": "^16.7.10",
     "@types/steam-totp": "^2.1.0",
     "nodemon": "^2.0.7",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.2.3"
+    "ts-node": "^9.1.1"
   }
 }

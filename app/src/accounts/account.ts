@@ -1,13 +1,13 @@
-import { SteamCommunity, TradeOfferManager, SteamUser } from '../untyped';
-import SteamTotp from 'steam-totp';
-import TradeProcessor from '../transactions/processor';
-import { getCurrency } from '../steam/currency';
-import { Offer } from '../transactions/types';
-import createLogger from '../logger';
-import { serializer } from './serializer';
-import { update } from '../server/socket/updater';
-import { AccountOptions } from './options';
 import { nextTick } from 'process';
+import SteamTotp from 'steam-totp';
+import createLogger from '../logger';
+import { update } from '../server/socket/updater';
+import { getCurrency } from '../steam/currency';
+import TradeProcessor from '../transactions/processor';
+import { Offer } from '../transactions/types';
+import { SteamCommunity, SteamUser, TradeOfferManager } from '../untyped';
+import { AccountOptions } from './options';
+import { serializer } from './serializer';
 
 export default class Account {
   readonly client = new SteamUser();
@@ -22,30 +22,20 @@ export default class Account {
 
   constructor(readonly options: AccountOptions) {
     this.logger = createLogger(options.login.username);
-    this.logger.info(
-      `'${options.login.username}' was created, waiting for login...`
-    );
+    this.logger.info(`'${options.login.username}' was created, waiting for login...`);
 
     this.client.on('webSession', (_sessionId: number, cookies: string[]) =>
       this.onWebSession(cookies)
     );
-    this.client.on('wallet', (_hasWallet: boolean, currency: number) =>
-      this.setCurrency(currency)
-    );
+    this.client.on('wallet', (_hasWallet: boolean, currency: number) => this.setCurrency(currency));
     this.client.on('loggedOn', () => this.onLogin());
-    this.client.on('disconnected', (_eResult: number, msg: string) =>
-      this.onDisconnect(msg)
-    );
-    this.client.on(
-      'steamGuard',
-      (_domain: any, callback: (code: string) => void) =>
-        callback(this.getAuthCode())
+    this.client.on('disconnected', (_eResult: number, msg: string) => this.onDisconnect(msg));
+    this.client.on('steamGuard', (_domain: any, callback: (code: string) => void) =>
+      callback(this.getAuthCode())
     );
     this.manager.on('newOffer', (offer: Offer) => this.trader.begin(offer));
     this.client.on('error', (err: any) =>
-      this.logger.error(
-        `Occurred an error on the last operation: ${err.message}`
-      )
+      this.logger.error(`Occurred an error on the last operation: ${err.message}`)
     );
   }
 

@@ -1,13 +1,17 @@
 FROM node:15.14.0-alpine
 
-LABEL maintainer="arthur.fiorette@gmail.com"
+LABEL maintainer="arthurfiorette <arthur.fiorette@gmail.com>"
 
-WORKDIR /usr/app
+WORKDIR /usr/local/steam-trader/app
+
+COPY package.json .
+COPY yarn.lock .
+
+RUN yarn && yarn cache clean
 
 COPY . .
 
-RUN yarn && yarn cache clean
-RUN yarn run build
+RUN yarn build
 
 ENV NODE_ENV=production
 

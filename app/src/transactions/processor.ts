@@ -1,8 +1,8 @@
 import Account from '../accounts/account';
-import { Offer, OfferContext } from './types';
-import logic from './logic';
-import Pipeline from '../util/middleware';
 import { saveOffer } from '../storage/trades';
+import Pipeline from '../util/middleware';
+import logic from './logic';
+import { Offer, OfferContext } from './types';
 
 export type Processor = (offer: Offer) => Promise<Offer>;
 
@@ -34,10 +34,7 @@ export default class TradeProcessor {
     logger.info(`${reason}. Declining trade ${offer.id}...`);
     await offer.decline((err) => {
       if (err) {
-        logger.error(
-          `Catch an error while trying to decline the trade ${offer.id}`,
-          err
-        );
+        logger.error(`Catch an error while trying to decline the trade ${offer.id}`, err);
         return;
       }
       saveOffer(offer, reason, false);
@@ -50,10 +47,7 @@ export default class TradeProcessor {
     logger.info(`${reason}. Accepting trade ${offer.id}...`);
     await offer.accept((err) => {
       if (err) {
-        logger.error(
-          `Catch an error while trying to accept the trade ${offer.id}`,
-          err
-        );
+        logger.error(`Catch an error while trying to accept the trade ${offer.id}`, err);
         return;
       }
       saveOffer(offer, reason, true);

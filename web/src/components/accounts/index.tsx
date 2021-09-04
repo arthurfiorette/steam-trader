@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import { getAccounts } from '../../services/accounts';
-import { AccountOptions } from '../../types';
-import socket from '../../services/socket';
-import { LoginForm } from './forms/login';
-import { ColoredButton } from '../button';
+import React, { useEffect, useState } from 'react';
 import { GIT_URL } from '../../constants';
+import { getAccounts } from '../../services/accounts';
+import socket from '../../services/socket';
+import { AccountOptions } from '../../types';
+import { ColoredButton } from '../button';
 import { Offcanvas } from '../offcanvas';
 import { AccountList } from './accountList';
+import { LoginForm } from './forms/login';
 
 export const AccountsBox = (({}) => {
   const [accounts, setAccounts] = useState<AccountOptions[]>([]);
@@ -28,7 +28,8 @@ export const AccountsBox = (({}) => {
           color="dark"
           data-bs-toggle="offcanvas"
           data-bs-target={`#${id}`}
-          aria-controls={id}>
+          aria-controls={id}
+        >
           Register
         </ColoredButton>
         <Offcanvas id={id} title="Register Menu">

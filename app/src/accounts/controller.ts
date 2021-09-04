@@ -1,7 +1,7 @@
-import Account from './account';
-import { AccountOptions } from './options';
 import { updateAll } from '../server/socket/updater';
 import { readAccounts, writeAccounts } from '../storage/accounts';
+import Account from './account';
+import { AccountOptions } from './options';
 
 const accounts = new Map<string, Account>();
 

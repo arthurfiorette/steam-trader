@@ -1,7 +1,7 @@
-import { useEffect, useState, useRef } from 'react';
-import { Log } from './log';
-import { LogJSON } from '../../types';
+import React, { useEffect, useRef, useState } from 'react';
 import socket from '../../services/socket';
+import { LogJSON } from '../../types';
+import { Log } from './log';
 
 export const LogsBox = (({}) => {
   const [logs, setLogs] = useState<LogJSON[]>([]);

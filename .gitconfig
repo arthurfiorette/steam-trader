@@ -1,0 +1,6 @@
+[core]
+  ignorecase = false
+  hooksPath = .githooks/
+  ignorecase = false
+[gui]
+	encoding = utf-8

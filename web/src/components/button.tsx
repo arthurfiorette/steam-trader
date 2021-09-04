@@ -1,3 +1,4 @@
+import React from 'react';
 import { Icon, Props as IconProps } from 'react-bootstrap-icons';
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -6,26 +7,15 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const ButtonTemplate = (({ children, classes, ...props }) => {
   return (
-    <button
-      type="button"
-      className={`border-2 rounded-3 shadow ${classes}`}
-      {...props}>
+    <button type="button" className={`border-2 rounded-3 shadow ${classes}`} {...props}>
       {children}
     </button>
   );
 }) as React.FC<ButtonProps>;
 
-export const CloseButton = (({
-  classes,
-  ariaLabel = 'Close',
-  children,
-  ...props
-}) => {
+export const CloseButton = (({ classes, ariaLabel = 'Close', children, ...props }) => {
   return (
-    <ButtonTemplate
-      classes={`btn-close text-reset ${classes}`}
-      {...props}
-      aria-label={ariaLabel}>
+    <ButtonTemplate classes={`btn-close text-reset ${classes}`} {...props} aria-label={ariaLabel}>
       {children}
     </ButtonTemplate>
   );
@@ -41,12 +31,7 @@ export const ColoredButton = (({ children, color, classes, ...props }) => {
   );
 }) as React.FC<ColoredButtonProps>;
 
-export const ColoredIconButton = (({
-  icon: Icon,
-  iconProps,
-  children,
-  ...props
-}) => {
+export const ColoredIconButton = (({ icon: Icon, iconProps, children, ...props }) => {
   return (
     <ColoredButton {...props}>
       <Icon {...iconProps} />

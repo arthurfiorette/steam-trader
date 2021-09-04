@@ -4,6 +4,7 @@ updates:
     directory: '/app'
     schedule:
       interval: 'daily'
+
   - package-ecosystem: 'docker'
     directory: '/app'
     schedule:
@@ -13,6 +14,7 @@ updates:
     directory: '/web'
     schedule:
       interval: 'daily'
+
   - package-ecosystem: 'docker'
     directory: '/web'
     schedule:

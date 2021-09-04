@@ -1,5 +1,5 @@
-import { Icon } from 'react-bootstrap-icons';
-import { Github, QuestionSquare } from 'react-bootstrap-icons';
+import React from 'react';
+import { Github, Icon, QuestionSquare } from 'react-bootstrap-icons';
 import { ColoredIconButton } from './components/button';
 import { GIT_URL, PAGE_URL } from './constants';
 

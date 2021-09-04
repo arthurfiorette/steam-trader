@@ -5,9 +5,7 @@ export interface ICurrency {
 }
 
 function replaceAt(str: string, index: number, replacement: string) {
-  return (
-    str.substr(0, index) + replacement + str.substr(index + replacement.length)
-  );
+  return str.substr(0, index) + replacement + str.substr(index + replacement.length);
 }
 
 function replaceComma(str: string) {
@@ -30,8 +28,7 @@ function currency(
   return {
     name,
     currencyId,
-    parse: (str: string) =>
-      Number(replaceComma(replaceInvalid(str.slice(a, str.length + b))))
+    parse: (str: string) => Number(replaceComma(replaceInvalid(str.slice(a, str.length + b))))
   };
 }
 

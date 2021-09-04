@@ -1,3 +1,4 @@
+import React from 'react';
 import { If } from '../../if';
 
 type InputProps = {
@@ -11,14 +12,7 @@ type InputProps = {
   prefix?: string;
 };
 
-export const TextInput = (({
-  type,
-  title,
-  help,
-  inputProps,
-  prefix,
-  onChange
-}) => {
+export const TextInput = (({ type, title, help, inputProps, prefix, onChange }) => {
   const [id, helpId] = generateId(prefix, title);
   return (
     <div className="form-floating mb-3">

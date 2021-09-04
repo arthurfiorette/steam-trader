@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# https://prettier.io/docs/en/precommit.html
+
+FILES=$(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g')
+[ -z "$FILES" ] && exit 0
+echo "$FILES" | xargs prettier --write
+echo "$FILES" | xargs git add
+exit 0

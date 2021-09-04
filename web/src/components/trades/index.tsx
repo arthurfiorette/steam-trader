@@ -1,7 +1,7 @@
-import { useEffect, useState, useRef } from 'react';
-import { Trade } from './trade';
+import React, { useEffect, useRef, useState } from 'react';
 import socket from '../../services/socket';
-import { TradeJSON } from './util';
+import { TradeJSON } from '../../types';
+import { Trade } from './trade';
 
 export const TradesBox = (({}) => {
   const [trades, setTrades] = useState<TradeJSON[]>([]);

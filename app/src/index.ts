@@ -1,8 +1,7 @@
 import dotenv from 'dotenv';
-dotenv.config();
-
-import server from './server';
 import * as Ads from './ads';
+import server from './server';
+dotenv.config();
 
 const PORT = process.env.PORT || 1228;
 

@@ -2,7 +2,7 @@ version: '3'
 services:
   app:
     build: ./app
-    image: steam-trader_app:1.4.0
+    image: steam-trader_app:2.0.0
     env_file:
       - ./app/.env
     volumes:
@@ -10,11 +10,12 @@ services:
       - ./app/config:/usr/app/config
     ports:
       - 1228:1228
+
   web:
     depends_on:
       - app
     build: ./web
-    image: steam-trader_web:1.4.0
+    image: steam-trader_web:2.0.0
     env_file:
       - ./web/.env
     ports:

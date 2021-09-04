@@ -1,7 +1,17 @@
-{ 
-  "jsxBracketSameLine": true,
-  "printWidth": 80,
+{
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "endOfLine": "lf",
+  "insertPragma": false,
+  "jsxBracketSameLine": false,
+  "jsxSingleQuote": false,
+  "printWidth": 100,
+  "proseWrap": "always",
+  "quoteProps": "as-needed",
+  "requirePragma": false,
   "semi": true,
   "singleQuote": true,
-  "trailingComma": "none"
+  "tabWidth": 2,
+  "trailingComma": "none",
+  "useTabs": false
 }

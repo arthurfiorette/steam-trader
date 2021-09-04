@@ -1,13 +1,5 @@
-import { Router, json } from 'express';
-import {
-  getAll,
-  getByName,
-  create,
-  edit,
-  remove,
-  login,
-  logout
-} from '../../accounts/controller';
+import { json, Router } from 'express';
+import { create, edit, getAll, getByName, login, logout, remove } from '../../accounts/controller';
 
 const router = Router();
 

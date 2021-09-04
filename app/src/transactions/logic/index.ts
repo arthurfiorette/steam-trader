@@ -1,12 +1,12 @@
-import glitched from './glitched';
-import isOwner from './isOwner';
-import checkSides from './checkSides';
-import unmarketable from './unmarketable';
+import { Middleware } from '../../util/middleware';
+import { Reason } from '../processor';
+import { OfferContext } from '../types';
 import calculatePrices from './calculatePrices';
 import checkOverpay from './checkOverpay';
-import { Middleware } from '../../util/middleware';
-import { OfferContext } from '../types';
-import { Reason } from '../processor';
+import checkSides from './checkSides';
+import glitched from './glitched';
+import isOwner from './isOwner';
+import unmarketable from './unmarketable';
 
 const logic: Middleware<OfferContext>[] = [
   glitched,

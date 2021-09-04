@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { editAccount } from '../../../services/accounts';
 import { AccountOptions } from '../../../types';
-import { CheckInput, TextInput } from './inputs';
-import { emptyAccount, hasInvalidKeys } from '../util';
 import { ColoredButton } from '../../button';
+import { emptyAccount, hasInvalidKeys } from '../util';
+import { CheckInput, TextInput } from './inputs';
 
 export const EditForm = (({ data = emptyAccount() }) => {
   const [{ login, status, trading }, setData] = useState<AccountOptions>(data);
@@ -26,9 +26,7 @@ export const EditForm = (({ data = emptyAccount() }) => {
   };
 
   const onChangeFactory = (cb: (val: any) => any) => {
-    return ({
-      target: { type, checked, value }
-    }: React.ChangeEvent<HTMLInputElement>) => {
+    return ({ target: { type, checked, value } }: React.ChangeEvent<HTMLInputElement>) => {
       cb(type === 'checkbox' ? checked : value);
       setData({ login, status, trading });
     };

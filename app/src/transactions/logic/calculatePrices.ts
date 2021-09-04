@@ -1,13 +1,10 @@
-import { NextFunction } from '../../util/middleware';
-import { getAllItemsPrice } from '../../steam/market';
 import { AccountOptions } from '../../accounts/options';
-import { ItemPrice, OfferContext } from '../types';
+import { getAllItemsPrice } from '../../steam/market';
+import { NextFunction } from '../../util/middleware';
 import { Reason } from '../processor';
+import { ItemPrice, OfferContext } from '../types';
 
-export default async function middleware(
-  context: OfferContext,
-  next: NextFunction
-) {
+export default async function middleware(context: OfferContext, next: NextFunction) {
   const { processor, itemsToReceive, itemsToGive } = context;
   const { options } = processor.account;
   context.receiveItemsPrices = await getAllItemsPrice(
@@ -21,10 +18,7 @@ export default async function middleware(
 
   context.receivePrice = reducePrices(context.receiveItemsPrices);
 
-  context.giveItemsPrices = await getAllItemsPrice(
-    itemsToGive,
-    options.status.currency
-  );
+  context.giveItemsPrices = await getAllItemsPrice(itemsToGive, options.status.currency);
   context.givePrice = reducePrices(context.giveItemsPrices);
 
   context.profit = context.receivePrice - context.givePrice;
@@ -36,10 +30,7 @@ export function isTrash(item: ItemPrice, { trading }: AccountOptions): boolean {
   return calculatePrice(item) <= trading.trashLimit;
 }
 
-export function calculatePrice({
-  median_price,
-  lowest_price
-}: ItemPrice): number {
+export function calculatePrice({ median_price, lowest_price }: ItemPrice): number {
   return !median_price || lowest_price > median_price
     ? lowest_price
     : median_price + lowest_price / 2;

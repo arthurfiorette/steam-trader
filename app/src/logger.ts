@@ -1,4 +1,4 @@
-import winston, { format, Logger, transports } from 'winston';
+import winston, { format, transports } from 'winston';
 import Transport from 'winston-transport';
 import SocketTransport from './server/socket/transport';
 import { getFileTransport } from './storage/logs';
@@ -17,10 +17,7 @@ function _createLogger(account: string, ..._transports: Transport[]) {
   return winston.createLogger({
     ...levelFormat,
     defaultMeta: { account },
-    transports: [
-      new transports.Console({ format: combine(colorize(), cli()) }),
-      ..._transports
-    ]
+    transports: [new transports.Console({ format: combine(colorize(), cli()) }), ..._transports]
   });
 }
 

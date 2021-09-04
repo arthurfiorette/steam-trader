@@ -9,13 +9,7 @@ type simplifyOptions = {
   mapItems: boolean;
 };
 
-export function simplifyOffer({
-  account,
-  context,
-  reason,
-  accepted,
-  mapItems
-}: simplifyOptions) {
+export function simplifyOffer({ account, context, reason, accepted, mapItems }: simplifyOptions) {
   const { partner, id: offerId, itemsToGive, itemsToReceive, profit } = context;
   return {
     account,

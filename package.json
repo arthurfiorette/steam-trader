@@ -1,6 +1,6 @@
 {
   "name": "steam-trader",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "description": "An deployment ready and automated steam trade client!",
   "private": true,
   "repository": {
@@ -13,19 +13,29 @@
     "url": "https://github.com/ArthurFiorette/steam-trader/issues"
   },
   "homepage": "https://github.com/ArthurFiorette/steam-trader#readme",
+  "workspaces": {
+    "nohoist": [
+      "**"
+    ],
+    "packages": [
+      "web",
+      "app"
+    ]
+  },
   "scripts": {
-    "install": "concurrently \"yarn:install:*\"",
-    "install:app": "cd app && yarn",
-    "install:web": "cd web && yarn",
     "build": "concurrently \"yarn:build:*\"",
     "build:app": "cd app && yarn run build",
     "build:web": "cd web && yarn run build",
     "start": "concurrently \"yarn:start:*\"",
     "start:app": "cd app && yarn start",
-    "start:web": "cd web && yarn start"
+    "start:web": "cd web && yarn start",
+    "prettify": "prettier --write ."
   },
   "devDependencies": {
+    "concurrently": "^6.0.2",
+    "prettier": "^2.3.2",
+    "prettier-plugin-organize-imports": "^2.3.3",
     "yarn": "^1.22.10",
-    "concurrently": "^6.0.2"
+    "typescript": "^4.4.2"
   }
 }
