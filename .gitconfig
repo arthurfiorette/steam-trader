@@ -1,5 +1,4 @@
 [core]
-  ignorecase = false
   hooksPath = .githooks/
   ignorecase = false
 [gui]
