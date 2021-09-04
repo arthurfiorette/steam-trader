@@ -5,13 +5,15 @@ import { Server } from 'socket.io';
 import { logger } from '../logger';
 import setRoutes from './routes';
 
+const { CORS = 'http://localhost:1227' } = process.env;
+
 const app = express();
 const http = createServer(app);
 export const io = new Server(http, {
-  cors: { origin: process.env.CORS || 'http://localhost:1227' }
+  cors: { origin: CORS }
 });
 
-app.use(cors({ origin: process.env.CORS || 'http://localhost:1227' }));
+app.use(cors({ origin: CORS }));
 
 setRoutes(app);
 

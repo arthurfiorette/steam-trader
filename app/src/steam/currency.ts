@@ -23,7 +23,7 @@ function replaceInvalid(str: string) {
 function currency(
   name: string,
   currencyId: number,
-  /* [index at pos 0, index at last pos] */ [a, b]: number[]
+  [a, b]: [number, number]
 ): ICurrency {
   return {
     name,
@@ -33,7 +33,7 @@ function currency(
 }
 
 export function getCurrency(id: number): ICurrency {
-  for (let obj of Object.keys(CURRENCIES)) {
+  for (let obj of Object.keys(CURRENCIES) as (keyof typeof CURRENCIES)[]) {
     const currency: ICurrency = CURRENCIES[obj];
     if (currency.currencyId === id) {
       return currency;

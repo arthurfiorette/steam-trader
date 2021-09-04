@@ -3,7 +3,7 @@ import * as Ads from './ads';
 import server from './server';
 dotenv.config();
 
-const PORT = process.env.PORT || 1228;
+const { PORT = 1228 } = process.env;
 
 Ads.startup();
 
