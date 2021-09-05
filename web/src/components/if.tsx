@@ -21,9 +21,7 @@ export const If = (({ test, children }) => {
   children: any;
 }>;
 
-/**
- * Dummy component just to crate the else element
- */
+/** Dummy component just to crate the else element */
 export const Else = (({ children }) => {
   return children;
 }) as React.FC<{}>;

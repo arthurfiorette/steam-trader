@@ -35,6 +35,7 @@
     "prettify": "prettier --write ."
   },
   "devDependencies": {
+    "@arthurfiorette/prettier-config": "^1.0.5",
     "concurrently": "^6.2.1",
     "prettier": "^2.3.2",
     "prettier-plugin-organize-imports": "^2.3.3",
