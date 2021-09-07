@@ -35,7 +35,7 @@
     "@babel/preset-typescript": "^7.15.0",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
-    "@types/node": "^16.7.10",
+    "@types/node": "^16.7.13",
     "@types/steam-totp": "^2.1.0",
     "nodemon": "^2.0.12",
     "ts-node": "^10.2.1"
