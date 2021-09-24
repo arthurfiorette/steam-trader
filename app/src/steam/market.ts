@@ -1,17 +1,17 @@
 import axios from 'axios';
 import { Item, ItemPrice } from '../transactions/types';
-import Currency, { ICurrency } from './currency';
+import { Currency, ICurrency } from './currency';
 
 const priceOverview = 'http://steamcommunity.com/market/priceoverview';
 
 export async function getItemPrice(
   item: Item,
-  currency: ICurrency | undefined = Currency.USD
+  currency: ICurrency | undefined = Currency['USD']
 ): Promise<ItemPrice> {
   const { appid } = item;
   const params = {
     appid,
-    currency: currency.currencyId,
+    currency: currency.steamId,
     market_hash_name: getItemName(item)
   };
   const { data } = await axios.get(priceOverview, { params });

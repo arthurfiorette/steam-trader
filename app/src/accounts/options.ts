@@ -1,4 +1,4 @@
-import { ICurrency } from '../steam/currency';
+import { CurrencyIdKey } from '../steam/currency';
 
 export interface AccountOptions {
   readonly login: {
@@ -9,7 +9,7 @@ export interface AccountOptions {
   };
   status: {
     gameId: number;
-    currency?: ICurrency;
+    currency?: CurrencyIdKey;
   };
   trading: {
     trashLimit: number;

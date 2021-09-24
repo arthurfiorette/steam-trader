@@ -1199,6 +1199,11 @@
   resolved "https://registry.yarnpkg.com/@types/cors/-/cors-2.8.12.tgz#6b2c510a7ad7039e98e7b8d3d6598f4359e5c080"
   integrity sha512-vt+kDhq/M2ayberEtJcIN/hxXy1Pk+59g2FV/ZQceeaTyCtCucjL2Q7FXlFjtWn4n15KCr1NE2lNNFhp0lEThw==
 
+"@types/currency-formatter@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@types/currency-formatter/-/currency-formatter-1.5.1.tgz#7e03a08c28622b45ea52f25dfd299e9bc2f52638"
+  integrity sha512-dJb8hPNOQizmJnqWucEXKd+vnQVpedwY5tB8ADrC9/EVSaglgKeRHCkZKii6QJH+6mjiWObeb3n6wsmoQ7Ycrg==
+
 "@types/eslint-scope@^3.7.0":
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/@types/eslint-scope/-/eslint-scope-3.7.1.tgz#8dc390a7b4f9dd9f1284629efce982e41612116e"
@@ -1592,6 +1597,11 @@ accepts@~1.3.4, accepts@~1.3.5, accepts@~1.3.7:
   dependencies:
     mime-types "~2.1.24"
     negotiator "0.6.2"
+
+accounting@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/accounting/-/accounting-0.4.1.tgz#87dd4103eff7f4460f1e186f5c677ed6cf566883"
+  integrity sha1-h91BA+/39EYPHhhvXGd+1s9WaIM=
 
 acorn-import-assertions@^1.7.6:
   version "1.7.6"
@@ -2543,6 +2553,15 @@ cuint@^0.2.1:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/cuint/-/cuint-0.2.2.tgz#408086d409550c2631155619e9fa7bcadc3b991b"
   integrity sha1-QICG1AlVDCYxFVYZ6fp7ytw7mRs=
+
+currency-formatter@^1.5.8:
+  version "1.5.8"
+  resolved "https://registry.yarnpkg.com/currency-formatter/-/currency-formatter-1.5.8.tgz#5c2a18673d966fc355bac901f7423ccce607b983"
+  integrity sha512-/Oim4XnX82wf+JknrObifmBHpXnSQZC3FrCi+Oss4olXm3nqGWd8eY3sL2Tf0pZ/zuUqj1stU7f//5Hh27+cSQ==
+  dependencies:
+    accounting "^0.4.1"
+    locale-currency "0.0.2"
+    object-assign "^4.1.1"
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -4356,6 +4375,11 @@ loader-utils@^2.0.0:
     big.js "^5.2.2"
     emojis-list "^3.0.0"
     json5 "^2.1.2"
+
+locale-currency@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/locale-currency/-/locale-currency-0.0.2.tgz#e2c90607563ce47a59f9559e45a70e24e4db4b6d"
+  integrity sha1-4skGB1Y85HpZ+VWeRacOJOTbS20=
 
 locate-path@^5.0.0:
   version "5.0.0"

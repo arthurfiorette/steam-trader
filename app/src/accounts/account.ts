@@ -2,7 +2,7 @@ import { nextTick } from 'process';
 import SteamTotp from 'steam-totp';
 import createLogger from '../logger';
 import { update } from '../server/socket/updater';
-import { getCurrency } from '../steam/currency';
+import { CurrencyId, CurrencyIdKey } from '../steam/currency';
 import TradeProcessor from '../transactions/processor';
 import { Offer } from '../transactions/types';
 import { SteamCommunity, SteamUser, TradeOfferManager } from '../untyped';
@@ -33,10 +33,11 @@ export default class Account {
     this.client.on('steamGuard', (_domain: any, callback: (code: string) => void) =>
       callback(this.getAuthCode())
     );
-    this.manager.on('newOffer', (offer: Offer) => this.trader.begin(offer));
     this.client.on('error', (err: any) =>
       this.logger.error(`Occurred an error on the last operation: ${err.message}`)
     );
+
+    this.manager.on('newOffer', (offer: Offer) => this.trader.begin(offer));
   }
 
   login() {
@@ -80,16 +81,25 @@ export default class Account {
 
   private onWebSession(cookies: string[]) {
     const { community, options, manager, logger } = this;
+
     logger.debug('Started web session, delivering cookies');
+
     manager.setCookies(cookies);
+
     community.setCookies(cookies);
     community.startConfirmationChecker(2000, options.login.identity);
   }
 
-  private setCurrency(c: number) {
-    const currency = getCurrency(c);
-    this.logger.debug(`The currency used is '${currency.name}'`);
-    this.options.status.currency = getCurrency(c);
+  private setCurrency(id: number) {
+    const name = CurrencyId[id] as CurrencyIdKey | undefined;
+
+    if (!name) {
+      throw new Error(`Currency ${id} unrecognized`);
+    }
+
+    this.logger.debug(`The currency used is '${name}'`);
+
+    this.options.status.currency = name;
   }
 
   private getAuthCode() {
