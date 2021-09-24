@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Person, Power } from 'react-bootstrap-icons';
-import { getAccount, login as loginAcc, logout as logoutAcc } from '../../services/accounts';
+import {
+  getAccount,
+  login as loginAcc,
+  logout as logoutAcc
+} from '../../services/accounts';
 import socket from '../../services/socket';
 import { AccountOptions } from '../../types';
 import { ColoredButton, ColoredIconButton } from '../button';

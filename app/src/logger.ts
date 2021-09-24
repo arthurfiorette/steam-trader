@@ -17,7 +17,10 @@ function _createLogger(account: string, ..._transports: Transport[]) {
   return winston.createLogger({
     ...levelFormat,
     defaultMeta: { account },
-    transports: [new transports.Console({ format: combine(colorize(), cli()) }), ..._transports]
+    transports: [
+      new transports.Console({ format: combine(colorize(), cli()) }),
+      ..._transports
+    ]
   });
 }
 

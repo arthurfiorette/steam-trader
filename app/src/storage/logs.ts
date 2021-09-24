@@ -10,7 +10,9 @@ function getPath(...paths: string[]) {
 fs.mkdir(getPath()).catch(() => {});
 
 function getDate(fileName: string) {
-  return fileName !== 'system' ? '' : `-${new Date().toLocaleDateString().replace(/\//gi, '')}`;
+  return fileName !== 'system'
+    ? ''
+    : `-${new Date().toLocaleDateString().replace(/\//gi, '')}`;
 }
 
 export function getFileTransport(fileName: string) {

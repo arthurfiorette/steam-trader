@@ -14,4 +14,5 @@
 
 ## Reporting a Vulnerability
 
-**DO NOT CREATE AN ISSUE** to report a security problem. Instead, please send an email to arthurfiorette@gmail.com
+**DO NOT CREATE AN ISSUE** to report a security problem. Instead, please send an email to
+arthurfiorette@gmail.com

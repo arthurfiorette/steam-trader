@@ -15,7 +15,11 @@ const ButtonTemplate = (({ children, classes, ...props }) => {
 
 export const CloseButton = (({ classes, ariaLabel = 'Close', children, ...props }) => {
   return (
-    <ButtonTemplate classes={`btn-close text-reset ${classes}`} {...props} aria-label={ariaLabel}>
+    <ButtonTemplate
+      classes={`btn-close text-reset ${classes}`}
+      {...props}
+      aria-label={ariaLabel}
+    >
       {children}
     </ButtonTemplate>
   );

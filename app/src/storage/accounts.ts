@@ -34,7 +34,9 @@ async function checkAccountOptions(options: AccountOptions[]) {
 
 async function handleInvalidAccountFile() {
   const newName = `accounts-invalid-${new Date().getTime()}.json`;
-  logger.error(`Invalid accounts.json, Renaming it to ${newName} and creating a new empty one...`);
+  logger.error(
+    `Invalid accounts.json, Renaming it to ${newName} and creating a new empty one...`
+  );
   await fs.rename(accountsPath, join(configPath, newName));
   await createAccountFileIfNeeded();
 }
@@ -47,7 +49,9 @@ async function createAccountFileIfNeeded() {
       fs
         .writeFile(accountsPath, '[]')
         .catch((err) =>
-          logger.error(`Occurred an error while creating the config/accounts.json: ${err}`)
+          logger.error(
+            `Occurred an error while creating the config/accounts.json: ${err}`
+          )
         )
     );
 }

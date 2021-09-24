@@ -8,12 +8,9 @@ import { ItemPrice, OfferContext } from '../types';
 export default async function middleware(context: OfferContext, next: NextFunction) {
   const { processor, itemsToReceive, itemsToGive } = context;
   const { options } = processor.account;
-  const currency = Currency[options.status.currency || 'USD']
+  const currency = Currency[options.status.currency || 'USD'];
 
-  context.receiveItemsPrices = await getAllItemsPrice(
-    itemsToReceive,
-    currency
-  );
+  context.receiveItemsPrices = await getAllItemsPrice(itemsToReceive, currency);
 
   if (context.receiveItemsPrices.some((item) => isTrash(item, options))) {
     processor.decline(context, Reason.TRASH);

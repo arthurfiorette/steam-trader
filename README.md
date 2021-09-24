@@ -31,41 +31,42 @@
 
 ## 📖 About
 
-This project is an open source initiative to host multiple steam bot accounts to trade inventory
-items, automatically calculating the prices and items in each exchange sent and responding to them
-at the same time, like some Trading Card Exchange bots, but with any item. We still have a lot to
-improve, and that is what i'll do in the next days, Feel free to send a PR or open a new issue.
+This project is an open source initiative to host multiple steam bot accounts to trade
+inventory items, automatically calculating the prices and items in each exchange sent and
+responding to them at the same time, like some Trading Card Exchange bots, but with any
+item. We still have a lot to improve, and that is what i'll do in the next days, Feel free
+to send a PR or open a new issue.
 
 ## 📁 Downloading
 
-> _The main branch is used for development, to download the code, prefer to download a specific
-> tag._
+> _The main branch is used for development, to download the code, prefer to download a
+> specific tag._
 
 Open this repository
-<a href="https://github.com/ArthurFiorette/steam-trader/releases" target="_blank">releases</a> tab
-and download the latest source code **.zip** file.
+<a href="https://github.com/ArthurFiorette/steam-trader/releases" target="_blank">releases</a>
+tab and download the latest source code **.zip** file.
 
 ## ⚙️ Configuration
 
-A `config.json` file already existed in previous versions, however, now everything is officially
-configured by our panel. To access it, start the application correctly and go to localhost at the
-specified port.
+A `config.json` file already existed in previous versions, however, now everything is
+officially configured by our panel. To access it, start the application correctly and go
+to localhost at the specified port.
 
 #### 🔐 SDA, Shared Secret and Identity Secret
 
-To register a steam account with **steam-trader**, you need to know the `Shared Secret` and
-`Identity Secret` of your account. These two secrets are responsible for the automatic generation of
-the steam guard mobile code and auto reconnection.
+To register a steam account with **steam-trader**, you need to know the `Shared Secret`
+and `Identity Secret` of your account. These two secrets are responsible for the automatic
+generation of the steam guard mobile code and auto reconnection.
 
 To get them easily, you will need to enable
-<a href="https://github.com/Jessecar96/SteamDesktopAuthenticator" target="_blank">SDA</a> on the
-account and after that, you will find it
+<a href="https://github.com/Jessecar96/SteamDesktopAuthenticator" target="_blank">SDA</a>
+on the account and after that, you will find it
 <a href="https://www.youtube.com/watch?v=JjdOJVSZ9Mo" target="_blank">here</a>.
 
 ## 🏃 Executing
 
-You can host it docker on any hosting service that supports containerized applications or use docker
-locally, simply by typing:
+You can host it docker on any hosting service that supports containerized applications or
+use docker locally, simply by typing:
 
 > _For any help with docker, here are the
 > <a href="https://docs.docker.com/compose/" target="_blank">docs</a>._
@@ -78,10 +79,12 @@ $ docker-compose up
 $ docker-compose up -d
 ```
 
-If you have no access or knowledge to use Docker, you can run it having **Node.JS** installed. As we
-have a `package.json` in our root containing some scripts, all you need to do is follow these steps.
+If you have no access or knowledge to use Docker, you can run it having **Node.JS**
+installed. As we have a `package.json` in our root containing some scripts, all you need
+to do is follow these steps.
 
-> _Always prefer to use Docker, as this application was built based on it and is totally faster._
+> _Always prefer to use Docker, as this application was built based on it and is totally
+> faster._
 
 ```sh
 # Install yarn and concurrently to run the next scripts.
@@ -94,15 +97,15 @@ $ npm run build
 $ npm run start
 ```
 
-After building and installing it for the first time, you are ready to go and you can start it every
-time only running the last command.
+After building and installing it for the first time, you are ready to go and you can start
+it every time only running the last command.
 
 ### Security
 
-We assume that all connections are secure and trustworthy, so we don't require any passwords. If
-you're hosting it on third-party services like AWS or Azure, make sure you only allow its IP address
-to connect to the web interface and server. You can also use a proxy between authenticated
-connections to prevent unauthorized requests.
+We assume that all connections are secure and trustworthy, so we don't require any
+passwords. If you're hosting it on third-party services like AWS or Azure, make sure you
+only allow its IP address to connect to the web interface and server. You can also use a
+proxy between authenticated connections to prevent unauthorized requests.
 
 ## 📃 License
 
@@ -111,5 +114,6 @@ Licensed under the **GNU General Public License v3.0**. See
 
 ## 📧 Contact
 
-See my contact information on my <a href="https://github.com/ArthurFiorette" target="_blank">GitHub
-Profile Page</a> or open a new issue.
+See my contact information on my
+<a href="https://github.com/ArthurFiorette" target="_blank">GitHub Profile Page</a> or
+open a new issue.

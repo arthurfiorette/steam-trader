@@ -23,7 +23,9 @@ const ItemPicture = (({ item, received }) => {
   return (
     <li className="list-inline-item m-0">
       <img
-        className={`alert shadow-sm border-2 alert-${received ? 'success' : 'danger'} p-1 m-1`}
+        className={`alert shadow-sm border-2 alert-${
+          received ? 'success' : 'danger'
+        } p-1 m-1`}
         src={getImageUrl(item)}
         alt={name}
         height="50px"
@@ -40,7 +42,9 @@ const EmptyItemPicture = (({ received }) => {
   return (
     <li className="list-inline-item m-0">
       <img
-        className={`alert shadow-sm border-2 alert-${received ? 'success' : 'danger'} p-1 m-1`}
+        className={`alert shadow-sm border-2 alert-${
+          received ? 'success' : 'danger'
+        } p-1 m-1`}
         alt=""
         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" // Empty 1px image
         height="50px"

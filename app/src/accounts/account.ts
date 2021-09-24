@@ -27,9 +27,13 @@ export default class Account {
     this.client.on('webSession', (_sessionId: number, cookies: string[]) =>
       this.onWebSession(cookies)
     );
-    this.client.on('wallet', (_hasWallet: boolean, currency: number) => this.setCurrency(currency));
+    this.client.on('wallet', (_hasWallet: boolean, currency: number) =>
+      this.setCurrency(currency)
+    );
     this.client.on('loggedOn', () => this.onLogin());
-    this.client.on('disconnected', (_eResult: number, msg: string) => this.onDisconnect(msg));
+    this.client.on('disconnected', (_eResult: number, msg: string) =>
+      this.onDisconnect(msg)
+    );
     this.client.on('steamGuard', (_domain: any, callback: (code: string) => void) =>
       callback(this.getAuthCode())
     );

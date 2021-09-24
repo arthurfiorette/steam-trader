@@ -25,7 +25,10 @@ export function getItemName({ market_name, market_hash_name, name }: Item) {
   return name;
 }
 
-function parseData({ success, lowest_price, median_price }: any, { parse }: ICurrency): ItemPrice {
+function parseData(
+  { success, lowest_price, median_price }: any,
+  { parse }: ICurrency
+): ItemPrice {
   return {
     success,
     lowest_price: parse(lowest_price),
@@ -33,6 +36,9 @@ function parseData({ success, lowest_price, median_price }: any, { parse }: ICur
   };
 }
 
-export async function getAllItemsPrice(items: Item[], currency?: ICurrency): Promise<ItemPrice[]> {
+export async function getAllItemsPrice(
+  items: Item[],
+  currency?: ICurrency
+): Promise<ItemPrice[]> {
   return Promise.all(items.map((item) => getItemPrice(item, currency)));
 }

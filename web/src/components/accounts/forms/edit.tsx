@@ -26,7 +26,9 @@ export const EditForm = (({ data = emptyAccount() }) => {
   };
 
   const onChangeFactory = (cb: (val: any) => any) => {
-    return ({ target: { type, checked, value } }: React.ChangeEvent<HTMLInputElement>) => {
+    return ({
+      target: { type, checked, value }
+    }: React.ChangeEvent<HTMLInputElement>) => {
       cb(type === 'checkbox' ? checked : value);
       setData({ login, status, trading });
     };
