@@ -13,7 +13,7 @@
     "start:nodemon": "ts-node src/index.ts"
   },
   "dependencies": {
-    "axios": "^0.21.3",
+    "axios": "^0.21.4",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
@@ -31,7 +31,7 @@
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.13.8",
     "@babel/plugin-transform-runtime": "^7.15.0",
-    "@babel/preset-env": "^7.15.4",
+    "@babel/preset-env": "^7.15.6",
     "@babel/preset-typescript": "^7.15.0",
     "@types/cors": "^2.8.12",
     "@types/currency-formatter": "^1.5.1",
@@ -39,7 +39,7 @@
     "@types/node": "^16.7.10",
     "@types/steam-totp": "^2.1.0",
     "currency-formatter": "^1.5.8",
-    "nodemon": "^2.0.12",
+    "nodemon": "^2.0.13",
     "ts-node": "^10.2.1"
   }
 }
