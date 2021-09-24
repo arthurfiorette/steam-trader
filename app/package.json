@@ -1,5 +1,6 @@
 {
   "name": "steam-trader-app",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "lint": "tsc --noEmit",
