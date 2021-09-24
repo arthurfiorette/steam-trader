@@ -1,3 +1,4 @@
+import { Currency } from 'src/steam/currency';
 import { AccountOptions } from '../../accounts/options';
 import { getAllItemsPrice } from '../../steam/market';
 import { NextFunction } from '../../util/middleware';
@@ -7,9 +8,11 @@ import { ItemPrice, OfferContext } from '../types';
 export default async function middleware(context: OfferContext, next: NextFunction) {
   const { processor, itemsToReceive, itemsToGive } = context;
   const { options } = processor.account;
+  const currency = Currency[options.status.currency || 'USD']
+
   context.receiveItemsPrices = await getAllItemsPrice(
     itemsToReceive,
-    processor.account.options.status.currency
+    currency
   );
 
   if (context.receiveItemsPrices.some((item) => isTrash(item, options))) {
@@ -18,7 +21,7 @@ export default async function middleware(context: OfferContext, next: NextFuncti
 
   context.receivePrice = reducePrices(context.receiveItemsPrices);
 
-  context.giveItemsPrices = await getAllItemsPrice(itemsToGive, options.status.currency);
+  context.giveItemsPrices = await getAllItemsPrice(itemsToGive, currency);
   context.givePrice = reducePrices(context.giveItemsPrices);
 
   context.profit = context.receivePrice - context.givePrice;
