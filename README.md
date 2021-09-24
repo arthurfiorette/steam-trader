@@ -25,8 +25,8 @@
 </p>
 
 > <pre align="center">
-> Stabilized and refactored!
-> Check it out in <a href="https://github.com/ArthurFiorette/steam-trader/releases/tag/v2.0.0" target="_blank">v2.0.0</a>!
+> Supporting all steam currencies
+> Check it out in <a href="https://github.com/ArthurFiorette/steam-trader/releases/tag/v2.1.0" target="_blank">v2.1.0</a>!
 > </pre>
 
 ## 📖 About
