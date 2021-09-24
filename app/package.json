@@ -1,9 +1,5 @@
 {
   "name": "steam-trader-app",
-  "version": "2.1.0",
-  "description": "An deployment ready and automated steam trade client!",
-  "main": "src/index.ts",
-  "license": "GPL-3.0",
   "private": true,
   "scripts": {
     "lint": "tsc --noEmit",
