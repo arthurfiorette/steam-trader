@@ -32,10 +32,12 @@
     "lint": "concurrently \"yarn:lint:*\"",
     "lint:app": "cd app && yarn lint",
     "lint:web": "cd web && yarn lint",
-    "prettify": "prettier --write ."
+    "prettify": "prettier --write .",
+    "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "devDependencies": {
     "@arthurfiorette/prettier-config": "^1.0.6",
+    "auto-changelog": "^2.3.0",
     "concurrently": "^6.2.1",
     "prettier": "^2.4.1",
     "prettier-plugin-organize-imports": "^2.3.4",
