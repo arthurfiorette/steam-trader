@@ -87,14 +87,17 @@ to do is follow these steps.
 > faster._
 
 ```sh
-# Install yarn and concurrently to run the next scripts.
-$ npm install
+# Install yarn
+$ npm i -g yarn
+
+# Then install the app
+$ yarn
 
 # Build and compile all code.
-$ npm run build
+$ yarn build
 
 # Start concurrently the web and the app.
-$ npm run start
+$ yarn start
 ```
 
 After building and installing it for the first time, you are ready to go and you can start
