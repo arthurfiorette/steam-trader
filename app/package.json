@@ -18,7 +18,7 @@
     "socket.io": "^4.2.0",
     "steam-totp": "^2.1.1",
     "steam-tradeoffer-manager": "2.10.3",
-    "steam-user": "4.19.12",
+    "steam-user": "4.20.0",
     "steamcommunity": "3.43.1",
     "winston": "^3.3.3"
   },
