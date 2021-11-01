@@ -4,12 +4,12 @@ LABEL maintainer="arthurfiorette <arthur.fiorette@gmail.com>"
 
 WORKDIR /usr/local/steam-trader/app
 
-COPY package.json .
+COPY ./app/package.json .
 COPY yarn.lock .
 
 RUN yarn && yarn cache clean
 
-COPY . .
+COPY ./app/ .
 
 RUN yarn build
 
