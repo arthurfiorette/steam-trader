@@ -1,5 +1,5 @@
 import { Express, NextFunction, Request, Response } from 'express';
-import _404 from './404';
+import notFound from './404';
 import ping from './ping';
 import users from './users';
 
@@ -7,7 +7,7 @@ export default function apply(app: Express) {
   app.use(responsePattern);
   app.use('/users', users);
   app.use('/ping', ping);
-  app.use(_404);
+  app.use(notFound);
 }
 
 function responsePattern(_req: Request, res: Response, next: NextFunction) {
