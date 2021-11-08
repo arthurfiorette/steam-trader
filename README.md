@@ -25,9 +25,22 @@
 </p>
 
 > <pre align="center">
-> Supporting all steam currencies
-> Check it out in <a href="https://github.com/ArthurFiorette/steam-trader/releases/tag/v2.1.0" target="_blank">v2.1.0</a>!
+> Docker builds are working better!
+> Check it out in <a href="https://github.com/ArthurFiorette/steam-trader/releases/tag/v2.1.1" target="_blank">v2.1.1</a>!
 > </pre>
+
+<br />
+
+- [📖 About](#-about)
+- [📁 Downloading](#-downloading)
+- [⚙️ Configuration](#️-configuration)
+    - [🔐 SDA, Shared Secret and Identity Secret](#-sda-shared-secret-and-identity-secret)
+- [🏃 Executing](#-executing)
+  - [Security](#security)
+- [📃 License](#-license)
+- [📧 Contact](#-contact)
+
+<br />
 
 ## 📖 About
 
