@@ -1,5 +1,5 @@
-import { Currency } from '../../steam/currency';
 import { AccountOptions } from '../../accounts/options';
+import { Currency } from '../../steam/currency';
 import { getAllItemsPrice } from '../../steam/market';
 import { NextFunction } from '../../util/middleware';
 import { Reason } from '../processor';
