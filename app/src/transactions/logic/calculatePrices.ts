@@ -1,4 +1,4 @@
-import { Currency } from 'src/steam/currency';
+import { Currency } from '../../steam/currency';
 import { AccountOptions } from '../../accounts/options';
 import { getAllItemsPrice } from '../../steam/market';
 import { NextFunction } from '../../util/middleware';
