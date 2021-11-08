@@ -1,15 +1,18 @@
+# Dockerfile built with the monorepo root path context
+# https://github.com/ArthurFiorette/steam-trader/pull/242
+
 FROM node:16.10.0-alpine
 
 LABEL maintainer="arthurfiorette <arthur.fiorette@gmail.com>"
 
 WORKDIR /usr/local/steam-trader/web
 
-COPY package.json .
+COPY ./web/package.json .
 COPY yarn.lock .
 
 RUN yarn && yarn cache clean
 
-COPY . .
+COPY ./web/ .
 
 RUN yarn build
 
