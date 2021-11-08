@@ -1,0 +1,4 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ArthurFiorette/declarator/master/schema.json",
+  "packages": ["steam-tradeoffer-manager"]
+}

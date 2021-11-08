@@ -1,11 +1,13 @@
 import { nextTick } from 'process';
 import SteamTotp from 'steam-totp';
+import TradeOfferManager from 'steam-tradeoffer-manager';
+import SteamUser from 'steam-user';
+import SteamCommunity from 'steamcommunity';
 import createLogger from '../logger';
 import { update } from '../server/socket/updater';
 import { CurrencyId, CurrencyIdKey } from '../steam/currency';
 import TradeProcessor from '../transactions/processor';
 import { Offer } from '../transactions/types';
-import { SteamCommunity, SteamUser, TradeOfferManager } from '../untyped';
 import { AccountOptions } from './options';
 import { serializer } from './serializer';
 
@@ -24,16 +26,12 @@ export default class Account {
     this.logger = createLogger(options.login.username);
     this.logger.info(`'${options.login.username}' was created, waiting for login...`);
 
-    this.client.on('webSession', (_sessionId: number, cookies: string[]) =>
-      this.onWebSession(cookies)
-    );
+    this.client.on('webSession', (_sessionId, cookies) => this.onWebSession(cookies));
     this.client.on('wallet', (_hasWallet: boolean, currency: number) =>
       this.setCurrency(currency)
     );
     this.client.on('loggedOn', () => this.onLogin());
-    this.client.on('disconnected', (_eResult: number, msg: string) =>
-      this.onDisconnect(msg)
-    );
+    this.client.on('disconnected', (_eResult, msg) => this.onDisconnect(msg));
     this.client.on('steamGuard', (_domain: any, callback: (code: string) => void) =>
       callback(this.getAuthCode())
     );
@@ -41,7 +39,10 @@ export default class Account {
       this.logger.error(`Occurred an error on the last operation: ${err.message}`)
     );
 
-    this.manager.on('newOffer', (offer: Offer) => this.trader.begin(offer));
+    //@ts-expect-error
+    this.manager.on('newOffer', (offer: Offer) => {
+      this.trader.begin(offer);
+    });
   }
 
   login() {
@@ -78,7 +79,7 @@ export default class Account {
     this.update();
   }
 
-  private onDisconnect(msg: string) {
+  private onDisconnect(msg: string | undefined) {
     this.logger.info(`We logged off: ${msg}`);
     this.update();
   }
@@ -88,7 +89,7 @@ export default class Account {
 
     logger.debug('Started web session, delivering cookies');
 
-    manager.setCookies(cookies);
+    manager.setCookies(cookies, undefined, undefined);
 
     community.setCookies(cookies);
     community.startConfirmationChecker(2000, options.login.identity);
