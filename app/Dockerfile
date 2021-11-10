@@ -1,7 +1,7 @@
 # Dockerfile built with the monorepo root path context
 # https://github.com/ArthurFiorette/steam-trader/pull/242
 
-FROM node:17.0.1-alpine
+FROM node:17.1.0-alpine
 
 LABEL maintainer="arthurfiorette <arthur.fiorette@gmail.com>"
 
