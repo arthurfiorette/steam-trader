@@ -34,7 +34,7 @@
     "@types/cors": "^2.8.12",
     "@types/currency-formatter": "^1.5.1",
     "@types/express": "^4.17.13",
-    "@types/node": "^16.9.6",
+    "@types/node": "^17.0.4",
     "@types/steam-totp": "^2.1.0",
     "@types/steam-user": "^4.19.4",
     "@types/steamcommunity": "^3.43.1",
