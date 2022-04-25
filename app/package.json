@@ -11,7 +11,7 @@
     "postinstall": "declarator"
   },
   "dependencies": {
-    "axios": "^0.24.0",
+    "axios": "^0.27.0",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
