@@ -18,7 +18,7 @@
     "express": "^4.17.1",
     "socket.io": "^4.2.0",
     "steam-totp": "^2.1.1",
-    "steam-tradeoffer-manager": "2.10.4",
+    "steam-tradeoffer-manager": "2.10.5",
     "steam-user": "4.21.0",
     "steamcommunity": "3.43.1",
     "winston": "^3.3.3"
