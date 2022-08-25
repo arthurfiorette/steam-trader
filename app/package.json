@@ -20,7 +20,7 @@
     "steam-totp": "^2.1.1",
     "steam-tradeoffer-manager": "2.10.4",
     "steam-user": "4.21.0",
-    "steamcommunity": "3.43.1",
+    "steamcommunity": "3.44.2",
     "winston": "^3.3.3"
   },
   "devDependencies": {
